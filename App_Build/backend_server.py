@@ -1,16 +1,16 @@
-from flask import Flask, request
+from flask import Flask, request, send_from_directory
 from flask_cors import CORS
 from summarizer import summarization
 import os
 
-app = Flask(__name__, static_folder='./FE_build/build', static_url_path='/')
+app = Flask(__name__, static_folder='FE_build/build', static_url_path='/')
 
 CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/')
 def index():
-    return app.send_static_file('index.html')
+    return send_from_directory(app.static_folder, 'index.html')
 
 @app.route("/summarise", methods=["POST"])
 def show_summary():
