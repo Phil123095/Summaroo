@@ -3,7 +3,7 @@ from flask_cors import CORS
 from summarizer import summarization
 import os
 
-app = Flask(__name__, static_folder='../FE_build/build', static_url_path='/')
+app = Flask(__name__, static_folder='./FE_build/build', static_url_path='/')
 
 CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
