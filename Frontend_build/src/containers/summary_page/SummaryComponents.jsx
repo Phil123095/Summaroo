@@ -30,8 +30,10 @@ function LandingPage() {
         axios({
             method: "POST",
             url: "https://bq5g5pjjc6fbzptimanr6v2gqu0tyydw.lambda-url.eu-central-1.on.aws/ ",
-            headers:{
-                "Content-Type": "application/json"
+            headers: {
+                "Access-Control-Allow-Headers": "*", // this will allow all CORS requests
+                "Access-Control-Allow-Methods": 'OPTIONS,POST,GET', // this states the allowed methods
+                "Content-Type": "application/json" // this shows the expected content type
             },
             data: {
                 full_text: text_to_summarize,
