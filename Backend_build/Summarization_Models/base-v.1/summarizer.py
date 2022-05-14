@@ -17,6 +17,7 @@ def text_cleaner(full_text):
 
 
 def summarization(full_text, reduce_length):
+    print("SUMMARIZINH")
     clean_text = text_cleaner(full_text)
     full_text_length = len(clean_text)
 
@@ -39,10 +40,14 @@ def summarization(full_text, reduce_length):
 
 
 def lambda_handler(event, context):
+    print("Message received")
     message = json.loads(event['body'])
     text_to_summarise = message['full_text']
     percent_reduce = message['perc_length']
 
+    print("Performing summarization")
     result_summary = summarization(full_text=text_to_summarise, reduce_length=percent_reduce)
+    print("Summary done")
+    print(result_summary)
 
     return {'final_summary': result_summary}
