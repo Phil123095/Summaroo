@@ -35,6 +35,7 @@ function LandingPage() {
                 "Access-Control-Allow-Methods": 'OPTIONS,POST,GET', // this states the allowed methods
                 "Content-Type": "application/json" // this shows the expected content type
             },
+            withCredentials: false,
             data: {
                 full_text: text_to_summarize,
                 perc_length: summary_perc
