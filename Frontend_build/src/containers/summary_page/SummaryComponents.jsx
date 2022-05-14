@@ -26,10 +26,22 @@ function LandingPage() {
     }
 
     function SummarizeText() {
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            mode: 'no-cors',
+            body: JSON.stringify({
+                full_text: text_to_summarize,
+                perc_length: summary_perc
+               })
+        };
+        fetch('https://bq5g5pjjc6fbzptimanr6v2gqu0tyydw.lambda-url.eu-central-1.on.aws/', requestOptions)
+            .then(response => response.data)
+            .then(response => setSummOut(response.final_summary));
         //Prevent page reload
-        axios({
+        /*axios({
             method: "POST",
-            url: "https://bq5g5pjjc6fbzptimanr6v2gqu0tyydw.lambda-url.eu-central-1.on.aws/ ",
+            url: "https://bq5g5pjjc6fbzptimanr6v2gqu0tyydw.lambda-url.eu-central-1.on.aws/",
             headers: {
                 "Access-Control-Allow-Headers": "*", // this will allow all CORS requests
                 "Access-Control-Allow-Methods": 'OPTIONS,POST,GET', // this states the allowed methods
@@ -42,7 +54,7 @@ function LandingPage() {
                }
         })
         .then(response => response.data)
-        .then(response => setSummOut(response.final_summary))
+        .then(response => setSummOut(response.final_summary))*/
     }
 
     return (
