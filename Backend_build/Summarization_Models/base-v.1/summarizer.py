@@ -27,7 +27,6 @@ def summarization(full_text, reduce_length):
 
     rawList_str = ' '.join(rawList)
     parser = PlaintextParser.from_string(rawList_str, Tokenizer('english'))
-
     # Summarise
     Lex = LexRankSummarizer()
     Lex_summary = Lex(document=parser.document, sentences_count=round(final_sentence_count))
