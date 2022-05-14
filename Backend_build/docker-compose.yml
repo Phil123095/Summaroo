@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  base-summarization-module:
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: Summarization_Models/base-v.1/Dockerfile
+    image: base-summarization-module:latest
