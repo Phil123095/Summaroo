@@ -39,8 +39,6 @@ function LandingPage() {
 
         fetch('https://bq5g5pjjc6fbzptimanr6v2gqu0tyydw.lambda-url.eu-central-1.on.aws/', requestOptions)
             .then(response => response.json())
-            .then(response => console.log(response))
-            .then(response => response.data)
             .then(response => setSummOut(response.final_summary));
         //Prevent page reload
         /*axios({
