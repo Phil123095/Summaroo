@@ -38,7 +38,7 @@ def summarization(full_text, reduce_length):
 
 
 def lambda_handler(event, context):
-    print(json.loads(event))
+    print(json.loads(event['body']))
     message = json.loads(event['body'])
     print(message)
     text_to_summarise = message['full_text']
