@@ -1,8 +1,8 @@
 from sumy.summarizers.lex_rank import LexRankSummarizer
 from sumy.nlp.tokenizers import Tokenizer
 import nltk
-nltk.download('punkt')
 from sumy.parsers.plaintext import PlaintextParser
+import json
 
 
 def text_cleaner(full_text):
@@ -35,3 +35,13 @@ def summarization(full_text, reduce_length):
     final_summary = ' '.join(str(v) for v in Lex_summary)
 
     return final_summary
+
+
+def lambda_handler(event, context):
+    message = json.loads(event['body'])
+    text_to_summarise = message['full_text']
+    percent_reduce = message['perc_length']
+
+    result_summary = summarization(full_text=text_to_summarise, reduce_length=percent_reduce)
+
+    return {'final_summary': result_summary}
