@@ -2,7 +2,7 @@ import { useState } from "react";
 import TextField from '@mui/material/TextField';
 import Slider from '@mui/material/Slider';
 import Button from '@mui/material/Button';
-import axios from 'axios';
+/*import axios from 'axios';*/
 
 
 function LandingPage() {
@@ -26,16 +26,20 @@ function LandingPage() {
     }
 
     function SummarizeText() {
+
         const requestOptions = {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            mode: 'no-cors',
+            /*headers: { 'Content-Type': 'application/json' },*/
+            /*mode: 'no-cors',*/
             body: JSON.stringify({
                 full_text: text_to_summarize,
                 perc_length: summary_perc
                })
         };
+
         fetch('https://bq5g5pjjc6fbzptimanr6v2gqu0tyydw.lambda-url.eu-central-1.on.aws/', requestOptions)
+            .then(response => response.json())
+            .then(response => console.log(response))
             .then(response => response.data)
             .then(response => setSummOut(response.final_summary));
         //Prevent page reload
