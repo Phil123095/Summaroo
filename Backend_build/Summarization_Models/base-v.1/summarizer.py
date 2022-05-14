@@ -34,13 +34,12 @@ def summarization(full_text, reduce_length):
 
     final_summary = ' '.join(str(v) for v in Lex_summary)
 
+    print(final_summary)
     return final_summary
 
 
 def lambda_handler(event, context):
-    print(json.loads(event['body']))
     message = json.loads(event['body'])
-    print(message)
     text_to_summarise = message['full_text']
     percent_reduce = message['perc_length']
 
