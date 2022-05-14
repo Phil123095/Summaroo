@@ -4,8 +4,10 @@ COPY Summarization_Models/base-v.1/requirements.txt .
 
 COPY Summarization_Models/base-v.1/summarizer.py .
 
+COPY Summarization_Models/base-v.1/nltk_data /usr/local/nltk_data
+
 RUN pip install -r requirements.txt
 
-RUN python -m nltk.downloader punkt
+# RUN python -m nltk.downloader punkt
 
 CMD ["summarizer.lambda_handler"]
