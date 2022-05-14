@@ -72,8 +72,8 @@ function LandingPage() {
                 </div>
 
             </div>
-            <div class="h-20 col-span-1 md:col-span-4 border-slate-200 rounded-lg bg-slate-100 px-2">
-                <p class="pt-1 px-2 text-base font-light text-gray-700">Select the summary size (as % of total text length)</p>
+            <div class="h-20 col-span-1 md:col-span-4 border-slate-200 rounded-lg bg-slate-100 px-2 mb-2">
+                <p class="pt-1 px-2 text-sm md:text-base font-light text-gray-700">Select the summary size (as % of total text length)</p>
                 <div class="py-1 px-2 mb-3 h-2">
                     <Slider
                         aria-label="Perc Of Text"
