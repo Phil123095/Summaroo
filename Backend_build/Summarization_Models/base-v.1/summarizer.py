@@ -20,18 +20,21 @@ def summarization(full_text, reduce_length):
     print("SUMMARIZINH")
     clean_text = text_cleaner(full_text)
     full_text_length = len(clean_text)
+    print(full_text_length)
 
     summary_perc = int(reduce_length)/100
 
     final_sentence_count = full_text_length * summary_perc
-
+    print(final_sentence_count)
     rawList = [item for item in full_text.splitlines() if item.strip()]
 
     rawList_str = ' '.join(rawList)
+    print(rawList_str)
     parser = PlaintextParser.from_string(rawList_str, Tokenizer('english'))
     # Summarise
     Lex = LexRankSummarizer()
     Lex_summary = Lex(document=parser.document, sentences_count=round(final_sentence_count))
+    print(Lex_summary)
 
     final_summary = ' '.join(str(v) for v in Lex_summary)
 
@@ -45,6 +48,7 @@ def lambda_handler(event, context):
     text_to_summarise = message['full_text']
     percent_reduce = message['perc_length']
 
+    print(f"Text to summarise: {text_to_summarise}")
     print("Performing summarization")
     result_summary = summarization(full_text=text_to_summarise, reduce_length=percent_reduce)
     print("Summary done")
