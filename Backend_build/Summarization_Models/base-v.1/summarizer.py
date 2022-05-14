@@ -1,7 +1,6 @@
 from sumy.summarizers.lex_rank import LexRankSummarizer
 from sumy.nlp.tokenizers import Tokenizer
 import nltk
-nltk.data.path.append("/var/task/nltk_data")
 from sumy.parsers.plaintext import PlaintextParser
 import json
 
