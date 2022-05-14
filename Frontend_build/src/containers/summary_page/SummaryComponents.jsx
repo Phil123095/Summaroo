@@ -40,29 +40,12 @@ function LandingPage() {
         fetch('https://bq5g5pjjc6fbzptimanr6v2gqu0tyydw.lambda-url.eu-central-1.on.aws/', requestOptions)
             .then(response => response.json())
             .then(response => setSummOut(response.final_summary));
-        //Prevent page reload
-        /*axios({
-            method: "POST",
-            url: "https://bq5g5pjjc6fbzptimanr6v2gqu0tyydw.lambda-url.eu-central-1.on.aws/",
-            headers: {
-                "Access-Control-Allow-Headers": "*", // this will allow all CORS requests
-                "Access-Control-Allow-Methods": 'OPTIONS,POST,GET', // this states the allowed methods
-                "Content-Type": "application/json" // this shows the expected content type
-            },
-            withCredentials: false,
-            data: {
-                full_text: text_to_summarize,
-                perc_length: summary_perc
-               }
-        })
-        .then(response => response.data)
-        .then(response => setSummOut(response.final_summary))*/
     }
 
     return (
     <div class="mt-28">
-        <div class="w-100 min-h-screen grid grid-cols-8 grid-rows-6 gap-4 mx-14">
-            <div class="col-span-4 col-start-1 row-span-3 bg-slate-500 justify-center items-center rounded-lg">
+        <div class="w-100 min-h-screen flex flex-row md:grid md:grid-cols-8 md:grid-rows-6 md:gap-4 md:mx-14">
+            <div class="md:col-span-4 md:col-start-1 md:row-span-3 bg-slate-500 justify-center items-center rounded-lg">
                 <div class="p-2 bg-white rounded-lg border shadow-sm">
                     <div class="pt-1 ml-1 h-10 border-b-1 border-color border-blue-900 text-base text-gray-700 items-center font-light">
                         Drop in the text you want to summarize here...
@@ -80,7 +63,7 @@ function LandingPage() {
                     </div>
                 </div>
             </div>
-            <div class="p-2 col-span-4 row-span-3 bg-white justify-center items-center rounded-lg">
+            <div class="p-2 md:col-span-4 md:row-span-3 bg-white justify-center items-center rounded-lg">
                 <div class="pt-1 ml-1 h-10 border-b-1 border-color border-blue-900 text-base text-gray-700 items-center font-light">
                     ... and the magic happens here.
                 </div>
@@ -89,7 +72,7 @@ function LandingPage() {
                 </div>
 
             </div>
-            <div class="h-20 col-span-4 border-slate-200 rounded-lg bg-slate-100 px-2">
+            <div class="h-20 w-full md:col-span-4 border-slate-200 rounded-lg bg-slate-100 px-2">
                 <p class="pt-1 px-2 text-base font-light text-gray-700">Select the summary size (as % of total text length)</p>
                 <div class="py-1 px-2 mb-3 h-2">
                     <Slider
@@ -105,7 +88,7 @@ function LandingPage() {
                     />
                 </div>
             </div>
-            <div class="h-20 col-span-4 border-slate-100 rounded-lg bg-slate-100 items-center">
+            <div class="h-20 w-full md:col-span-4 border-slate-100 rounded-lg bg-slate-100 items-center">
                 <Button variant="contained" disableElevation fullWidth style={{minHeight: '60px', maxHeight: '60px'}} onClick={SummarizeText}>
                     <p class="text-base">Summarize</p>
                 </Button>
