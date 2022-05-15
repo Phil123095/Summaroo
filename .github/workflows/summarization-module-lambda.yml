@@ -3,7 +3,7 @@ name: summarization-module-to-lambda
 on:
   push:
     paths:
-      - "Backend_build/Summarization_Models/base-v.1/**"
+      - "Backend_build/Summarization_Models/LexRank-v.1/**"
       -
 jobs:
   update-lambda:

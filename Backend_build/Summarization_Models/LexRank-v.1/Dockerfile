@@ -4,7 +4,7 @@ COPY Summarization_Models/base-v.1/requirements.txt .
 
 COPY Summarization_Models/base-v.1/summarizer.py .
 
-#COPY Summarization_Models/base-v.1/nltk_data /nltk_data
+#COPY Summarization_Models/LexRank-v.1/nltk_data /nltk_data
 
 RUN pip install -r requirements.txt
 
