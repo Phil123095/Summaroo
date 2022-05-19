@@ -1,0 +1,1131 @@
+HBR.ORG
+
+SeptemBeR 2012 
+reprinT r1209F
+
+Are You Solving the 
+Right Problem?
+
+Most firms aren’t, and that undermines  
+their innovation efforts. by Dwayne Spradlin
+
+This document is authorized for use only in Manuel Lopez's MDBI_Sep2021_S3 - Business Models & Digital Disruption at IE Business School from Oct 2021 to Sep 2022.
+
+This document is authorized for use only in Manuel Lopez's MDBI_Sep2021_S3 - Business Models & Digital Disruption at IE Business School from Oct 2021 to Sep 2022.
+
+FOr ArTIClE rEPrInTs CAll 800-988-0886 Or 617-783-7500, Or vIsIT hbr.org
+
+Dwayne Spradlin is the president and CEO 
+of InnoCentive, an online marketplace that 
+connects organizations with freelance problem 
+solvers in a multitude of fields. He is a coauthor, 
+with Alpheus Bingham, of The Open Innovation 
+Marketplace: Creating Value in the Challenge 
+Driven Enterprise (FT Press, 2011).
+
+Are You 
+Solving 
+the right 
+Problem?
+
+Most firms aren’t, and that undermines  
+their innovation efforts. by Dwayne Spradlin 
+
+“If I were given one hour to save the planet, I would spend 59 minutes  
+defining the problem and one minute resolving it,” Albert Einstein said. 
+
+Those were wise words, but from what I have observed, most orga-
+nizations don’t heed them when tackling innovation projects. In-
+deed, when developing new products, processes, or even businesses, 
+most companies aren’t sufficiently rigorous in defining the problems 
+they’re attempting to solve and articulating why those issues are im-
+portant. Without that rigor, organizations miss opportunities, waste 
+resources, and end up pursuing innovation initiatives that aren’t 
+aligned with their strategies. How many times have you seen a project 
+go down one path only to realize in hindsight that it should have gone 
+down another? How many times have you seen an innovation pro-
+gram deliver a seemingly breakthrough result only to find that it can’t 
+be implemented or it addresses the wrong problem? Many organiza-
+tions need to become better at asking the right questions so that they 
+tackle the right problems.
+
+O
+r
+I
+E
+C
+u
+O
+C
+A
+n
+A
+I
+T
+s
+I
+r
+C
+:
+
+n
+O
+I
+T
+A
+r
+T
+s
+u
+l
+l
+I
+
+O
+r
+I
+E
+C
+u
+O
+C
+A
+n
+A
+I
+T
+s
+I
+r
+C
+:
+
+n
+O
+I
+T
+A
+r
+T
+s
+u
+l
+l
+I
+
+COPyrIgHT © 2012 HArvArd BusInEss sCHOOl PuBlIsHIng COrPOrATIOn. All rIgHTs rEsErvEd.
+This document is authorized for use only in Manuel Lopez's MDBI_Sep2021_S3 - Business Models & Digital Disruption at IE Business School from Oct 2021 to Sep 2022.
+
+September 2012 Harvard Business review 3
+
+ 
+ 
+ 
+ 
+arE you SolviNg thE right problEM?
+
+I offer here a process for defining problems that 
+any organization can employ on its own. My firm, 
+Inno Centive, has used it to help more than 100 cor-
+porations, government agencies, and foundations 
+improve the quality and efficiency of their innova-
+tion efforts and, as a result, their overall performance. 
+Through this process, which we call challenge-driven 
+innovation, clients define and articulate their busi-
+ness, technical, social, and policy issues and present 
+them as challenges to a community of more than 
+250,000 solvers—scientists, engineers, and other ex-
+perts who hail from 200 countries—on InnoCentive.
+com, our innovation marketplace. Successful solvers 
+have earned awards of $5,000 to $1 million.
+
+Since our launch, more than 10 years ago, we 
+have managed more than 2,000 problems and solved 
+more than half of them—a much higher proportion 
+than most organizations achieve on their own. In-
+deed, our success rates have improved dramatically 
+over the years (34% in 2006, 39% in 2009, and 57% in 
+2011), which is a function of the increasing quality of 
+the questions we pose and of our solver community. 
+Interestingly, even unsolved problems have been 
+tremendously valuable to many clients, allowing 
+
+them to cancel ill-fated programs much earlier than 
+they otherwise would have and then redeploy their 
+resources.
+
+In our early years, we focused on highly specific 
+technical problems, but we have since expanded, 
+taking on everything from basic R&D and product 
+development to the health and safety of astronauts 
+to banking services in developing countries. We now 
+know that the rigor with which a problem is defined 
+is the most important factor in finding a suitable so-
+lution. But we’ve seen that most organizations are 
+not proficient at articulating their problems clearly 
+and concisely. Many have considerable difficulty 
+even identifying which problems are crucial to their 
+missions and strategies. 
+
+In fact, many clients have realized while working 
+with us that they may not be tackling the right is-
+sues. Consider a company that engages InnoCentive 
+to find a lubricant for its manufacturing machinery. 
+This exchange ensues:
+
+InnoCentive staffer: “Why do you need the 
+
+lubricant?”
+
+Client’s engineer: “Because we’re now expect-
+ing our machinery to do things it was not designed 
+
+The Problem-Definition Process
+
+EStabliSh thE 
+NEED for a 
+SolutioN
+
+WHat iS tHe basic need?
+WHat iS tHe desired 
+outcome?
+WHO StandS tO  
+benefit and why?
+
+JuStify  
+thE NEED
+
+iS tHe effORt aligned  
+with our strategy?
+WHat aRe tHe desired 
+benefits for the company, 
+and how will we measure 
+them?
+HOW Will We ensure 
+that a solution is 
+implemented?
+
+CoNtExtualizE  
+thE problEM
+
+WHat appROacHeS 
+Have we tried? 
+WHat Have OtHeRS 
+tried?
+WHat aRe tHe internal 
+and external constraints 
+on implementing a 
+solution?
+
+WritE  
+thE problEM 
+StatEMENt
+
+iS tHe pROBlem actually 
+many problems? 
+WHat RequiRementS 
+muSt a solution meet?
+WHicH pROBlem 
+SOlveRS should we 
+engage?
+WHat infORmatiOn 
+and language should 
+the problem statement 
+include?
+WHat dO SOlveRS need 
+to submit?
+WHat incentiveS dO 
+solvers need?
+HOW Will SOlutiOnS 
+be evaluated and success 
+measured?
+
+4  Harvard Business review September 2012
+
+This document is authorized for use only in Manuel Lopez's MDBI_Sep2021_S3 - Business Models & Digital Disruption at IE Business School from Oct 2021 to Sep 2022.
+
+FOr ArTIClE rEPrInTs CAll 800-988-0886 Or 617-783-7500, Or vIsIT hbr.org
+
+idea in brief
+Eager to start working on solutions to innovation 
+challenges, companies often don’t spend enough 
+time and resources on defining the problems they’re 
+trying to crack and establishing their importance to 
+the organization. The results are missed opportuni-
+ties, wasted resources, and initiatives that are out of 
+sync with the strategy.
+
+InnoCentive, an online innovation marketplace, 
+has created a process that any organization can use 
+to define problems and articulate their strategic 
+importance. It involves four steps:
+
+Clarifying the internal 
+(company) or external 
+(market or customer) 
+need for a solution
+
+Researching how the 
+firm and other organiza-
+tions have already tried 
+to solve the problem
+
+Articulating the 
+strategic importance of 
+the solution to the firm
+
+Creating a clear and 
+complete description of 
+the problem
+
+to do, and it needs a particular lubricant to 
+operate.” 
+
+InnoCentive staffer: “Why don’t you replace the 
+
+machinery?” 
+
+Client’s engineer: “Because no one makes equip-
+
+ment that exactly fits our needs.” 
+
+This raises a deeper question: Does the com-
+pany need the lubricant, or does it need a new way 
+to make its product? It could be that rethinking the 
+manufacturing process would give the firm a new ba-
+sis for competitive advantage. (Asking questions un-
+til you get to the root cause of a problem draws from 
+the famous Five Whys problem-solving technique 
+developed at Toyota and employed in Six Sigma.)
+
+The example is like many we’ve seen: Someone 
+in the bowels of the organization is assigned to fix 
+a very specific, near-term problem. But because the 
+firm doesn’t employ a rigorous process for under-
+standing the dimensions of the problem, leaders 
+miss an opportunity to address underlying strategic 
+issues. The situation is exacerbated by what Stefan 
+Thomke and Donald Reinertsen have identified as 
+the fallacy of “The sooner the project is started, the 
+sooner it will be finished.” (See “Six Myths of Prod-
+uct Development,” HBR May 2012.) Organizational 
+teams speed toward a solution, fearing that if they 
+spend too much time defining the problem, their su-
+periors will punish them for taking so long to get to 
+the starting line. 
+
+Ironically, that approach is more likely to waste 
+time and money and reduce the odds of success than 
+one that strives at the outset to achieve an in-depth 
+understanding of the problem and its importance 
+to the firm. With this in mind, we developed a four-
+step process for defining and articulating problems, 
+which we have honed with our clients. It consists of 
+asking a series of questions and using the answers to 
+create a thorough problem statement. This process 
+is important for two reasons. First, it rallies the orga-
+
+nization around a shared understanding of the prob-
+lem, why the firm should tackle it, and the level of 
+resources it should receive. Firms that don’t engage 
+in this process often allocate too few resources to 
+solving major problems or too many to solving low-
+priority or wrongly defined ones. It’s useful to assign 
+a value to the solution: An organization will be more 
+willing to devote considerable time and resources 
+to an effort that is shown to represent a $100 mil-
+lion market opportunity than to an initiative whose 
+value is much less or is unclear. Second, the process 
+helps an organization cast the widest possible net 
+for potential solutions, giving internal and external 
+experts in disparate fields the information they need 
+to crack the problem. 
+
+To illustrate how the process works, we’ll de-
+scribe an initiative to expand access to clean drinking 
+water undertaken by the nonprofit EnterpriseWorks/
+VITA, a division of Relief International. EWV’s mis-
+sion is to foster economic growth and raise the stan-
+dard of living in developing countries by expanding 
+access to technologies and helping entrepreneurs 
+build sustainable businesses. 
+
+The organization chose Jon Naugle, its techni-
+cal director, as the initiative’s “problem champion.” 
+Individuals in this role should have a deep under-
+standing of the field or domain and be capable pro-
+gram administrators. Because problem champions 
+may also be charged with implementing solutions, 
+a  proven  leader  with  the  authority,  responsibil-
+ity, and resources to see the project through can be 
+invaluable in this role, particularly for a larger and 
+more strategic undertaking. Naugle, an engineer 
+with more than 25 years of agricultural and rural- 
+development experience in East and West Africa 
+and the Caribbean, fit the bill. He was supported by 
+specialists who understood local market conditions, 
+available materials, and other critical issues related 
+to the delivery of drinking water. 
+
+This document is authorized for use only in Manuel Lopez's MDBI_Sep2021_S3 - Business Models & Digital Disruption at IE Business School from Oct 2021 to Sep 2022.
+
+September 2012 Harvard Business review 5
+
+arE you SolviNg thE right problEM?
+
+StEp 1 
+Establish the Need for a Solution
+The purpose of this step is to articulate the problem 
+in the simplest terms possible: “We are looking for X 
+in order to achieve Z as measured by W.” Such a state-
+ment, akin to an elevator pitch, is a call to arms that 
+clarifies the importance of the issue and helps secure 
+resources to address it. This initial framing answers 
+three questions:
+
+What is the basic need? This is the essential 
+problem, stated clearly and concisely. It is important 
+at this stage to focus on the need that’s at the heart of 
+the problem instead of jumping to a solution. Defin-
+ing the scope is also important. Clearly, looking for 
+lubricant for a piece of machinery is different from 
+seeking a radically new manufacturing process. 
+
+The basic need EWV identified was access to clean 
+drinking water for the estimated 1.1 billion people in 
+the world who lack it. This is a pressing issue even in 
+areas that have plenty of rainfall, because the water is 
+not effectively captured, stored, and distributed. 
+
+What is the desired outcome? Answering this 
+question requires understanding the perspectives of 
+customers and other beneficiaries. (The Five Whys 
+approach can be very helpful.) Again, avoid the 
+temptation to favor a particular solution or approach. 
+This question should be addressed qualitatively and 
+quantitatively whenever possible. A high-level but 
+specific goal, such as “improving fuel efficiency to 
+100 mpg by 2020,” can be helpful at this stage.
+
+In answering this question, Naugle and his team 
+realized that the outcome had to be more than ac-
+cess  to  water;  the  access  had  to  be  convenient. 
+Women and children in countries such as Uganda 
+often must walk long distances to fetch water from 
+valleys and then carry it uphill to their villages. The 
+desired outcome EWV defined was to provide water 
+for daily family needs without requiring enormous 
+expenditures of time and energy. 
+
+Who stands to benefit and why? Answering 
+this question compels an organization to identify 
+all potential customers and beneficiaries. It is at this 
+stage that you understand whether, say, you are 
+solving a lubricant problem for the engineer or for 
+
+the head of manufacturing—whose definitions of 
+success may vary considerably. 
+
+By pondering this question, EWV came to see 
+that the benefits would accrue to individuals and 
+families as well as to regions and countries. Women 
+would spend less time walking to retrieve water, 
+giving them more time for working in the field or in 
+outside employment that would bring their families 
+needed income. Children would be able to attend 
+school. And over the longer term, regions and coun-
+tries would benefit from the improved education 
+and productivity of the population. 
+
+StEp 2 
+Justify the Need 
+The purpose of answering the questions in this step 
+is to explain why your organization should attempt 
+to solve the problem. 
+
+Is the effort aligned with our strategy? In 
+other words, will satisfying the need serve the or-
+ganization’s strategic goals? It is not unusual for an 
+organization to be working on problems that are no 
+longer in sync with its strategy or mission. In that 
+case, the effort (and perhaps the whole initiative) 
+should be reconsidered.
+
+In the case of EWV, simply improving access to 
+clean drinking water wouldn’t be enough; to fit the 
+organization’s mission, the solution should generate 
+economic development and opportunities for lo-
+cal businesses. It needed to involve something that 
+people would buy.
+
+In addition, you should consider whether the 
+problem fits with your firm’s priorities. Since EWV’s 
+other projects included providing access to afford-
+able products such as cookstoves and treadle pumps, 
+the drinking water project was appropriate. 
+
+What are the desired benefits for the com-
+pany, and how will we measure them? In for-
+profit companies, the desired benefit could be to 
+reach a revenue target, attain a certain market share, 
+or achieve specific cycle-time improvements. EWV 
+hoped to further its goal of being a recognized leader 
+in helping the world’s poor by transferring technol-
+ogy through the private sector. That benefit would 
+
+If the problem you want to solve is  
+industrywide, it’s crucial to understand 
+why the market has failed to address it. 
+
+6  Harvard Business review September 2012
+
+This document is authorized for use only in Manuel Lopez's MDBI_Sep2021_S3 - Business Models & Digital Disruption at IE Business School from Oct 2021 to Sep 2022.
+
+21FOr ArTIClE rEPrInTs CAll 800-988-0886 Or 617-783-7500, Or vIsIT hbr.org
+
+be measured by market impact: How many families 
+are paying for the solution? How is it affecting their 
+lives? Are sales and installation creating jobs? Given 
+the potential benefits, EWV deemed the priority to 
+be high. 
+
+How will we ensure that a solution is imple-
+mented? Assume that a solution is found. Someone 
+in the organization must be responsible for carrying 
+it out—whether that means installing a new manu-
+facturing technology, launching a new business, or 
+commercializing a product innovation. That person 
+could be the problem champion, but he or she could 
+also be the manager of an existing division, a cross-
+functional team, or a new department. 
+
+At EWV, Jon Naugle was also put in charge of car-
+rying out the solution. In addition to his technical 
+background, Naugle had a track record of success-
+fully implementing similar projects. For instance, 
+he had served as EWV’s country director in Niger, 
+where he oversaw a component of a World Bank pi-
+lot project to promote small-scale private irrigation. 
+His part of the project involved getting the private 
+sector to manufacture treadle pumps and manually 
+drill wells.
+
+It is important at this stage to initiate a high-level 
+conversation in the organization about the resources 
+a solution might require. This can seem premature—
+after all, you’re still defining the problem, and the 
+field of possible solutions could be very large—but 
+it’s actually not too early to begin exploring what 
+resources your organization is willing and able to de-
+vote to evaluating solutions and then implementing 
+the best one. Even at the outset, you may have an 
+inkling that implementing a solution will be much 
+more expensive than others in the organization re-
+alize. In that case, it’s important to communicate a 
+rough estimate of the money and people that will 
+be required and to make sure that the organization 
+is willing to continue down this path. The result of 
+such a discussion might be that some constraints on 
+resourcing must be built into the problem statement. 
+Early on in its drinking water project, EWV set a cap 
+on how much it would devote to initial research and 
+the testing of possible solutions.
+
+Now that you have laid out the need for a solution 
+and its importance to the organization, you must de-
+fine the problem in detail. This involves applying a 
+rigorous method to ensure that you have captured 
+all the information that someone—including people 
+in fields far removed from your industry—might 
+need to solve the problem. 
+
+s
+k
+r
+O
+W
+E
+s
+I
+r
+P
+r
+E
+T
+n
+E
+F
+O
+y
+s
+E
+T
+r
+u
+O
+C
+:
+y
+H
+P
+A
+r
+g
+O
+T
+O
+H
+P
+
+elementS 
+of A SucceSSful 
+Solution
+
+EnterpriseWorks/vITA 
+surveyed potential 
+customers in uganda 
+to develop a list of 
+must-have and nice-
+to-have elements for 
+a product that would 
+provide access to 
+clean drinking water. 
+The winning solution, 
+shown here in a 
+ugandan village, met 
+all the criteria.
+
+Must-have 
+1. A price, including instal-
+lation, of no more than $20 
+
+Nice-to-have
+1. An aesthetically pleas-
+ing design
+
+2. Additional functional-
+ity so that the unit could 
+be used for multiple 
+purposes
+
+3. Features such as 
+a modular design or 
+salvageable parts that 
+would add value to the 
+device after its lifetime
+
+2. storage capacity of at 
+least 125 gallons 
+
+3. A weight light enough 
+for one adult to carry a half 
+mile on rough paths
+
+4. Material that would pre-
+vent deterioration of water 
+quality 
+
+5. An estimate of the cost of 
+operating and maintaining 
+the device over three years 
+and a clear explanation of 
+how to repair and replace 
+components 
+
+6. A means, such as a filter, 
+of removing gross organic 
+matter from the incoming 
+rain stream
+
+7. A means, such as a tap or 
+a pump, of extracting water 
+without contaminating the 
+contents of the unit 
+
+8. A method for completely 
+draining the water and 
+cleaning the system
+
+This document is authorized for use only in Manuel Lopez's MDBI_Sep2021_S3 - Business Models & Digital Disruption at IE Business School from Oct 2021 to Sep 2022.
+
+September 2012 Harvard Business review 7
+
+ 
+ 
+ 
+arE you SolviNg thE right problEM?
+
+How Well-defined Problems lead to Breakthrough solutions 
+
+the Subarctic oil 
+Problem
+
+More than 20 years after the 1989 Exxon 
+Valdez oil spill, cleanup teams operating 
+in subarctic waters still struggled because 
+oil became so viscous at low temperatures 
+that it was difficult to pump from barges to 
+onshore collection stations.
+
+HOW tHe pROBlem WaS defined 
+In its search for a solution, the Oil spill 
+recovery Institute framed the problem as 
+one of “materials viscosity” rather than “oil 
+cleanup” and used language that was not 
+specific to the petroleum industry. The goal 
+was to attract novel suggestions from many 
+fields. 
+
+tHe WinneR A chemist in the cement 
+industry was awarded $20,000 for propos-
+ing a modification of commercially available 
+construction equipment that would vibrate 
+the frozen oil, keeping it fluid.
+
+the AlS research 
+Problem
+
+By the late 2000s, researchers trying to de-
+velop a cure or treatment for amyotrophic 
+lateral sclerosis (Als, or lou gehrig’s 
+disease) had not made much progress. One 
+major obstacle was the inability to detect 
+and track the progression of the disease 
+accurately and quickly. Because research-
+ers could not know precisely what stage 
+Als sufferers had reached, they greatly 
+increased the pool of participants in clinical 
+trials and lengthened their studies, which 
+drove up costs so much that few treatments 
+were developed and evaluated. 
+
+HOW tHe pROBlem WaS defined  
+Instead of framing its initiative as a search 
+for a cure, Prize4life, a nonprofit organi-
+zation, focused on making Als research 
+feasible and effective. The solution it sought 
+was a biomarker that would enable faster 
+and more-accurate detection and measure-
+ment of the progression of the disease.
+
+tHe WinneR In 2011, a researcher from 
+Beth Israel Hospital in Boston was paid 
+$1 million for a noninvasive, painless, and 
+low-cost approach, which detects Als 
+and assesses its progression by measuring 
+changes in an electrical current traveling 
+through muscle. This biomarker lowers the 
+cost of Als research by providing accurate 
+and timely data that allow researchers to 
+conduct shorter studies with fewer patients. 
+
+the Solar flare 
+Problem
+
+In 2009 nAsA decided it needed a better 
+way to forecast solar flares in order to 
+protect astronauts and satellites in space 
+and power grids on Earth. The model it had 
+been using for the past 30 years predicted 
+whether radiation from a solar flare would 
+reach Earth with only a four-hour lead time 
+and no more than 50% accuracy. 
+
+HOW tHe pROBlem WaS defined  
+nAsA did not ask potential solvers simply 
+to find a better way to predict solar flares; 
+instead, it pitched the problem as a data 
+challenge, calling on experts with analytic 
+backgrounds to use one of the agency’s 
+greatest assets—30 years of space weather 
+data—to develop a forecasting model. 
+This data-driven approach not only invited 
+solvers from various fields but also enabled 
+nAsA to provide instant feedback, using its 
+archived data, on the accuracy of proposed 
+models.
+
+tHe WinneR A semiretired radio-frequency 
+engineer living in rural new Hampshire 
+used data analysis and original predictive 
+algorithms to develop a forecasting model 
+that provided an eight-hour lead time and 
+85% accuracy. He was awarded $30,000 for 
+this solution. 
+
+StEp 3 
+Contextualize the Problem 
+Examining past efforts to find a solution can save 
+time and resources and generate highly innovative 
+thinking. If the problem is industrywide, it’s crucial 
+to understand why the market has failed to address it.
+What approaches have we tried? The aim 
+here is to find solutions that might already exist in 
+your organization and identify those that it has dis-
+proved. By answering this question, you can avoid 
+reinventing the wheel or going down a dead end.
+
+In previous efforts to expand access to clean wa-
+ter, EWV had offered products and services ranging 
+from manually drilled wells for irrigation to filters for 
+
+household water treatment. As with all its projects, 
+EWV identified products that low-income consum-
+ers could afford and, if possible, that local entrepre-
+neurs could manufacture or service. As Naugle and 
+his team revisited those efforts, they realized that 
+both solutions worked only if a water source, such 
+as surface water or a shallow aquifer, was close to 
+the household. As a result, they decided to focus 
+on rainwater—which falls everywhere in the world 
+to a greater or lesser extent—as a source that could 
+reach many more people. More specifically, the team 
+turned its attention to the concept of rainwater har-
+vesting. “Rainwater is delivered directly to the end 
+user,” Naugle says. “It’s as close as you can get to a 
+
+8  Harvard Business review September 2012
+
+This document is authorized for use only in Manuel Lopez's MDBI_Sep2021_S3 - Business Models & Digital Disruption at IE Business School from Oct 2021 to Sep 2022.
+
+3FOr ArTIClE rEPrInTs CAll 800-988-0886 Or 617-783-7500, Or vIsIT hbr.org
+
+ do you have the necessary  
+support for soliciting and 
+evaluating possible solutions? 
+do you have the money and the 
+people to implement the most 
+promising one? 
+
+External constraints are just as important to 
+evaluate: Are there issues concerning patents or 
+intellectual- property rights? Are there laws and 
+regulations to be considered? Answering these ques-
+tions may require consultation with various stake-
+holders and experts. 
+
+EWV’s  exploration  of  possible  external  con-
+straints included examining government policies 
+regarding rainwater storage. Naugle and his team 
+found that the governments of Kenya, Tanzania, 
+Uganda, and Vietnam supported the idea, but the 
+strongest proponent was Uganda’s minister of wa-
+ter and the environment, Maria Mutagamba. Con-
+sequently, EWV decided to test the storage solution 
+in Uganda. 
+
+StEp 4 
+Write the Problem Statement 
+Now it’s time to write a full description of the prob-
+lem you’re seeking to solve and the requirements 
+the solution must meet. The problem statement, 
+which captures all that the organization has learned 
+through answering the questions in the previous 
+steps, helps establish a consensus on what a viable 
+solution would be and what resources would be re-
+quired to achieve it.
+
+A full, clear description also helps people both in-
+side and outside the organization quickly grasp the 
+issue. This is especially important because solutions 
+to complex problems in an industry or discipline of-
+ten come from experts in other fields (see “Getting 
+Unusual Suspects to Solve R&D Puzzles,” HBR May 
+2007). For example, the method for moving viscous 
+oil from spills in Arctic and subarctic waters from 
+collection barges to disposal tanks came from a 
+chemist in the cement industry, who responded to 
+the Oil Spill Recovery Institute’s description of the 
+problem in terms that were precise but not specific 
+to the petroleum industry. Thus the institute was 
+
+piped water system without having a piped water 
+supply.”
+
+What have others tried? EWV’s investigation 
+of previous attempts at rainwater harvesting in-
+volved reviewing research on the topic, conducting 
+five field studies, and surveying 20 countries to ask 
+what technology was being used, what was and was 
+not working, what prevented or encouraged the use 
+of various solutions, how much the solutions cost, 
+and what role government played. 
+
+“One of the key things we learned from the sur-
+veys,” Naugle says, “was that once you have a hard 
+roof—which many people do—to use as a collection 
+surface, the most expensive thing is storage.” 
+
+Here was the problem that needed to be solved. 
+EWV found that existing solutions for storing rain-
+water, such as concrete tanks, were too expensive 
+for low-income families in developing countries, so 
+households were sharing storage tanks. But because 
+no one took ownership of the communal facilities, 
+they often fell into disrepair. Consequently, Naugle 
+and his team homed in on the concept of a low-cost 
+household rainwater-storage device. 
+
+Their research into prior solutions surfaced what 
+seemed initially like a promising approach: storing 
+rainwater in a 525-gallon jar that was almost as tall as 
+an adult and three times as wide. In Thailand, they 
+learned, 5 million of those jars had been deployed 
+over five years. After further investigation, however, 
+they found that the jars were made of cement, which 
+was available in Thailand at a low price. More impor-
+tant, the country’s good roads made it possible to 
+manufacture the jars in one location and transport 
+them in trucks around the country. That solution 
+wouldn’t work in areas that had neither cement nor 
+high-quality roads. Indeed, through interviews with 
+villagers in Uganda, EWV found that even empty 
+polyethylene barrels large enough to hold only 50 
+gallons of water were difficult to carry along a path. 
+It became clear that a viable storage solution had to 
+be light enough to be carried some distance in areas 
+without roads. 
+
+What are the internal and external con-
+straints on implementing a solution? Now that 
+you have a better idea of what you want to accom-
+plish, it’s time to revisit the issue of resources and 
+organizational commitment: Do you have the neces-
+sary support for soliciting and then evaluating pos-
+sible solutions? Are you sure that you can obtain the 
+money and the people to implement the most prom-
+ising one? 
+
+This document is authorized for use only in Manuel Lopez's MDBI_Sep2021_S3 - Business Models & Digital Disruption at IE Business School from Oct 2021 to Sep 2022.
+
+September 2012 Harvard Business review 9
+
+4arE you SolviNg thE right problEM?
+
+able to solve in a matter of months a challenge that 
+had stumped petroleum engineers for years. (To 
+read the institute’s full problem statement, visit hbr.
+org/problem-statement1.) 
+
+Here are some questions that can help you de-
+
+velop a thorough problem statement:
+
+Is the problem actually many problems? 
+The aim here is to drill down to root causes. Com-
+plex, seemingly insoluble issues are much more ap-
+proachable when broken into discrete elements. 
+
+goals of being extremely specific but not unneces-
+sarily technical. It shouldn’t contain industry or 
+discipline jargon or presuppose knowledge of a par-
+ticular field. It may (and probably should) include a 
+summary of previous solution attempts and detailed 
+requirements. 
+
+With those criteria in mind, Naugle and his team 
+crafted a problem statement. (The following is the 
+abstract; for the full problem statement, visit hbr.
+org/problem-statement2.) 
+
+For EWV, this meant making it clear that the solu-
+tion needed to be a storage product that individual 
+households could afford, that was light enough to 
+
+“EnterpriseWorks is seeking design ideas for  
+a low-cost rainwater storage system that can be 
+installed in households in developing countries.  
+
+ To engage the largest number of solvers from the  
+widest variety of fields, a problem statement must  
+meet the twin goals of being extremely specific  
+but not unnecessarily technical. 
+
+be easily transported on poor-quality roads or paths, 
+and that could be easily maintained. 
+
+What requirements must a solution meet? 
+EWV conducted extensive on-the-ground surveys 
+with potential customers in Uganda to identify the 
+must-have versus the nice-to-have elements of a 
+solution. (See the sidebar “Elements of a Success-
+ful Solution.”) It didn’t matter to EWV whether the 
+solution was a new device or an adaptation of an ex-
+isting one. Likewise, the solution didn’t need to be 
+one that could be mass-produced. That is, it could 
+be something that local small-scale entrepreneurs 
+could manufacture.
+
+Experts in rainwater harvesting told Naugle and 
+his team that their target price of $20 was unachiev-
+able, which meant that subsidies would be required. 
+But a subsidized product was against EWV’s strategy 
+and philosophy.
+
+Which problem solvers should we engage? 
+The dead end EWV hit in seeking a $20 solution from 
+those experts led the organization to conclude that it 
+needed to enlist as many experts outside the field as 
+possible. That is when EWV decided to engage Inno-
+Centive and its network of 250,000 solvers.
+
+What information and language should 
+the problem statement include? To engage the 
+largest number of solvers from the widest variety 
+of fields, a problem statement must meet the twin 
+
+The solution is expected to facilitate access to clean 
+water at a household level, addressing a problem 
+that affects millions of people worldwide who are 
+living in impoverished communities or rural areas 
+where access to clean water is limited. domestic 
+rainwater harvesting is a proven technology that 
+can be a valuable option for accessing and storing 
+water year round. However, the high cost of avail-
+able rainwater storage systems makes them well 
+beyond the reach of low-income families to install 
+in their homes.
+
+A solution to this problem would not only 
+
+provide convenient and affordable access to scarce 
+water resources but would also allow families, par-
+ticularly the women and children who are usually 
+tasked with water collection, to spend less time 
+walking distances to collect water and more time 
+on activities that can bring in income and improve 
+the quality of life.” 
+
+What do solvers need to submit? What infor-
+mation about the proposed solution does your orga-
+nization need in order to invest in it? For example, 
+would a well-founded hypothetical approach be 
+sufficient, or is a full-blown prototype needed? EWV 
+decided that a solver had to submit a written expla-
+nation of the solution and detailed drawings. 
+
+What incentives do solvers need? The point 
+of asking this question is to ensure that the right 
+
+10  Harvard Business review September 2012
+
+This document is authorized for use only in Manuel Lopez's MDBI_Sep2021_S3 - Business Models & Digital Disruption at IE Business School from Oct 2021 to Sep 2022.
+
+FOr ArTIClE rEPrInTs CAll 800-988-0886 Or 617-783-7500, Or vIsIT hbr.org
+
+people are motivated to address the problem. For 
+internal solvers, incentives can be written into job 
+descriptions or offered as promotions and bonuses. 
+For external solvers, the incentive might be a cash 
+award. EWV offered to pay $15,000 to the solver who 
+provided the best solution through the InnoCentive 
+network.
+
+How will solutions be evaluated and suc-
+cess measured? Addressing this question forces 
+a company to be explicit about how it will evalu-
+ate the solutions it receives. Clarity and transpar-
+ency are crucial to arriving at viable solutions and 
+to ensuring that the evaluation process is fair and 
+rigorous. In some cases a “we’ll know it when we 
+see it” approach is reasonable—for example, when 
+a company is looking for a new branding strategy. 
+Most of the time, however, it is a sign that earlier 
+steps in the process have not been approached with 
+sufficient rigor.
+
+EWV stipulated that it would evaluate solutions 
+on their ability to meet the criteria of low cost, high 
+storage capacity, low weight, and easy maintenance. 
+It  added  that  it  would  prefer  designs  that  were 
+modular (so that the unit would be easier to trans-
+port) and adaptable or salvageable or had multiple 
+functions (so that owners could reuse the materials 
+after the product’s lifetime or sell them to others for 
+various applications). The overarching goal was to 
+keep costs low and to help poor families justify the 
+purchase. 
+
+The Winner
+Ultimately, the solution to EWV’s rainwater-storage 
+problem came from someone outside the field: a 
+German inventor whose company specialized in 
+the design of tourist submarines. The solution he 
+proposed required no elaborate machinery; in fact, 
+it had no pumps or moving parts. It was an estab-
+lished industrial technology that had not been ap-
+plied to water storage: a plastic bag within a plastic 
+bag with a tube at the top. The outer bag (made of 
+less-expensive, woven polypropylene) provided the 
+structure’s strength, while the inner bag (made of 
+more-expensive, linear low-density polyethylene) 
+was impermeable and could hold 125 gallons of wa-
+ter. The two-bag approach allowed the inner bag to 
+be thinner, reducing the price of the product, while 
+the outer bag was strong enough to contain a ton and 
+a half of water.
+
+The structure folded into a packet the size of a 
+briefcase and weighed about eight pounds. In short, 
+
+the solution was affordable, commercially viable, 
+could be easily transported to remote areas, and 
+could be sold and installed by local entrepreneurs. 
+(Retailers make from $4 to $8 per unit, depending on 
+the volume they purchase. Installers of the gutters, 
+downspout, and base earn about $6.)
+
+EWV developed an initial version and tested it 
+in Uganda, where the organization asked end users 
+such questions as What do you think of its weight? 
+Does it meet your needs? Even mundane issues like 
+color came into play: The woven outer bags were 
+white, which women pointed out would immedi-
+ately look dirty. EWV modified the design on the ba-
+sis of this input: For example, it changed the color of 
+the device to brown, expanded its size to 350 gallons 
+(while keeping the target price of no more than $20 
+per 125 gallons of water storage), altered its shape to 
+make it more stable, and replaced the original siphon 
+with an outlet tap.
+
+After 14 months of field testing, EWV rolled out 
+the commercial product in Uganda in March 2011. 
+By the end of May 2012, 50 to 60 shops, village sales 
+agents, and cooperatives were selling the product; 
+more than 80 entrepreneurs had been trained to in-
+stall it; and 1,418 units had been deployed in eight 
+districts in southwestern Uganda.
+
+EWV deems this a success at this stage in the 
+rollout. It hopes to make the units available in 10 
+countries—and have tens or hundreds of thousands 
+of units installed—within five years. Ultimately, it 
+believes, millions of units will be in use for a variety 
+of applications, including household drinking water, 
+irrigation, and construction. Interestingly, the main 
+obstacle to getting people to buy the device has 
+been skepticism that something that comes in such 
+a small package (the size of a typical five-gallon jer-
+rican) can hold the equivalent of 70 jerricans. Believ-
+ing that the remedy is to show villagers the installed 
+product, EWV is currently testing various promotion 
+and marketing programs. 
+
+aS thE EWv Story illustrates, critically analyzing and 
+clearly articulating a problem can yield highly inno-
+vative solutions. Organizations that apply these sim-
+ple concepts and develop the skills and discipline to 
+ask better questions and define their problems with 
+more rigor can create strategic advantage, unlock 
+truly groundbreaking innovation, and drive better 
+business performance. Asking better questions de-
+livers better results. 
+
+hbr reprint r1209F
+
+This document is authorized for use only in Manuel Lopez's MDBI_Sep2021_S3 - Business Models & Digital Disruption at IE Business School from Oct 2021 to Sep 2022.
+
+September 2012 Harvard Business review 11
+
+
