@@ -55,9 +55,13 @@ def summarization(full_text, reduce_length):
 
 
 def lambda_handler(event, context):
-    print(event)
-    print(event['body'])
-    message = json.loads(event['body'])
+    try:
+        message = json.loads(event['body'])
+    except json.decoder.JSONDecodeError:
+        message = json.loads(event['body'].decode('utf-8'))
+
+    print(message)
+
     text_to_summarise = message['full_text']
     percent_reduce = message['perc_length']
 
