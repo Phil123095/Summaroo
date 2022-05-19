@@ -1,8 +1,8 @@
 FROM public.ecr.aws/lambda/python:3.9
 
-COPY Summarization_Models/LexRank-v.1/requirements.txt .
+COPY Summarization_Models/LexRank_v_1/requirements.txt .
 
-COPY Summarization_Models/LexRank-v.1/summarizer.py .
+COPY Summarization_Models/LexRank_v_1/summarizer.py .
 
 RUN pip install -r requirements.txt
 

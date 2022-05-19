@@ -1,6 +1,9 @@
 .idea
 .env
+.pdf
+.txt
 /idea
+/testing
 /nltk_data
 .__pycache__
 /__pycache__
