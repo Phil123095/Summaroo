@@ -55,6 +55,7 @@ def summarization(full_text, reduce_length):
 
 
 def lambda_handler(event, context):
+    event = event.decode('utf-8')
     try:
         message = json.loads(event['body'])
     except json.decoder.JSONDecodeError:

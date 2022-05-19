@@ -34,7 +34,7 @@ def request_summarization(media_content, url_to_request):
                                                  "perc_length": media_content.reduction_perc})
 
     print(response)
-    content = json.loads(response.content.decode('utf-8'))
+    content = json.loads(response.content)
 
     return content
 
