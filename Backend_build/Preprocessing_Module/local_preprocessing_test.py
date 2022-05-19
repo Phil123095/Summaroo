@@ -30,11 +30,11 @@ def recommend_model(media_content):
 
 def request_summarization(media_content, url_to_request):
 
-    response = requests.post(url_to_request, data={"full_text": media_content.raw_text,
+    response = requests.post(url_to_request, json={"full_text": media_content.raw_text,
                                                  "perc_length": media_content.reduction_perc})
 
     print(response)
-    content = json.loads(response.content)
+    content = json.loads(response.content.decode('utf-8'))
 
     return content
 
