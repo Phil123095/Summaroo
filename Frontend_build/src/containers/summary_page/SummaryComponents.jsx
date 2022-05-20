@@ -33,15 +33,14 @@ function LandingPage() {
 
         const requestOptions = {
             method: 'POST',
-            /*headers: { 'Content-Type': 'application/json' },*/
-            /*mode: 'no-cors',*/
             body: JSON.stringify({
+                format: media_type,
                 full_text: text_to_summarize,
                 perc_length: summary_perc
                })
         };
 
-        fetch('https://bq5g5pjjc6fbzptimanr6v2gqu0tyydw.lambda-url.eu-central-1.on.aws/', requestOptions)
+        fetch('https://4bovfvjtrbw7n2szd6a4lzrtwi0gvzhs.lambda-url.eu-central-1.on.aws/', requestOptions)
             .then(response => response.json())
             .then(response => setSummOut(response.final_summary));
     }
@@ -92,10 +91,6 @@ function LandingPage() {
         );
     }
 
-    /*const handleMediaChange = (media) => {
-        setMediaType(media)
-    }*/
-
     useEffect(() => {
         if (media_type === null){
             setMediaType('text')
@@ -125,51 +120,10 @@ function LandingPage() {
                     <ToggleButton value="youtube">Summarise Video</ToggleButton>
                 </ToggleButtonGroup>
             </div>
-            {/*<button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-lg" onClick={handleMediaChange('text')}>
-                Summarize Text
-            </button>
-            <button class="ml-4 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-lg" onClick={handleMediaChange('youtube')}>
-                Summarize Video
-            </button>*/}
         </div>
         <div class="w-100 min-h-screen grid grid-cols-1 md:grid-cols-8 md:grid-rows-6 md:gap-4 md:mx-14">
             {media_type === 'text' ? returnTextInput() : returnVideoInput()}
     
-            {/*<div class="m-2 col-span-1 md:col-span-4 md:col-start-1 md:row-span-3 bg-slate-500 justify-center items-center rounded-lg">
-                <div class="p-2 bg-white rounded-lg border shadow-sm">
-                    <div class="pt-1 ml-1 h-10 border-b-1 border-color border-blue-900 text-base text-gray-700 items-center font-light">
-                        Drop in the text you want to summarize here...
-                    </div>
-                    <div class="border border-slate-200 rounded-lg">
-                        <TextField
-                            class="m-2"
-                            id="multiline-static"
-                            variant="standard"
-                            fullWidth
-                            multiline
-                            rows={16}
-                            onChange={handleTextFieldChange}
-                        />
-                    </div>
-                </div>
-            </div>
-            <div class="m-2 col-span-1 grid grid-cols-1 md:col-span-4 md:col-start-1 md:row-span-3 justify-center content-center rounded-lg">
-                <div class="grid grid-cols-1 p-2 h-40 bg-white rounded-lg border shadow-sm content-center">
-                    <div class="pt-1 ml-1 h-10 border-b-1 border-color border-blue-900 text-base text-gray-700 items-center font-light">
-                        Drop in the url of the Youtube video you want to summarize here...
-                    </div>
-                    <div class=" border border-slate-200 rounded-lg">
-                        <TextField
-                            class="m-2"
-                            id="outlined-basic"
-                            variant="standard"
-                            fullWidth
-                            rows={16}
-                            onChange={handleTextFieldChange}
-                        />
-                    </div>
-                </div>
-            </div>*/}
             <div class="m-2 p-2 col-span-1 md:col-span-4 md:row-span-3 bg-white justify-center items-center rounded-lg">
                 <div class="pt-1 ml-1 h-10 border-b-1 border-color border-blue-900 text-base text-gray-700 items-center font-light">
                     ... and the magic happens here.
@@ -187,10 +141,10 @@ function LandingPage() {
                         defaultValue={10}
                         getAriaValueText={valuetext}
                         valueLabelDisplay="auto"
-                        step={5}
+                        step={2}
                         marks
-                        min={5}
-                        max={100}
+                        min={1}
+                        max={50}
                         onChange={handleSummPercSlider}
                     />
                 </div>
