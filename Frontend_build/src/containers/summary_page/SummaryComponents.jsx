@@ -138,10 +138,10 @@ function LandingPage() {
                 <div class="py-1 px-2 mb-3 h-2">
                     <Slider
                         aria-label="Perc Of Text"
-                        defaultValue={10}
+                        defaultValue={3}
                         getAriaValueText={valuetext}
                         valueLabelDisplay="auto"
-                        step={2}
+                        step={1}
                         marks
                         min={1}
                         max={50}
