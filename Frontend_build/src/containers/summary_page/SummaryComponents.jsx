@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TextField from '@mui/material/TextField';
 import Slider from '@mui/material/Slider';
 import Button from '@mui/material/Button';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+
 /*import axios from 'axios';*/
 
 
@@ -14,6 +17,7 @@ function LandingPage() {
     const [text_to_summarize, setText] = useState('');
     const [summary_perc, setSummPerc] = useState(10);
     const [summary_out, setSummOut] = useState('');
+    const [media_type, setMediaType] = useState('text');
 
     function handleTextFieldChange(event) {
         event.preventDefault();
@@ -42,9 +46,8 @@ function LandingPage() {
             .then(response => setSummOut(response.final_summary));
     }
 
-    return (
-    <div class="mt-4 md:mt-28">
-        <div class="w-100 min-h-screen grid grid-cols-1 md:grid-cols-8 md:grid-rows-6 md:gap-4 md:mx-14">
+    function returnTextInput() {
+        return(
             <div class="m-2 col-span-1 md:col-span-4 md:col-start-1 md:row-span-3 bg-slate-500 justify-center items-center rounded-lg">
                 <div class="p-2 bg-white rounded-lg border shadow-sm">
                     <div class="pt-1 ml-1 h-10 border-b-1 border-color border-blue-900 text-base text-gray-700 items-center font-light">
@@ -63,6 +66,110 @@ function LandingPage() {
                     </div>
                 </div>
             </div>
+        )
+    }
+
+    function returnVideoInput() {
+        return(
+            <div class="m-2 col-span-1 grid grid-cols-1 md:col-span-4 md:col-start-1 md:row-span-3 justify-center content-center rounded-lg">
+                <div class="grid grid-cols-1 p-2 h-40 bg-white rounded-lg border shadow-sm content-center">
+                    <div class="pt-1 ml-1 h-10 border-b-1 border-color border-blue-900 text-base text-gray-700 items-center font-light">
+                        Drop in the url of the Youtube video you want to summarize here...
+                    </div>
+                    <div class=" border border-slate-200 rounded-lg">
+                        <TextField
+                            class="m-2"
+                            id="outlined-basic"
+                            variant="standard"
+                            fullWidth
+                            rows={16}
+                            onChange={handleTextFieldChange}
+                        />
+                    </div>
+                </div>
+            </div>
+            
+        );
+    }
+
+    /*const handleMediaChange = (media) => {
+        setMediaType(media)
+    }*/
+
+    useEffect(() => {
+        if (media_type === null){
+            setMediaType('text')
+        }
+    }, [media_type])
+
+    const handleChange = (
+        event,
+        newAlignment,
+      ) => {
+        setMediaType(newAlignment);
+      };
+
+    console.log(media_type)
+
+    return (
+    <div class="mt-4 md:mt-2">
+        <div class="mb-2 ml-16 h-10 md:h-10 border-slate-100 rounded-lg bg-slate-100 items-center">
+            <div class="mt-4">
+                <ToggleButtonGroup
+                    color="primary"
+                    value={media_type}
+                    exclusive
+                    onChange={handleChange}
+                >
+                    <ToggleButton value="text">Summarise Text</ToggleButton>
+                    <ToggleButton value="youtube">Summarise Video</ToggleButton>
+                </ToggleButtonGroup>
+            </div>
+            {/*<button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-lg" onClick={handleMediaChange('text')}>
+                Summarize Text
+            </button>
+            <button class="ml-4 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-lg" onClick={handleMediaChange('youtube')}>
+                Summarize Video
+            </button>*/}
+        </div>
+        <div class="w-100 min-h-screen grid grid-cols-1 md:grid-cols-8 md:grid-rows-6 md:gap-4 md:mx-14">
+            {media_type === 'text' ? returnTextInput() : returnVideoInput()}
+    
+            {/*<div class="m-2 col-span-1 md:col-span-4 md:col-start-1 md:row-span-3 bg-slate-500 justify-center items-center rounded-lg">
+                <div class="p-2 bg-white rounded-lg border shadow-sm">
+                    <div class="pt-1 ml-1 h-10 border-b-1 border-color border-blue-900 text-base text-gray-700 items-center font-light">
+                        Drop in the text you want to summarize here...
+                    </div>
+                    <div class="border border-slate-200 rounded-lg">
+                        <TextField
+                            class="m-2"
+                            id="multiline-static"
+                            variant="standard"
+                            fullWidth
+                            multiline
+                            rows={16}
+                            onChange={handleTextFieldChange}
+                        />
+                    </div>
+                </div>
+            </div>
+            <div class="m-2 col-span-1 grid grid-cols-1 md:col-span-4 md:col-start-1 md:row-span-3 justify-center content-center rounded-lg">
+                <div class="grid grid-cols-1 p-2 h-40 bg-white rounded-lg border shadow-sm content-center">
+                    <div class="pt-1 ml-1 h-10 border-b-1 border-color border-blue-900 text-base text-gray-700 items-center font-light">
+                        Drop in the url of the Youtube video you want to summarize here...
+                    </div>
+                    <div class=" border border-slate-200 rounded-lg">
+                        <TextField
+                            class="m-2"
+                            id="outlined-basic"
+                            variant="standard"
+                            fullWidth
+                            rows={16}
+                            onChange={handleTextFieldChange}
+                        />
+                    </div>
+                </div>
+            </div>*/}
             <div class="m-2 p-2 col-span-1 md:col-span-4 md:row-span-3 bg-white justify-center items-center rounded-lg">
                 <div class="pt-1 ml-1 h-10 border-b-1 border-color border-blue-900 text-base text-gray-700 items-center font-light">
                     ... and the magic happens here.

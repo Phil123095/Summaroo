@@ -1,5 +1,5 @@
 import json
-from Media_Class import Media
+from Backend_build.Preprocessing_Module.build.Media_Class import Media
 import requests
 
 
@@ -33,16 +33,15 @@ def request_summarization(media_content, url_to_request):
     response = requests.post(url_to_request, json={"full_text": media_content.raw_text,
                                                  "perc_length": media_content.reduction_perc})
 
-    print(response)
     content = json.loads(response.content.decode('utf-8'))
 
     return content
 
 
 if __name__ == "__main__":
-    media_to_summarise = "testing/PDF_conversion/Are you Solving right problem?.pdf"
-    percent_reduce = 5
-    format = "pdf"
+    media_to_summarise = "https://www.youtube.com/watch?v=4RX_lpoGRBg"
+    percent_reduce = 3
+    format = "youtube"
 
     WorkingContent = Media(media=media_to_summarise, perc_reduction=percent_reduce, format=format)
     WorkingContent.convert_and_clean_media()
@@ -58,6 +57,7 @@ if __name__ == "__main__":
     WorkingContent.info_to_DB()
 
     print("-------------------------------------- FINAL SUMMARY ----------------------------------------")
-    print(final_summary_out)
+    for line in WorkingContent.final_summary.split("."):
+        print(line)
 
 

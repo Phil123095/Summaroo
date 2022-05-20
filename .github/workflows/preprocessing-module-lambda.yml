@@ -3,7 +3,7 @@ name: summarization-module-to-lambda
 on:
   push:
     paths:
-      - "Backend_build/Summarization_Models/LexRank_v_1/**"
+      - "Backend_build/Preprocessing_Module/build/**"
 jobs:
   update-lambda:
     runs-on: ubuntu-latest
@@ -17,7 +17,7 @@ jobs:
         ref: ${{ github.ref }}
     - name: Build container
       run: |
-        docker compose build base-summarization-module
+        docker compose build preprocessing-module
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
@@ -31,6 +31,6 @@ jobs:
         access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         region: eu-central-1
-        image: base-summarization-module:latest
+        image: preprocessing-module:latest
     - name: Update lambda with image
-      run: aws lambda update-function-code --function-name summarization-module --image-uri 355622878315.dkr.ecr.eu-central-1.amazonaws.com/base-summarization-module:latest
+      run: aws lambda update-function-code --function-name summaroo-preprocessing-module --image-uri 355622878315.dkr.ecr.eu-central-1.amazonaws.com/preprocessing-module:latest

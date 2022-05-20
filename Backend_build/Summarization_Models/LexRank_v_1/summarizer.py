@@ -36,7 +36,7 @@ def summarization(full_text, reduce_length):
 
     print(clean_text)
 
-    summary_perc = int(reduce_length)/100
+    summary_perc = float(reduce_length)/100
 
     final_sentence_count = full_text_length * summary_perc
 

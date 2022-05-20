@@ -7,3 +7,10 @@ services:
       context: .
       dockerfile: Summarization_Models/LexRank_v_1/Dockerfile
     image: base-summarization-module:latest
+
+  preprocessing-module:
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: Preprocessing_Module/build/Dockerfile
+    image: preprocessing-module:latest
