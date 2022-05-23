@@ -63,5 +63,5 @@ def lambda_handler(event, context):
     WorkingContent.final_summary = final_summary_out['final_summary']
     WorkingContent.info_to_DB()
 
-    final_summary_out = final_summary_out.replace(". ", ". \n")
+    final_summary_out = final_summary_out["final_summary"].replace(". ", ". \n")
     return final_summary_out
