@@ -8,8 +8,8 @@
 /__pycache__
 /base_resources
 .vscode/
+Frontend_build/build
 node_modules/
-build/
 .DS_Store
 *.tgz
 my-app*

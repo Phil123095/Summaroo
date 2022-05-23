@@ -14,3 +14,10 @@ services:
       context: .
       dockerfile: Preprocessing_Module/build/Dockerfile
     image: preprocessing-module:latest
+
+  testing-module3:
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: Preprocessing_Module/build/Dockerfile
+    image: testing-module3:latest
