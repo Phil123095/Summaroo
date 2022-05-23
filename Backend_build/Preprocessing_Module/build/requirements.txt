@@ -1,0 +1,4 @@
+youtube_transcript_api
+urllib3
+pdfminer.six
+requests
