@@ -70,15 +70,16 @@ function LandingPage() {
     const handleUpload2 = () => {
 
         const s3Bucket = new S3({
-            Region: process.env.REACT_APP_REGION,
             credentials: {
                 accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID, 
                 secretAccessKey:process.env.REACT_APP_SECRET_ACCESS_KEY
-            }
+            },
+            params: {Bucket: 'iberiapp-files'},
+            region: process.env.REACT_APP_REGION,
         })
-        /*const upload_params = {Bucket: 'iberiapp-files', Key: selectedFileName, Body: selectedFile};*/
+        const upload_params = {Key: selectedFileName, ContentType: selectedFile.type, Body: selectedFile};
 
-        s3Bucket.putObject({Region: 'eu-central-1', Bucket: 'iberiapp-files', Key: selectedFileName, Body: selectedFile}, function(err, data) {
+        s3Bucket.putObject(upload_params, function(err, data) {
             if (err) {
                 console.log(err, err.stack);
             } else {
