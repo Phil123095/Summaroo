@@ -48,7 +48,7 @@ def lambda_handler(event, context):
         content_format = None
 
     content_to_summarise = message['full_text']
-    print(content_to_summarise)
+
     percent_reduce = message['perc_length']
 
     WorkingContent = Media(media=content_to_summarise, perc_reduction=percent_reduce, format=content_format)
