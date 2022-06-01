@@ -181,9 +181,8 @@ function LandingPageFULL() {
                     <div class="pt-1 ml-1 h-10 border-b-1 border-color border-blue-900 text-base text-gray-700 items-center font-light">
                         Upload your PDF here...
                     </div>
-                    <div class=" border border-slate-200 rounded-lg">
-                        <input type="file" class="form-control my-4 justify-center align-center rounded-lg border border-solid border-gray-300" onChange={handleFileInput}/>
-                    </div>
+                    <input type="file" class="form-control my-1 h-8 w-full justify-center align-center rounded-lg border border-solid border-slate-200" onChange={handleFileInput}/>
+
                 </div>
             </div>
         )
@@ -269,13 +268,13 @@ function LandingPageFULL() {
                     <Slider
                         aria-label="Perc Of Text"
                         sx={{color:"#00B050"}}
-                        defaultValue={3}
+                        defaultValue={5}
                         getAriaValueText={valuetext}
                         valueLabelDisplay="auto"
-                        step={1}
+                        step={5}
                         marks
                         min={1}
-                        max={50}
+                        max={100}
                         onChange={handleSummPercSlider}
                     />
                 </div>
