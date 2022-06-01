@@ -105,7 +105,7 @@ class Media:
 
     def __extract_PDF_text(self):
         final_string = ''
-        for page_layout in extract_pages(self.pdf_getter(self.raw_media), caching=True):
+        for page_layout in extract_pages(self.pdf_getter(url=self.raw_media), caching=True):
             for element in page_layout:
                 if isinstance(element, LTTextContainer):
                     final_string += element.get_text()
