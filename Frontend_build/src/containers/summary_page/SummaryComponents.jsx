@@ -68,10 +68,9 @@ function LandingPage() {
     }*/
 
     const handleUpload2 = () => {
-        const Region = process.env.REACT_APP_REGION;
+
         const s3Bucket = new S3({
-            region: Region,
-            apiVersion: 'latest',
+            Region: process.env.REACT_APP_REGION,
             credentials: {
                 accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID, 
                 secretAccessKey:process.env.REACT_APP_SECRET_ACCESS_KEY
