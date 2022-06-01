@@ -61,7 +61,7 @@ function LandingPageFULL() {
         setSelectedFileName(e.target.files[0].name)
     }
 
-    const uploadFile = (file) => {
+    const HandlePDFSummary = (file) => {
 
         const params = {
             Body: file,
@@ -73,7 +73,19 @@ function LandingPageFULL() {
             if (err) {console.log(err)}
             else {
                 const file_url = `https://${BucketName}.s3.amazonaws.com/${file.name.replace(/\s+/g, '')}`
-                setText(file_url)
+                const requestOptions = {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        format: media_type,
+                        full_text: file_url,
+                        perc_length: summary_perc
+                        })
+                };
+        
+                fetch('https://4bovfvjtrbw7n2szd6a4lzrtwi0gvzhs.lambda-url.eu-central-1.on.aws/', requestOptions)
+                    .then(response => response.json())
+                    .then(response => setSummOut(response.final_summary))
+                    .then(setSummaryLoaded(true));
                 console.log(file_url)}
 
         })
@@ -88,23 +100,23 @@ function LandingPageFULL() {
     function SummarizeText() {
         if (media_type === 'pdf') {
             console.log(selectedFile, selectedFileName)
-            uploadFile(selectedFile)
+            HandlePDFSummary(selectedFile)
   
-        }  
-        console.log(text_to_summarize)
-        const requestOptions = {
-            method: 'POST',
-            body: JSON.stringify({
-                format: media_type,
-                full_text: text_to_summarize,
-                perc_length: summary_perc
-                })
-        };
+        } else {
+            const requestOptions = {
+                method: 'POST',
+                body: JSON.stringify({
+                    format: media_type,
+                    full_text: text_to_summarize,
+                    perc_length: summary_perc
+                    })
+                };
 
-        fetch('https://4bovfvjtrbw7n2szd6a4lzrtwi0gvzhs.lambda-url.eu-central-1.on.aws/', requestOptions)
-            .then(response => response.json())
-            .then(response => setSummOut(response.final_summary))
-            .then(setSummaryLoaded(true));
+            fetch('https://4bovfvjtrbw7n2szd6a4lzrtwi0gvzhs.lambda-url.eu-central-1.on.aws/', requestOptions)
+                .then(response => response.json())
+                .then(response => setSummOut(response.final_summary))
+                .then(setSummaryLoaded(true));
+        }
         
 
     }
@@ -145,7 +157,7 @@ function LandingPageFULL() {
     }
 
     function returnVideoInput() {
-        
+
         return(
             <div class="m-2 col-span-1 grid grid-cols-1 md:col-span-4 md:col-start-1 md:row-span-3 justify-center content-center rounded-lg">
                 <div class="grid grid-cols-1 p-2 h-40 bg-white rounded-lg border shadow-sm content-center">
