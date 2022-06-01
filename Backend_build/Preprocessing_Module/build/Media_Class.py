@@ -11,6 +11,7 @@ from pdfminer.layout import LTTextContainer
 class Media:
     def __init__(self, media, perc_reduction, format=None):
         self.request_time = time.time()
+        print(media)
         self.raw_media = media
         self.raw_text = None
         self.reduction_perc = perc_reduction
