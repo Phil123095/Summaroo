@@ -2,6 +2,8 @@ import time
 from youtube_transcript_api import YouTubeTranscriptApi
 from urllib.parse import urlparse
 from urllib.parse import parse_qs
+import urllib.request as urlq
+import io
 from pdfminer.high_level import extract_pages
 from pdfminer.layout import LTTextContainer
 
@@ -103,12 +105,19 @@ class Media:
 
     def __extract_PDF_text(self):
         final_string = ''
-        for page_layout in extract_pages(self.raw_media):
+        for page_layout in extract_pages(self.pdf_getter(self.raw_media), caching=True):
             for element in page_layout:
                 if isinstance(element, LTTextContainer):
                     final_string += element.get_text()
 
         self.raw_text = final_string
+
+    def pdf_getter(self, url: str):
+        '''
+        retrives pdf from url as bytes object
+        '''
+        open = urlq.urlopen(url).read()
+        return io.BytesIO(open)
 
 
     def clean_text(self):

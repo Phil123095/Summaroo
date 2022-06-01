@@ -47,10 +47,10 @@ def lambda_handler(event, context):
     except KeyError:
         content_format = None
 
-    text_to_summarise = message['full_text']
+    content_to_summarise = message['full_text']
     percent_reduce = message['perc_length']
 
-    WorkingContent = Media(media=text_to_summarise, perc_reduction=percent_reduce, format=content_format)
+    WorkingContent = Media(media=content_to_summarise, perc_reduction=percent_reduce, format=content_format)
     WorkingContent.convert_and_clean_media()
 
     decision_reason, model_recommendation, model_endpoint = recommend_model(media_content=WorkingContent)

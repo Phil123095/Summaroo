@@ -6,7 +6,21 @@ import Button from '@mui/material/Button';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';*/
 /*import { S3 } from "@aws-sdk/client-s3"*/
 /*import aws from 'aws-sdk';*/
-var AWS = require('aws-sdk');
+
+var AWS = require('aws-sdk/dist/aws-sdk-react-native');
+
+const BucketName = process.env.REACT_APP_BUCKET_NAME;
+const Region = process.env.REACT_APP_REGION;
+
+AWS.config.update({
+    accessKeyId: process.env.REACT_APP_ACCESS_ID,
+    secretAccessKey: process.env.REACT_APP_ACCESS_KEY
+})
+
+const myBucket = new AWS.S3({
+    params: { Bucket: BucketName},
+    region: Region,
+})
 
 /*import S3 from "react-aws-s3"*/
 /*var fs = require('fs');*/
@@ -14,7 +28,7 @@ var AWS = require('aws-sdk');
 window.Buffer = window.Buffer || require("buffer").Buffer;
 
 
-function LandingPage() {
+function LandingPageFULL() {
 
     function valuetext(value) {
         return `${value}%`;
@@ -35,95 +49,34 @@ function LandingPage() {
         setSummPerc(event.target.value)
     }
 
-    const [selectedFile, setSelectedFile] = useState(null);
     const [selectedFileName, setSelectedFileName] = useState(null);
     const [summaryLoaded, setSummaryLoaded] = useState(false);
+
+
+    const [selectedFile, setSelectedFile] = useState(null);
+
 
     const handleFileInput = (e) => {
         setSelectedFile(e.target.files[0]);
         setSelectedFileName(e.target.files[0].name)
     }
 
-    /*function UPLOADTRIAL() {
-        const config = {
-            region: process.env.REACT_APP_REGION,
-            bucketName: 'iberiapp-files',
-            accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID, 
-            secretAccessKey:process.env.REACT_APP_SECRET_ACCESS_KEY
-        }
-
-        const ReactS3Client = new S3(config);
-        ReactS3Client.uploadFile(selectedFile, selectedFileName).then(data =>{
-            console.log(data)
-        })
-    }*/
-
-    const handleUpload2 = () => {
-        AWS.config.update(
-            {region: 'eu-central-1',
-            apiVersion: 'latest',
-            credentials: {
-                accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID, 
-                secretKey: process.env.REACT_APP_SECRET_ACCESS_KEY
-                }
-            }
-        );
-
-        /*exports.putBase64 = async () => {*/
-        /*const newBuffer = Buffer.replace(/^data:.+;base64,/, "")*/
-
-        const s3Bucket = new AWS.S3({apiVersion: 'latest'})
-            /*credentials: {
-                accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID, 
-                secretKey:process.env.REACT_APP_SECRET_ACCESS_KEY
-            },
-            params: { Bucket: 'iberiapp-files' },
-            region: process.env.REACT_APP_REGION,
-        })*/
+    const uploadFile = (file) => {
 
         const params = {
-            Key: selectedFileName,
-            Body: selectedFile, // <---------
-            Bucket: 'iberiapp-files',
-            ContentType: selectedFile.type
+            Body: file,
+            Bucket: BucketName,
+            Key: file.name.replace(/\s+/g, '')
         };
 
-        s3Bucket.upload(params, (err, res) => {
-            if (err) {
-                console.log(err)
-            }
-            console.log(res)
-        }
-        )
-    
-        /*s3Bucket.upload(params).promise().then(data => console.log(data));*/
-        /*};*/
+        myBucket.putObject(params, function(err, data) {
+            if (err) {console.log(err)}
+            else {
+                const file_url = `https://${BucketName}.s3.amazonaws.com/${file.name.replace(/\s+/g, '')}`
+                setText(file_url)
+                console.log(file_url)}
 
-
-        /*console.log(selectedFile, selectedFileName)
-        console.log(selectedFile)
-        const s3Bucket = new S3({
-            credentials: {
-                accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID, 
-                secretKey:process.env.REACT_APP_SECRET_ACCESS_KEY
-            },
-            params: { Bucket: 'iberiapp-files' },
-            region: process.env.REACT_APP_REGION,
         })
-        const upload_params = {Bucket: 'iberiapp-files', Key: selectedFileName, ContentType: selectedFile.type, Body: selectedFile.buffer};
-
-        s3Bucket.putObject(upload_params, function(err, data) {
-            if (err) {
-                console.log(err, err.stack);
-            } else {
-                console.log(data);
-            }
-        })
-
-        /*const upload = await s3Bucket.send(new PutObjectCommand({params: upload_params}));
-        upload.done()
-            .then(data => console.log(data))
-            .catch(error => console.log("Something fucked up: ", error.message));*/
     }
 
     function clearText() {
@@ -135,23 +88,23 @@ function LandingPage() {
     function SummarizeText() {
         if (media_type === 'pdf') {
             console.log(selectedFile, selectedFileName)
-            handleUpload2()
-            /*UPLOADTRIAL()*/
-        } else {
-            const requestOptions = {
-                method: 'POST',
-                body: JSON.stringify({
-                    format: media_type,
-                    full_text: text_to_summarize,
-                    perc_length: summary_perc
-                   })
-            };
-    
-            fetch('https://4bovfvjtrbw7n2szd6a4lzrtwi0gvzhs.lambda-url.eu-central-1.on.aws/', requestOptions)
-                .then(response => response.json())
-                .then(response => setSummOut(response.final_summary))
-                .then(setSummaryLoaded(true));
-        }
+            uploadFile(selectedFile)
+  
+        }  
+        const requestOptions = {
+            method: 'POST',
+            body: JSON.stringify({
+                format: media_type,
+                full_text: text_to_summarize,
+                perc_length: summary_perc
+                })
+        };
+
+        fetch('https://4bovfvjtrbw7n2szd6a4lzrtwi0gvzhs.lambda-url.eu-central-1.on.aws/', requestOptions)
+            .then(response => response.json())
+            .then(response => setSummOut(response.final_summary))
+            .then(setSummaryLoaded(true));
+        
 
     }
 
@@ -337,4 +290,4 @@ function LandingPage() {
   
 }
 
-export default LandingPage;
+export default LandingPageFULL;
