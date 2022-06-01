@@ -78,7 +78,7 @@ function LandingPage() {
             params: { Bucket: 'iberiapp-files' },
             region: process.env.REACT_APP_REGION,
         })
-        const upload_params = {Bucket: 'iberiapp-files', Key: selectedFileName, ContentType: selectedFile.type, Body: selectedFile};
+        const upload_params = {Bucket: 'iberiapp-files', Key: selectedFileName, ContentType: selectedFile.type, Body: selectedFile.buffer};
 
         s3Bucket.putObject(upload_params, function(err, data) {
             if (err) {
