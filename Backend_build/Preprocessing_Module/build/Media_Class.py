@@ -104,6 +104,7 @@ class Media:
         # prints the result
 
     def __extract_PDF_text(self):
+        print(self.raw_media)
         final_string = ''
         for page_layout in extract_pages(self.pdf_getter(url=self.raw_media), caching=True):
             for element in page_layout:

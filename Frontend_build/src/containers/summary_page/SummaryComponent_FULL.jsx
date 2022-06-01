@@ -91,6 +91,7 @@ function LandingPageFULL() {
             uploadFile(selectedFile)
   
         }  
+        console.log(text_to_summarize)
         const requestOptions = {
             method: 'POST',
             body: JSON.stringify({
