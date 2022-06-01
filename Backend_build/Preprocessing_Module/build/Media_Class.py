@@ -105,8 +105,10 @@ class Media:
         # prints the result
 
     def __extract_PDF_text(self):
+        print(self.raw_media)
         final_string = ''
-        for page_layout in extract_pages(self.pdf_getter(url=self.raw_media), caching=True):
+        url_to_use = self.raw_media
+        for page_layout in extract_pages(self.pdf_getter(url=url_to_use), caching=True):
             for element in page_layout:
                 if isinstance(element, LTTextContainer):
                     final_string += element.get_text()
@@ -117,6 +119,8 @@ class Media:
         '''
         retrives pdf from url as bytes object
         '''
+        print(url)
+        print(self.raw_media)
         open = urlq.urlopen(url).read()
         return io.BytesIO(open)
 
