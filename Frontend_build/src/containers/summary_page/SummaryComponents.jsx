@@ -73,7 +73,7 @@ function LandingPage() {
         const s3Bucket = new S3({
             credentials: {
                 accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID, 
-                secretAccessKey:process.env.REACT_APP_SECRET_ACCESS_KEY
+                secretKey:process.env.REACT_APP_SECRET_ACCESS_KEY
             },
             params: { Bucket: 'iberiapp-files' },
             region: process.env.REACT_APP_REGION,
