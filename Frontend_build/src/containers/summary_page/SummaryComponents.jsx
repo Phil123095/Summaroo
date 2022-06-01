@@ -69,6 +69,7 @@ function LandingPage() {
 
     const handleUpload2 = () => {
 
+        console.log(selectedFile, selectedFileName)
         const s3Bucket = new S3({
             credentials: {
                 accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID, 
