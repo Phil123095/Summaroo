@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@font-face {
+    font-family: 'Bahnschrift';
+    src: local('Bahnschrift'), url(./fonts/Bahnschrift/BAHNSCHRIFT.TTF) format('truetype');
+    /* other formats include: 'woff2', 'truetype, 'opentype',
+                              'embedded-opentype', and 'svg' */
+  }
