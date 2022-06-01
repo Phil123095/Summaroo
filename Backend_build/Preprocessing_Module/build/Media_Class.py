@@ -116,6 +116,8 @@ class Media:
         '''
         retrives pdf from url as bytes object
         '''
+        print(url)
+        print(self.raw_media)
         open = urlq.urlopen(url).read()
         return io.BytesIO(open)
 

@@ -5,7 +5,7 @@ on:
     paths:
       - "Backend_build/Summarization_Models/LexRank_v_1/**"
 jobs:
-  update-lambda:
+  update-lambda-summarization:
     runs-on: ubuntu-latest
     defaults:
       run:
