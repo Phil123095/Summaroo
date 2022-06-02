@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import TextField from '@mui/material/TextField';
 import Slider from '@mui/material/Slider';
 import Button from '@mui/material/Button';
+import { return_loader } from "../../utils/general_utils";
 /*import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';*/
 /*import { S3 } from "@aws-sdk/client-s3"*/
@@ -38,6 +39,7 @@ function LandingPageFULL() {
     const [summary_perc, setSummPerc] = useState(10);
     const [summary_out, setSummOut] = useState('');
     const [media_type, setMediaType] = useState('text');
+    const [loading, setLoading] = useState(false);
 
     function handleTextFieldChange(event) {
         event.preventDefault();
@@ -85,7 +87,8 @@ function LandingPageFULL() {
                 fetch('https://4bovfvjtrbw7n2szd6a4lzrtwi0gvzhs.lambda-url.eu-central-1.on.aws/', requestOptions)
                     .then(response => response.json())
                     .then(response => setSummOut(response.final_summary))
-                    .then(setSummaryLoaded(true));
+                    .then(setSummaryLoaded(true))
+                    .then(setLoading(false));
                 console.log(file_url)}
 
         })
@@ -98,6 +101,7 @@ function LandingPageFULL() {
     }
 
     function SummarizeText() {
+        setLoading(true)
         if (media_type === 'pdf') {
             console.log(selectedFile, selectedFileName)
             HandlePDFSummary(selectedFile)
@@ -115,7 +119,8 @@ function LandingPageFULL() {
             fetch('https://4bovfvjtrbw7n2szd6a4lzrtwi0gvzhs.lambda-url.eu-central-1.on.aws/', requestOptions)
                 .then(response => response.json())
                 .then(response => setSummOut(response.final_summary))
-                .then(setSummaryLoaded(true));
+                .then(setSummaryLoaded(true))
+                .then(setLoading(false));
         }
         
 
@@ -293,9 +298,11 @@ function LandingPageFULL() {
                 </div>
             </div>
             <div class="m-2 mb-3 h-10 md:h-20 col-span-1 md:col-span-4 border-slate-100 rounded-lg bg-slate-100 items-center">
-                <Button variant="contained" class="bg-green-primary bg-opacity-90 border-green-primary border-opacity-80 hover:bg-green-primary h-16 w-full border rounded-lg" disableElevation fullWidth style={{minHeight: '60px', maxHeight: '60px'}} onClick={SummarizeText}>
-                    <p class="text-base text-white">SUMMARIZE</p>
-                </Button>
+                <button class="btn w-full h-30 inline-flex justify-center items-center bg-green-primary bg-opacity-90 border-green-primary border-opacity-80 hover:bg-green-primary h-16 w-full border rounded-lg animate-none" onClick={SummarizeText}>
+                    {loading === true ? return_loader() : null}
+                    {loading === true ? <p class="text-base text-white">PERFORMING MAGIC</p> : <p class="text-base text-white">SUMMARIZE</p>}
+                </button>
+        
             </div>
         </div>
     </div>

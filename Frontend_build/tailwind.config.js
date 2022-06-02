@@ -9,6 +9,6 @@ module.exports = {
       },
       colors: {'green-primary': '#00B050'}
     },
-  plugins: [],
+  plugins: [require("daisyui")],
   },
 }
