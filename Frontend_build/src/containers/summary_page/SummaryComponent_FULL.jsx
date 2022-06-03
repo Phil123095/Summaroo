@@ -135,11 +135,11 @@ function LandingPageFULL() {
       }, [isLoading]);
 
     return (
-        <div class="mt-4 md:mt-2 bg-neutral-100">
+        <div class="h-fit mt-4 md:mt-2 bg-neutral-100">
             <SummaryInputChoices media_type={media_type} setMediaType={setMediaType}/>
-            <div class="w-100 min-h-screen grid grid-cols-1 md:grid-cols-8 md:grid-rows-6 md:gap-4 md:mx-14">
+            <div class="w-100 grid grid-cols-1 md:grid-cols-8 md:grid-rows-4 md:gap-4 md:mx-14">
                 <SummaryInputs media_type={media_type} setMediaType={setMediaType} setText={setText} text_to_summarize={text_to_summarize} setSelectedFile={setSelectedFile} setSummOut={setSummOut} setSummaryLoaded={setSummaryLoaded} summaryLoaded={summaryLoaded}/>
-                <OutputSummary summarised_text={summary_out}/>
+                <OutputSummary summarised_text={summary_out} isLoading={isLoading}/>
                 <SummaryRequestOptions setSummPerc={setSummPerc} summaryTrigger={triggerSumm} isLoading={isLoading}/>
             </div>
         </div>
