@@ -7,10 +7,10 @@ function HeaderBar2() {
                 </a>
                 <div class="flex w-fit flex-grow justify-end">
                     <div class="text-sm justify-end align-items-center mr-6 hover:no-underline">
-                        <a href="/signup" class="inline-block my-4 mx-2 align-center text-black text-base rounded hover:no-underline">
+                        <a href="/fun" class="inline-block my-4 mx-2 align-center text-black text-base rounded hover:no-underline">
                             Register
                         </a>
-                        <a href="/login"  class="inline-block my-4 mx-2 align-center text-black text-base hover:no-underline">
+                        <a href="/fun"  class="inline-block my-4 mx-2 align-center text-black text-base hover:no-underline">
                             Login
                         </a>
                     </div>

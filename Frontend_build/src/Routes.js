@@ -5,7 +5,7 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import HeaderBar2 from "./containers/general/HeaderBar2";
 import NotFound from "./containers/general/NotFound";
 import LandingPageFULL from "./containers/summary_page/SummaryComponent_FULL";
-import Uploadfile from "./containers/general/UploadPage";
+import LandingPageLOLZ from "./containers/summary_page_lolz/SummaryComponent_FULL_FUN";
 
 function Router() {
 
@@ -15,7 +15,7 @@ function Router() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<LandingPageFULL/>}/>
-                <Route path="/upload" element={<Uploadfile/>}/>
+                <Route path="/fun" element={<LandingPageLOLZ/>}/>
                 <Route path="*" element={<NotFound/>}/>
             </Routes>
         </BrowserRouter>
