@@ -6,6 +6,7 @@ import HeaderBar2 from "./containers/general/HeaderBar2";
 import NotFound from "./containers/general/NotFound";
 import LandingPageFULL from "./containers/summary_page/SummaryComponent_FULL";
 import LandingPageLOLZ from "./containers/summary_page_lolz/SummaryComponent_FULL_FUN";
+import KangarooGenerator from "./containers/summary_page_lolz/Kangaroos";
 
 function Router() {
 
@@ -15,7 +16,8 @@ function Router() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<LandingPageFULL/>}/>
-                <Route path="/fun" element={<LandingPageLOLZ/>}/>
+                <Route path="/fun-version" element={<LandingPageLOLZ/>}/>
+                <Route path="/kangaroos" element={<KangarooGenerator/>}/>
                 <Route path="*" element={<NotFound/>}/>
             </Routes>
         </BrowserRouter>
