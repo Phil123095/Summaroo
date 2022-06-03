@@ -63,6 +63,18 @@ function LandingPageFULL() {
             })
         }
 
+        /*function checkS3(file) {
+            return new Promise((resolve, reject) => {
+              myBucket.headObject({ Bucket: BucketName, Key: file.name.replace(/\s+/g, '') }, (err, metadata) => {
+                if (err && ['NotFound', 'Forbidden'].indexOf(err.code) > -1) return resolve();
+                else if (err) {
+                  return reject(err);
+                }
+                return resolve(metadata);
+              });
+            });
+          }*/
+
         function UploadDocument(file){
             return new Promise((resolve, reject) => {
                 const params = {
@@ -70,6 +82,7 @@ function LandingPageFULL() {
                     Bucket: BucketName,
                     Key: file.name.replace(/\s+/g, '')
                 };
+
                 console.log("3 - About to upload document")
                 myBucket.upload(params, function(err, data) {
                     if (err) {
