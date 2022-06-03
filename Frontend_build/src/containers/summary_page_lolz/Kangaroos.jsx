@@ -6,7 +6,7 @@ export default function KangarooGenerator() {
     const [gifLink, setGifLink] = useState(null);
     const random = async () => {
         try {
-          const result = await giphyFetch.random({tag: 'kangoroo'})
+          const result = await giphyFetch.random({tag: 'kangaroo'})
           const url = result.data.images.original.url
           setGifLink(url)
         } catch (error) {

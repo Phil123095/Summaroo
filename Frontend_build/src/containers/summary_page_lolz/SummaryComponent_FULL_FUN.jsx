@@ -45,7 +45,7 @@ function LandingPageLOLZ() {
 
     const random = async () => {
         try {
-          const result = await giphyFetch.random({tag: 'kangoroo'})
+          const result = await giphyFetch.random({tag: 'kangaroo'})
           const url = result.data.images.fixed_height.url
           setGifLink(url)
         } catch (error) {
