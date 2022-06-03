@@ -4,6 +4,7 @@ import OutputSummary from "./SummaryOutput";
 import SummaryInputs from "./SummaryInput";
 import SummaryInputChoices from "./SummaryTypeChoice";
 import SummaryRequestOptions from "./SummaryRequestOptions";
+import Realistic from "./ConfettiFun";
 
 var AWS = require('aws-sdk/dist/aws-sdk-react-native');
 
@@ -26,6 +27,7 @@ window.Buffer = window.Buffer || require("buffer").Buffer;
 
 function LandingPageFULL() {
     const [isLoading, setIsLoading] = useState(false);
+    const [popConfetti, setConfetti] = useState(false);
 
     const [text_to_summarize, setText] = useState('');
     const [summary_perc, setSummPerc] = useState(10);
@@ -33,7 +35,6 @@ function LandingPageFULL() {
     const [media_type, setMediaType] = useState('text');
     const [summaryLoaded, setSummaryLoaded] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
-
     
     const triggerSumm = (e) => {
         e.preventDefault()
@@ -124,8 +125,10 @@ function LandingPageFULL() {
         };
 
         if (isLoading) {
+            if (media_type === 'text') {setIsLoading(false);}
             SummarizationManager().then(res => {
                 setIsLoading(res)
+                if (media_type !== "text") {setConfetti(true);}
                 console.log("6 - Apparently Resolved")
             });
             /*if (summary_out.length > 1) {setIsLoading(false)}*/
@@ -141,6 +144,7 @@ function LandingPageFULL() {
                 <SummaryInputs media_type={media_type} setMediaType={setMediaType} setText={setText} text_to_summarize={text_to_summarize} setSelectedFile={setSelectedFile} setSummOut={setSummOut} setSummaryLoaded={setSummaryLoaded} summaryLoaded={summaryLoaded}/>
                 <OutputSummary summarised_text={summary_out} isLoading={isLoading}/>
                 <SummaryRequestOptions setSummPerc={setSummPerc} summaryTrigger={triggerSumm} isLoading={isLoading}/>
+                <Realistic indicator={(!isLoading && popConfetti) ? true : false}/>
             </div>
         </div>
     )

@@ -1,9 +1,11 @@
-let loadingGif = require("../../assets/LOADING.gif")
-let punchingGif = require("../../assets/PUNCHGIF.gif")
+
+/*let loadingGif = require("../../assets/LOADING.gif")*/
+
+/*let punchingGif = require("../../assets/PUNCHGIF.gif")
 let failgif = require("../../assets/FAILGIF.gif")
 let majesticgif = require("../../assets/MAJESTIC GIF.gif")
 
-let array = [loadingGif, punchingGif, failgif, majesticgif]
+let array = [loadingGif, punchingGif, failgif, majesticgif]*/
 export default function OutputSummary(props) {
     const summary_out = props.summarised_text
 
@@ -19,12 +21,14 @@ export default function OutputSummary(props) {
             </div>
             <div class="border rounded-lg border-slate-200 h-96 w-full overflow-y-scroll">
                 <div class="px-2 pt-1">
-                    {summary_out === '' ? 
-                        (props.isLoading === true ? 
-                            <img class="animate-in slide-in-from-left animate-out slide-out-to-right-95 w-18 h-18" src={array[Math.floor((Math.random()*array.length))]} alt="wait until the page loads" />
-
+                    {summary_out === '' ? null : <NewlineText text={summary_out}/>}
+                        {/*(props.isLoading === true ? 
+                            {/*<img class="animate-in slide-in-from-left animate-out slide-out-to-right-95 w-18 h-18" src={loadingGif /*array[Math.floor((Math.random()*array.length))]} alt="wait until the page loads" />}
+                            null
                         : null) 
-                    : <NewlineText text={summary_out}/>}
+                    : 
+                        <NewlineText text={summary_out}/>
+                    }*/}
                 </div>
             </div>
 
