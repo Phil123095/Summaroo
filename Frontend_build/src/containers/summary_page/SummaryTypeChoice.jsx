@@ -3,6 +3,8 @@ import { useEffect } from "react";
 export default function SummaryInputChoices(props) {
     const media_type = props.media_type
     const setMediaType = props.setMediaType
+    const clearTextAllowed = props.clearTextAllowed
+    const clearText = props.clearText
 
     useEffect(() => {
         if (media_type === null){
@@ -10,10 +12,10 @@ export default function SummaryInputChoices(props) {
         }
     }, [media_type, setMediaType])
 
-    const handleChange = (
-        selectedValue,
-      ) => {
-        setMediaType(selectedValue);
+    const handleChange = (selectedValue) => {
+        setMediaType(selectedValue)
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+        ((clearTextAllowed) ? clearText : null);
     };
 
 

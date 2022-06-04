@@ -1,5 +1,5 @@
 import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
+
 
 export default function SummaryInputs(props) {
     const media_type = props.media_type
@@ -13,12 +13,6 @@ export default function SummaryInputs(props) {
     const handleFileInput = (e) => {
         props.setSelectedFile(e.target.files[0]);
     }
-
-    function clearText() {
-        props.setText('');
-        props.setSummOut('');
-        props.setSummaryLoaded(false);
-    }
     
     function returnTextInput() {
         return(
@@ -29,27 +23,18 @@ export default function SummaryInputs(props) {
                     </div>
                     <div class="border border-slate-200 rounded-lg">
                         <TextField
-                            class="m-2"
+                            class="m-2 mb-4 pb-4 h-96"
                             id="multiline-static"
                             variant="standard"
                             fullWidth
                             multiline
-                            rows={16}
+        
                             value={props.text_to_summarize}
                             onChange={handleTextFieldChange}
                             placeholder="Add something!"
                             InputProps={{ disableUnderline: true }}
                         />
                     </div>
-                    {props.summaryLoaded === true ? 
-                        <div class="w-full my-2 items-right">
-                            <div>
-                                <Button variant="outlined" disableElevation  style={{minHeight: '30px', maxHeight: '30px'}} onClick={clearText}>
-                                    <p class="text-base">Clear Text</p>
-                                </Button>
-                            </div>
-                        </div>
-                    :<p></p>}
                 </div>
             </div>
         )
@@ -96,9 +81,27 @@ export default function SummaryInputs(props) {
     }
 
     return(
-        <>
-            {media_type === 'text' ? returnTextInput() : (media_type==='youtube' ? returnVideoInput() : returnPDFInput())}
-        </>
+
+            <div class="m-2 col-span-1 grid grid-cols-1 md:col-span-4 md:col-start-1 md:row-span-3 justify-center content-center rounded-lg">
+                    <>
+                        {media_type === 'text' ? returnTextInput() : (media_type==='youtube' ? returnVideoInput() : returnPDFInput())}
+                    </>
+                    <>
+                        {props.clearTextAllowed === true ? 
+                        <div class="w-full my-2 ml-2 items-right">
+                            <div>
+                                <button onClick={props.clearText}
+                                    class="h-10 w-34
+                                    border-green-primary border border-opacity-80  
+                                    font-semibold rounded-md p-3 flex items-center">
+                                        <p class="text-base text-center text-green-primary">Clear Text</p>
+                                </button>
+                            </div>
+                        </div>
+                        :null}
+                    </>
+            </div>
+
     )
 
 
