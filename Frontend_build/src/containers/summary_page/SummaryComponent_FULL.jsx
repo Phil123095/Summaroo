@@ -25,7 +25,7 @@ const myBucket = new AWS.S3({
 window.Buffer = window.Buffer || require("buffer").Buffer;
 
 
-function LandingPageFULL() {
+export default function SummaryPage() {
     const [isLoading, setIsLoading] = useState(false);
     const [popConfetti, setConfetti] = useState(false);
 
@@ -63,18 +63,6 @@ function LandingPageFULL() {
                     .catch(err => reject(err));
             })
         }
-
-        /*function checkS3(file) {
-            return new Promise((resolve, reject) => {
-              myBucket.headObject({ Bucket: BucketName, Key: file.name.replace(/\s+/g, '') }, (err, metadata) => {
-                if (err && ['NotFound', 'Forbidden'].indexOf(err.code) > -1) return resolve();
-                else if (err) {
-                  return reject(err);
-                }
-                return resolve(metadata);
-              });
-            });
-          }*/
 
         function UploadDocument(file){
             return new Promise((resolve, reject) => {
@@ -138,7 +126,7 @@ function LandingPageFULL() {
       }, [isLoading]);
 
     return (
-        <div class="h-fit mt-4 md:mt-2 bg-neutral-100">
+        <div class="h-fit mt-4 lg:mt-2 bg-neutral-100">
             <SummaryInputChoices media_type={media_type} setMediaType={setMediaType}/>
             <div class="w-100 grid grid-cols-1 md:grid-cols-8 md:grid-rows-4 md:gap-4 md:mx-14">
                 <SummaryInputs media_type={media_type} setMediaType={setMediaType} setText={setText} text_to_summarize={text_to_summarize} setSelectedFile={setSelectedFile} setSummOut={setSummOut} setSummaryLoaded={setSummaryLoaded} summaryLoaded={summaryLoaded}/>
@@ -150,5 +138,3 @@ function LandingPageFULL() {
     )
   
 }
-
-export default LandingPageFULL;

@@ -4,9 +4,10 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 /*import HeaderBar from "./containers/general/HeaderBar";*/
 import HeaderBar2 from "./containers/general/HeaderBar2";
 import NotFound from "./containers/general/NotFound";
-import LandingPageFULL from "./containers/summary_page/SummaryComponent_FULL";
-import LandingPageLOLZ from "./containers/summary_page_lolz/SummaryComponent_FULL_FUN";
+import SummaryPage from "./containers/summary_page/SummaryComponent_FULL";
+import SummaryPagelolz from "./containers/summary_page_lolz/SummaryComponent_FULL_FUN";
 import KangarooGenerator from "./containers/summary_page_lolz/Kangaroos";
+import LandingPage from "./containers/LandingPage";
 
 function Router() {
 
@@ -15,8 +16,9 @@ function Router() {
         <HeaderBar2/>
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<LandingPageFULL/>}/>
-                <Route path="/fun-version" element={<LandingPageLOLZ/>}/>
+                <Route path="/" element={<LandingPage/>} />
+                <Route path="/summarize" element={<SummaryPage/>}/>
+                <Route path="/fun-version" element={<SummaryPagelolz/>}/>
                 <Route path="/kangaroos" element={<KangarooGenerator/>}/>
                 <Route path="*" element={<NotFound/>}/>
             </Routes>

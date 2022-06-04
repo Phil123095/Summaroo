@@ -25,7 +25,7 @@ const myBucket = new AWS.S3({
 window.Buffer = window.Buffer || require("buffer").Buffer;
 
 
-function LandingPageLOLZ() {
+export default function SummaryPageLolz() {
     const giphyFetch = new GiphyFetch("I416egPdf0z8yknVgQJ5uahNr0WBa8YG");
     const [gifLink, setGifLink] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
@@ -143,5 +143,3 @@ function LandingPageLOLZ() {
     )
   
 }
-
-export default LandingPageLOLZ;
