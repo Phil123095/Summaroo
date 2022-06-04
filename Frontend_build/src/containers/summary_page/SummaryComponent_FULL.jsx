@@ -126,8 +126,6 @@ export default function SummaryPage() {
                 if (media_type !== "text") {setConfetti(true);}
                 console.log("6 - Apparently Resolved")
             });
-            /*if (summary_out.length > 1) {setIsLoading(false)}*/
-            /*summaryManagement.then(result => setIsLoading(false))*/
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [isLoading]);
