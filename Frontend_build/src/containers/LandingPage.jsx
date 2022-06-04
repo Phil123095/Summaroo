@@ -19,13 +19,13 @@ function LandingPage() {
                         <button class="w-full mt-6 h-30 inline-flex justify-center 
                                 items-center bg-green-primary bg-opacity-90 
                                 border-green-primary border-opacity-80 hover:bg-green-primary 
-                                h-16 border rounded-lg animate-none text-lg shadow-2xl">
+                                h-16 border rounded-lg animate-none text-lg shadow-xl">
                             <a href="/summarize" class="inline-block my-4 mx-2 align-center text-white text-xl rounded hover:no-underline">
                                 Start Summarizing 🦘
                             </a>
                         </button>
-                        <div class="bg-white w-full shadow-md rounded-lg overflow-hidden">
-                            <div class="flex flex-row items-center justify-between py-4 pl-2 bg-white shadow-2xl rounded-lg mx-auto text-center">
+                        <div class="bg-white w-full shadow-2xl rounded-lg overflow-hidden">
+                            <div class="flex flex-row items-center justify-between py-4 pl-2 bg-white shadow-xl rounded-lg mx-auto text-center">
 
                                 <div class="w-full justify-center text-center flex flex-col md:flex-row space-x-1">
                                     <div class="flex w-full justify-center mb-1 lg:mb-0 lg:basis-1/4">

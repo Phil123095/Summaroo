@@ -23,12 +23,12 @@ export default function SummaryInputChoices(props) {
                 <div class="inline-flex justify-center lg:justify-start w-full" role="group">
                     <button 
                         type="button" 
-                        class="inline-block border rounded px-1 py:1.5 lg:px-2 lg:py-2.5 mr-1 h-10 w-32 lg:w-36
+                        class="shadow-lg inline-block border rounded px-1 py:1.5 lg:px-2 lg:py-2.5 mr-1 h-10 w-32 lg:w-36
                             text-white font-medium text-sm leading-tight uppercase 
-                            bg-green-primary bg-opacity-80
-                            border-green-primary border-opacity-80
+                            bg-green-primary bg-opacity-90
+                            border-green-primary border-opacity-90
                             hover:bg-green-primary  focus:bg-green-primary focus:outline-none focus:ring-0 
-                            active:bg-green-primary transition duration-150 ease-in-out"
+                            active:bg-green-primary active:border-green-primary transition duration-150 ease-in-out"
                         value="text"
                         onClick={e => handleChange(e.target.value)}
                     >
@@ -36,10 +36,10 @@ export default function SummaryInputChoices(props) {
                     </button>
                     <button 
                         type="button" 
-                        class="border rounded inline-block mr-1 px-1 py:1.5 lg:px-2 lg:py-2.5 h-10 w-32 lg:w-36
+                        class="shadow-lg border rounded inline-block mr-1 px-1 py:1.5 lg:px-2 lg:py-2.5 h-10 w-32 lg:w-36
                         text-white font-medium text-sm leading-tight uppercase 
-                        bg-green-primary bg-opacity-80
-                        border-green-primary border-opacity-80
+                        bg-green-primary bg-opacity-90
+                        border-green-primary border-opacity-90
                         hover:bg-green-primary  focus:bg-green-primary focus:outline-none focus:ring-0 
                         active:bg-green-primary transition duration-150 ease-in-out"
                         value="youtube"
@@ -49,10 +49,10 @@ export default function SummaryInputChoices(props) {
                     </button>
                     <button 
                         type="button" 
-                        class="border rounded inline-block px-1 py:1.5 lg:px-2 lg:py-2.5 mr-1 h-10 w-32 lg:w-36
+                        class="shadow-lg border rounded inline-block px-1 py:1.5 lg:px-2 lg:py-2.5 mr-1 h-10 w-32 lg:w-36
                         text-white font-medium text-sm leading-tight uppercase 
-                        bg-green-primary bg-opacity-80
-                        border-green-primary border-opacity-80
+                        bg-green-primary bg-opacity-90
+                        border-green-primary border-opacity-90
                         hover:bg-green-primary  focus:bg-green-primary focus:outline-none focus:ring-0 
                         active:bg-green-primary transition duration-150 ease-in-out"
                         value="pdf"
