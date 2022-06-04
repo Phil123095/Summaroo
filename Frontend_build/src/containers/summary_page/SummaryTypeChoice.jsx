@@ -18,12 +18,12 @@ export default function SummaryInputChoices(props) {
 
 
     return (
-        <div class="mb-2 ml-16 h-10 md:h-10 border-slate-100 rounded-lg bg-neutral-100 items-center">
+        <div class="w-full lg:w-fit mx-2 mb-2 lg:ml-16 h-10 lg:h-10 border-slate-100 rounded-lg bg-neutral-100 items-center">
             <div class="mt-4">
-                <div class="inline-flex w-full" role="group">
+                <div class="inline-flex justify-center lg:justify-start w-full" role="group">
                     <button 
                         type="button" 
-                        class="border rounded inline-block px-2 mr-1 py-2.5 h-10 w-36
+                        class="inline-block border rounded px-1 py:1.5 lg:px-2 lg:py-2.5 mr-1 h-10 w-32 lg:w-36
                             text-white font-medium text-sm leading-tight uppercase 
                             bg-green-primary bg-opacity-80
                             border-green-primary border-opacity-80
@@ -36,7 +36,7 @@ export default function SummaryInputChoices(props) {
                     </button>
                     <button 
                         type="button" 
-                        class="border rounded inline-block px-2 mr-1 py-2.5 h-10 w-36
+                        class="border rounded inline-block mr-1 px-1 py:1.5 lg:px-2 lg:py-2.5 h-10 w-32 lg:w-36
                         text-white font-medium text-sm leading-tight uppercase 
                         bg-green-primary bg-opacity-80
                         border-green-primary border-opacity-80
@@ -49,7 +49,7 @@ export default function SummaryInputChoices(props) {
                     </button>
                     <button 
                         type="button" 
-                        class="border rounded inline-block px-2 mr-1 py-2.5 h-10 w-36
+                        class="border rounded inline-block px-1 py:1.5 lg:px-2 lg:py-2.5 mr-1 h-10 w-32 lg:w-36
                         text-white font-medium text-sm leading-tight uppercase 
                         bg-green-primary bg-opacity-80
                         border-green-primary border-opacity-80

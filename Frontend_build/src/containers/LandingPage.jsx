@@ -11,7 +11,7 @@ function LandingPage() {
             <div class="lg:ml-14 flex lg:basis-3/6 flex-col justify-center items-center">
                 <div class="flex flex-col content-center space-y-2 lg:space-y-14">
                     <div class="pr-4 pl-4 lg:pr-4 lg:pl-0">
-                        <div class="text-center lg:text-left text-6xl font-bold leading-relaxed whitespace-pre-line">
+                        <div class="text-center lg:text-left text-3xl lg:text-6xl font-bold leading-relaxed whitespace-pre-line">
                             Your digital content in a nutshell.
                         </div>
                     </div>
@@ -28,11 +28,11 @@ function LandingPage() {
                             <div class="flex flex-row items-center justify-between py-4 pl-2 bg-white shadow-2xl rounded-lg mx-auto text-center">
 
                                 <div class="w-full justify-center text-center flex flex-col md:flex-row space-x-1">
-                                    <div class="flex basis-1/4">
+                                    <div class="flex w-full justify-center mb-1 lg:mb-0 lg:basis-1/4">
                                         <h1 class="text-base text-grey-800 my-1">Register for the Beta Launch 🎉</h1>
                                     </div>
                                 
-                                    <form class="flex basis-3/4 text-center" action="#">
+                                    <form class="flex w-full lg:basis-3/4 text-center" action="#">
                                         <div class="pr-0 flex items-center w-full mx-4">
                                             <input type="email" placeholder="yourmail@example.com"
                                                 class="flex basis-8/12 text-base appearance-none rounded shadow p-3 text-grey-dark mr-2 focus:outline-none"/>
