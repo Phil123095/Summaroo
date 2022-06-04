@@ -6,12 +6,12 @@ function LandingPage() {
 
 
     return (
-    <div class="h-fit px-4 mt-2 lg:ml-4 lg:px-0 lg:mt-6 bg-neutral-100">
+    <div class="h-100 px-4 mt-2 lg:ml-4 lg:px-0 lg:mt-6 bg-neutral-100">
         <div class="w-100 flex flex-row">
             <div class="lg:ml-14 flex lg:basis-3/6 flex-col justify-center items-center">
                 <div class="flex flex-col content-center space-y-2 lg:space-y-14">
                     <div class="pr-4 pl-4 lg:pr-4 lg:pl-0">
-                        <div class="text-center lg:text-left text-3xl lg:text-6xl font-bold leading-relaxed whitespace-pre-line">
+                        <div class="text-center lg:text-left text-5xl lg:text-6xl font-bold leading-relaxed whitespace-pre-line">
                             Your digital content in a nutshell.
                         </div>
                     </div>
