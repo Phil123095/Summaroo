@@ -16,6 +16,16 @@ def processSummaryLog(data_in, connection):
 
     return
 
+def updateRatingLog(data_in, connection):
+    summary_ID = data_in['summaryID']
+    rating = data_in['rating']
+
+    sql_update = f"UPDATE summaroo_data.summary_request_reporting SET user_rating={rating} WHERE hash_ID='{summary_ID}'"
+    with connection.connect() as cur:
+        cur.execute(sql_update)
+
+    return
+
 
 def lambda_handler(event, context):
     if os.environ.get("AWS_EXECUTION_ENV") is None:
@@ -36,4 +46,6 @@ def lambda_handler(event, context):
     if action == 'SummaryRequestLog':
         processSummaryLog(data_in=data, connection=db_connection)
     elif action == 'SummaryRatingLog':
-        pass
+        updateRatingLog(data_in=data, connection=db_connection)
+
+    return
