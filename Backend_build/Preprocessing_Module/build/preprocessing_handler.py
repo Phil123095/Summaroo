@@ -55,19 +55,22 @@ def lambda_handler(event, context):
     except TypeError:
         message = event['body']
 
-    origin = event['headers']['origin']
+    try:
+        origin = event['headers']['origin']
+        if "summarooapp.com" in origin:
+            source = "live-webapp"
+        elif "localhost" in origin:
+            source = "webapp-testing"
+        else:
+            source = "direct-api-request"
+    except KeyError:
+        source = "direct-api-request"
 
     if os.environ.get("AWS_EXECUTION_ENV") is None:
         local = True
     else:
         local = False
 
-    if "summarooapp.com" in origin:
-        source = "live-webapp"
-    elif "localhost" in origin:
-        source = "webapp-testing"
-    else:
-        source = "api-request"
 
     try:
         content_format = message['format']
