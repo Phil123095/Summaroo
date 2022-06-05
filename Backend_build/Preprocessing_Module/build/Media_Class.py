@@ -12,16 +12,15 @@ nltk.data.path.append("/var/task/nltk_data")
 
 
 class Media:
-    def __init__(self, media, perc_reduction, source, format=None):
-        print(media)
+    def __init__(self, media, perc_reduction, source, media_format=None):
         self.request_source = source
         self.request_ID = None
         self.raw_media = media
         self.raw_text = None
         self.reduction_perc = float(perc_reduction)/100
 
-        if format:
-            self.media_format = format
+        if media_format:
+            self.media_format = media_format
         else:
             self.media_format = self.__determine_format()
 
@@ -146,7 +145,7 @@ class Media:
         :param full_text: Full text to clean
         :return:
         """
-        clean_text = sent_tokenize(self.raw_text)
+        clean_text = sent_tokenize(str(self.raw_text))
         fully_cleaned_text = [self.__sentence_cleaner(sentence) for sentence in clean_text]
         self.final_text_sentence_count = len(fully_cleaned_text)
         self.final_sentence_count_out = self.final_text_sentence_count * self.reduction_perc
@@ -205,7 +204,9 @@ class Media:
                 'user_rating': None
             }
         }
-        pass
+
+        print(DB_request_data)
+        return
 
 
 

@@ -4,34 +4,34 @@ import requests
 import datetime
 
 
-def recommend_model(media_content, force_model):
+def recommend_model(media_content, force_model=None):
     """
     Just a base skeleton of what the model recommendation function would look like. So everything below is an idea,
     not a final build.
+    :param force_model:
     :param media_content:
     :return:
     """
 
     models = {"LexRank": "https://bq5g5pjjc6fbzptimanr6v2gqu0tyydw.lambda-url.eu-central-1.on.aws/"}
 
-    if not force_model:
+    if force_model is None:
         if media_content.media_format == "text" or media_content.media_format == "pdf":
+            decision_factor = "Filtering"
             model_to_use = "LexRank"
             model_api_url = models[model_to_use]
-
-            decision_factor = "Filtering"
             return decision_factor, model_to_use, model_api_url
 
         elif media_content.media_format == "youtube":
+            decision_factor = "Filtering"
             model_to_use = "LexRank"
             model_api_url = models[model_to_use]
-
-            decision_factor = "Filtering"
             return decision_factor, model_to_use, model_api_url
+
     else:
+        decision_factor = "Filtering"
         model_to_use = force_model
-        model_api_url = models[force_model]
-        decision_factor = "Forced Model"
+        model_api_url = models[model_to_use]
         return decision_factor, model_to_use, model_api_url
 
 
@@ -48,7 +48,12 @@ def request_summarization(media_content, url_to_request):
 
 def lambda_handler(event, context):
     incoming_request_TS = datetime.datetime.now()
-    message = json.loads(event['body'])
+
+    try:
+        message = json.loads(event['body'])
+    except TypeError:
+        message = event['body']
+
     origin = event['headers']['origin']
 
     if "summarooapp.com" in origin:
@@ -60,20 +65,27 @@ def lambda_handler(event, context):
 
     try:
         content_format = message['format']
-        force_model = message['force_model']
+
     except KeyError:
         content_format = None
+
+    try:
+        force_model = message['force_model']
+    except KeyError:
         force_model = None
 
     content_to_summarise = message['full_text']
 
     percent_reduce = message['perc_length']
 
-    WorkingContent = Media(media=content_to_summarise, perc_reduction=percent_reduce, source=source, format=content_format)
+    WorkingContent = Media(media=content_to_summarise, perc_reduction=percent_reduce, source=source, media_format=content_format)
+
     WorkingContent.convert_and_clean_media()
 
-    decision_reason, model_recommendation, model_endpoint = recommend_model(media_content=WorkingContent,
-                                                                            force_model=force_model)
+    if force_model is not None:
+        decision_reason, model_recommendation, model_endpoint = recommend_model(media_content=WorkingContent, force_model=force_model)
+    else:
+        decision_reason, model_recommendation, model_endpoint = recommend_model(media_content=WorkingContent)
 
     WorkingContent.model_decision_factor = decision_reason
     WorkingContent.model_to_use = model_recommendation
