@@ -3,3 +3,4 @@ urllib3
 pdfminer.six
 requests
 nltk==3.7
+python-dotenv

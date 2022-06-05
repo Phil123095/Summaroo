@@ -6,8 +6,12 @@ from urllib.parse import urlparse
 from urllib.parse import parse_qs
 import urllib.request as urlq
 import io
+import datetime
+import dotenv
 from pdfminer.high_level import extract_pages
 from pdfminer.layout import LTTextContainer
+import requests
+import os
 nltk.data.path.append("/var/task/nltk_data")
 
 
@@ -155,14 +159,14 @@ class Media:
 
     def record_times(self, start, summary_request, summary_response, final_response):
 
-        self.incoming_request_time = start
-        self.summary_request_time = summary_request
-        self.summary_response_time = summary_response
-        self.final_response_time = final_response
+        self.incoming_request_time = datetime.datetime.strftime(start, "%Y-%m-%d %H:%M:%S.%f")
+        self.summary_request_time = datetime.datetime.strftime(summary_request, "%Y-%m-%d %H:%M:%S.%f")
+        self.summary_response_time = datetime.datetime.strftime(summary_response, "%Y-%m-%d %H:%M:%S.%f")
+        self.final_response_time = datetime.datetime.strftime(final_response, "%Y-%m-%d %H:%M:%S.%f")
 
-        self.time_to_preprocess = summary_request - start
-        self.time_to_summarise = summary_response - summary_request
-        self.total_time_to_process = final_response - start
+        self.time_to_preprocess = (summary_request - start).total_seconds()
+        self.time_to_summarise = (summary_response - summary_request).total_seconds()
+        self.total_time_to_process = (final_response - start).total_seconds()
         return
 
     def create_unique_ID(self):
@@ -173,39 +177,48 @@ class Media:
         return self.request_ID
 
 
-    def info_to_DB(self):
+    def info_to_DB(self, local):
         """
         Once all steps are done, write the metadata for the media object to the database for performance & tracking.
         :return:
         """
 
+        if local:
+            dotenv.load_dotenv()
+
         DB_request_data = {
             'action': 'SummaryRequestLog',
             'data': {
-                'hash_ID': self.request_ID,
-                'request_source': self.request_source,
-                'format': self.media_format,
-                'percent_reduce': self.reduction_perc,
-                'model': self.model_to_use,
-                'full_text_length_sentences': self.final_text_sentence_count,
-                # 'full_text_length_words': None,
-                # 'full_text_length_characters': None,
-                'full_text_raw': self.raw_text,
-                'full_text_processed': self.final_clean_text,
-                'final_summary': self.final_summary,
-                'final_summary_length': self.final_sentence_count_out,
-                'incoming_request_TS': self.incoming_request_time,
-                'summary_request_TS': self.summary_request_time,
-                'summary_module_response_TS': self.summary_response_time,
-                'final_response_TS': self.final_response_time,
-                'total_time_elapsed': self.total_time_to_process,
-                'time_to_preprocess': self.time_to_preprocess,
-                'time_to_summarize': self.time_to_summarise,
-                'user_rating': None
+                'general_data': {
+                    'hash_ID': self.request_ID,
+                    'request_source': self.request_source,
+                    'format': self.media_format,
+                    'percent_reduce': self.reduction_perc,
+                    'model': self.model_to_use,
+                    'full_text_length_sentences': self.final_text_sentence_count,
+                    'final_summary_length': self.final_sentence_count_out,
+                    'incoming_request_TS': self.incoming_request_time,
+                    'summary_request_TS': self.summary_request_time,
+                    'summary_module_response_TS': self.summary_response_time,
+                    'final_response_TS': self.final_response_time,
+                    'total_time_elapsed': self.total_time_to_process,
+                    'time_to_preprocess': self.time_to_preprocess,
+                    'time_to_summarize': self.time_to_summarise,
+                    'user_rating': None
+                },
+                'text_information': {
+                    'hash_ID': self.request_ID,
+                    'full_text_raw': self.raw_text,
+                    'full_text_processed': self.final_clean_text,
+                    'final_summary': self.final_summary
+                }
             }
         }
 
-        print(DB_request_data)
+        data_sink_url = os.environ['DATA_SINK_URL']
+        response = requests.post(data_sink_url, json=DB_request_data)
+        print(response)
+
         return
 
 

@@ -15,9 +15,9 @@ services:
       dockerfile: Preprocessing_Module/build/Dockerfile
     image: preprocessing-module:latest
 
-  testing-module3:
+  data-sink-module-final:
     platform: linux/amd64
     build:
       context: .
-      dockerfile: Preprocessing_Module/build/Dockerfile
-    image: testing-module3:latest
+      dockerfile: DataSink/Dockerfile
+    image: data-sink-module-final:latest

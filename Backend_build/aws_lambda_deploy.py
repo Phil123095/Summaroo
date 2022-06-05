@@ -12,6 +12,7 @@ existence and that Docker is running on the host machine.
 """
 
 import base64
+import time
 import json
 import os
 import dotenv
@@ -26,7 +27,7 @@ ECS_SERVICE = 'py-docker-aws-example-project-service'
 LOCAL_REPOSITORY = 'py-docker-aws-example-project:latest'
 
 
-def create_or_get_lambda_role(role_name):
+def create_or_get_lambda_role(role_name, service_name):
     iam_client = boto3.client('iam')
 
     try:
@@ -46,17 +47,51 @@ def create_or_get_lambda_role(role_name):
             ]
         }
 
+        access_policy = {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Action": "logs:CreateLogGroup",
+                    "Resource": "arn:aws:logs:eu-central-1:355622878315:*"
+                },
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "logs:CreateLogStream",
+                        "logs:PutLogEvents"
+                    ],
+                    "Resource": [
+                        f"arn:aws:logs:eu-central-1:355622878315:log-group:/aws/lambda/{service_name}:*"
+                    ]
+                }
+            ]
+        }
+
         response = iam_client.create_role(
             RoleName=role_name,
             AssumeRolePolicyDocument=json.dumps(role_policy),
         )
+
+        policy_response = iam_client.create_policy(
+            PolicyName=service_name + "_policy",
+            PolicyDocument=json.dumps(access_policy)
+        )
+        print(policy_response)
+        response_attach = iam_client.attach_role_policy(
+            PolicyArn=policy_response['Policy']['Arn'],
+            RoleName=role_name
+        )
+        print(response_attach)
         role = iam_client.get_role(RoleName=role_name)
+
+    time.sleep(10)
 
     return role
 
 
 def create_lambda_function(repository_URI, service_name, create_function_url=False):
-    role = create_or_get_lambda_role(role_name='LambdaBasicExecution')
+    role = create_or_get_lambda_role(role_name=service_name, service_name=service_name)
 
     lambda_client = boto3.client('lambda')
 
@@ -178,4 +213,4 @@ def deployment_manager(service_name, create_function_url):
 
 
 if __name__ == '__main__':
-    deployment_manager(service_name="testing-module3", create_function_url=True)
+    deployment_manager(service_name="data-sink-module-final2", create_function_url=True)

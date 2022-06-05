@@ -2,6 +2,7 @@ import json
 from Media_Class import Media
 import requests
 import datetime
+import os
 
 
 def recommend_model(media_content, force_model=None):
@@ -56,6 +57,11 @@ def lambda_handler(event, context):
 
     origin = event['headers']['origin']
 
+    if os.environ.get("AWS_EXECUTION_ENV") is None:
+        local = True
+    else:
+        local = False
+
     if "summarooapp.com" in origin:
         source = "live-webapp"
     elif "localhost" in origin:
@@ -103,6 +109,6 @@ def lambda_handler(event, context):
 
     final_summary_out['request_id'] = WorkingContent.create_unique_ID()
 
-    WorkingContent.info_to_DB()
+    WorkingContent.info_to_DB(local=local)
 
     return final_summary_out
