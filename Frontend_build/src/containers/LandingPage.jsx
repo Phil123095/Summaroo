@@ -51,19 +51,19 @@ function LandingPage() {
                                         <h1 class="text-base text-grey-800 my-1">Register for the Beta Launch 🎉</h1>
                                     </div>
                                 
-                                    <form class="flex w-full lg:basis-3/4 text-center" action="#">
+                                    <div class="flex w-full lg:basis-3/4 text-center">
                                         <div class="pr-0 flex items-center w-full mx-4">
                                             <input onChange={(e) => onFormChange(e)} type="email" placeholder="yourmail@example.com"
                                                 class="flex basis-8/12 text-base appearance-none rounded shadow p-3 text-grey-dark mr-2 focus:outline-none"/>
                                             <button type="submit"
-                                                onSubmit={saveEmail}
+                                                onClick={saveEmail}
                                                 class="basis-4/12 ml-1 bg-green-primary bg-opacity-90 
                                                 border-green-primary border-opacity-80 hover:bg-green-primary  
                                                 text-white text-center text-base font-semibold rounded-md shadow-md p-3">
                                                     Register
                                             </button>
                                         </div>
-                                    </form>
+                                    </div>
                          
                                 </div>
 

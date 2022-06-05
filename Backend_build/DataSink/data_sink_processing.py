@@ -25,8 +25,7 @@ def updateRatingLog(data_in, connection):
     rating = data_in['rating']
 
     sql_update = f"UPDATE summaroo_data.summary_request_reporting SET user_rating={rating} WHERE hash_ID='{summary_ID}'"
-    with connection.connect() as cur:
-        cur.execute(sql_update)
+    connection.execute(sql_update)
 
     print(f"Summary Rating for {data_in['summaryID']} done")
 
