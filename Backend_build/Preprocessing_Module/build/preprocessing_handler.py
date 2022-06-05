@@ -48,7 +48,7 @@ def request_summarization(media_content, url_to_request):
 
 def lambda_handler(event, context):
     incoming_request_TS = datetime.datetime.now()
-    full_message = json.loads(event)
+    full_message = json.loads(str(event))
     print(full_message)
     message = json.loads(event['body'])
 
