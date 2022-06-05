@@ -14,7 +14,7 @@ export default function SummaryInputChoices(props) {
 
     const handleChange = (selectedValue) => {
         setMediaType(selectedValue)
-        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+
         ((clearTextAllowed) ? clearText : null);
     };
 
