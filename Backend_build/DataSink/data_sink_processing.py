@@ -21,11 +21,20 @@ def processSummaryLog(data_in, connection):
     return
 
 def updateRatingLog(data_in, connection):
+    """data_trial = {'hash_ID': data_in['summaryID'], 'user_rating': data_in['rating']}
+    general_df = pd.DataFrame([data_trial])
+
+
+    general_df = general_df.set_index(['hash_ID'])
+    upsert(con=connection,
+           df=general_df,
+           table_name='summar',
+           if_row_exists='update')"""
     print("Summary Rating Started")
     summary_ID = data_in['summaryID']
     rating = data_in['rating']
 
-    sql_update = f"UPDATE summaroo_data.summary_request_reporting SET user_rating={rating} WHERE hash_ID='{summary_ID}'"
+    sql_update = f"UPDATE summary_request_reporting SET user_rating={rating} WHERE hash_ID='{summary_ID}'"
 
     print(sql_update)
     connection.execute(text(sql_update))
