@@ -43,6 +43,7 @@ export default function SummaryPage() {
 
     const clearText = () => {
         console.log("clearing text")
+        setSelectedFile(null)
         setText('');
         setSummOut('');
         setSummaryLoaded(false);
