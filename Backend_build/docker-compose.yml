@@ -21,3 +21,10 @@ services:
       context: .
       dockerfile: DataSink/Dockerfile
     image: data-sink-module-final:latest
+
+  lazy_data_sink_preprocessor:
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: DataSink_LazyLambda/Dockerfile
+    image: lazy_data_sink_preprocessor:latest

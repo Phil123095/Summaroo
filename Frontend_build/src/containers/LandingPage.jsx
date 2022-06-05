@@ -1,9 +1,28 @@
+import {  useState } from "react";
 let landingViz = require("../assets/SummarooPic.png")
 
 /*import {ReactComponent as ReactLogo} from "../assets/SummarooLogo.svg"*/
 
 function LandingPage() {
+    const [emailRegistered, setEmail] = useState(null);
 
+    const onFormChange = (e) => {
+        e.preventDefault()
+        setEmail(e.target.value)
+    }
+
+    const saveEmail = () => {
+        const params = {
+            method: 'POST',
+            body: JSON.stringify({
+            action : 'EmailRegister',
+            data: {email: emailRegistered}
+            })
+        }
+        fetch('https://hiz7c7c2uqwvzyz7ceuqklvmnu0nsxcx.lambda-url.eu-central-1.on.aws/', params)
+            .catch(err => console.log(err));
+
+    }
 
     return (
     <div class="h-100 px-4 mt-2 lg:ml-4 lg:px-0 lg:mt-6 bg-neutral-100">
@@ -34,9 +53,10 @@ function LandingPage() {
                                 
                                     <form class="flex w-full lg:basis-3/4 text-center" action="#">
                                         <div class="pr-0 flex items-center w-full mx-4">
-                                            <input type="email" placeholder="yourmail@example.com"
+                                            <input onChange={(e) => onFormChange(e)} type="email" placeholder="yourmail@example.com"
                                                 class="flex basis-8/12 text-base appearance-none rounded shadow p-3 text-grey-dark mr-2 focus:outline-none"/>
                                             <button type="submit"
+                                                onSubmit={saveEmail}
                                                 class="basis-4/12 ml-1 bg-green-primary bg-opacity-90 
                                                 border-green-primary border-opacity-80 hover:bg-green-primary  
                                                 text-white text-center text-base font-semibold rounded-md shadow-md p-3">

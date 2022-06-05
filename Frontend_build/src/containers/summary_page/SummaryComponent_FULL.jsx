@@ -136,9 +136,11 @@ export default function SummaryPage() {
     return (
         <div class="h-fit mt-4 lg:mt-2 bg-neutral-100">
             <SummaryInputChoices media_type={media_type} setMediaType={setMediaType} clearText={clearText} clearTextAllowed={(!isLoading && popConfetti) ? true : false}/>
-            <div class="w-100 grid grid-cols-1 md:grid-cols-8 md:grid-rows-4 md:gap-4 md:mx-14">
+            <div class="w-100 grid grid-cols-1 md:grid-cols-8 md:gap-4 md:mx-14">
                 <SummaryInputs media_type={media_type} setMediaType={setMediaType} setText={setText} clearTextAllowed={(!isLoading && popConfetti) ? true : false} clearText={clearText} text_to_summarize={text_to_summarize} setSelectedFile={setSelectedFile} setSummOut={setSummOut} setSummaryLoaded={setSummaryLoaded} summaryLoaded={summaryLoaded}/>
                 <OutputSummary summarised_text={summary_out} isLoading={isLoading} showRating={(!isLoading && popConfetti) ? true : false} summaryLoaded={summaryLoaded} summaryRequestID={summaryID}/>
+                
+                {((media_type === "pdf" || media_type === "youtube") && (!isLoading && popConfetti)) ? <div class="flex col-span-8 h-10"/> : null}
                 <SummaryRequestOptions setSummPerc={setSummPerc} summaryTrigger={triggerSumm} isLoading={isLoading}/>
                 <Realistic indicator={(!isLoading && popConfetti) ? true : false}/>
             </div>

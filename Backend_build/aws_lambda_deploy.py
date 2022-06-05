@@ -213,4 +213,4 @@ def deployment_manager(service_name, create_function_url):
 
 
 if __name__ == '__main__':
-    deployment_manager(service_name="data-sink-module-final2", create_function_url=True)
+    deployment_manager(service_name="lazy_data_sink_preprocessor", create_function_url=True)
