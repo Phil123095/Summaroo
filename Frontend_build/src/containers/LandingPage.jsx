@@ -5,6 +5,7 @@ let landingViz = require("../assets/SummarooPic.png")
 
 function LandingPage() {
     const [emailRegistered, setEmail] = useState(null);
+    const [emailError, setEmailError] = useState(null);
 
     const onFormChange = (e) => {
         e.preventDefault()
@@ -12,15 +13,25 @@ function LandingPage() {
     }
 
     const saveEmail = () => {
-        const params = {
-            method: 'POST',
-            body: JSON.stringify({
-            action : 'EmailRegister',
-            data: {email: emailRegistered}
-            })
+
+        let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        
+        if ( re.test(emailRegistered) ) {
+            setEmailError(null)
+            const params = {
+                method: 'POST',
+                body: JSON.stringify({
+                action : 'EmailRegister',
+                data: {email: emailRegistered}
+                })
+            }
+            fetch('https://hiz7c7c2uqwvzyz7ceuqklvmnu0nsxcx.lambda-url.eu-central-1.on.aws/', params)
+                .catch(err => console.log(err));
+        } else {
+            console.log("failed")
+            setEmail(null);
+            setEmailError("Haha nice try. Give us a proper email.")
         }
-        fetch('https://hiz7c7c2uqwvzyz7ceuqklvmnu0nsxcx.lambda-url.eu-central-1.on.aws/', params)
-            .catch(err => console.log(err));
 
     }
 
@@ -44,7 +55,7 @@ function LandingPage() {
                             </a>
                         </button>
                         <div class="bg-white w-full shadow-2xl rounded-lg overflow-hidden">
-                            <div class="flex flex-row items-center justify-between py-4 pl-2 bg-white shadow-xl rounded-lg mx-auto text-center">
+                            <div class="flex flex-row items-center justify-between py-4 pl-2 rounded-lg mx-auto text-center">
 
                                 <div class="w-full justify-center text-center flex flex-col md:flex-row space-x-1">
                                     <div class="flex w-full justify-center mb-1 lg:mb-0 lg:basis-1/4">
@@ -68,6 +79,7 @@ function LandingPage() {
                                 </div>
 
                             </div>
+                            <div class="text-center">{emailError ? <p class="text-xs">{emailError}</p> : null}</div>
                         </div>
                     </div>
                 </div>

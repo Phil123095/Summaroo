@@ -15,7 +15,7 @@ def processSummaryLog(data_in, connection):
 
     general_df.to_sql('summary_request_reporting', connection, if_exists='append', index=False)
     text_df.to_sql('text_content', connection, if_exists='append', index=False)
-    print(f"Summary Logging for {data_in['hash_ID']} done")
+    print(f"Summary Logging for {general_data['hash_ID']} done")
 
     return
 
