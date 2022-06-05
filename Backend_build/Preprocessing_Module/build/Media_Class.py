@@ -1,4 +1,5 @@
 from youtube_transcript_api import YouTubeTranscriptApi
+import nltk
 from nltk import sent_tokenize
 import hashlib
 from urllib.parse import urlparse
@@ -7,11 +8,13 @@ import urllib.request as urlq
 import io
 from pdfminer.high_level import extract_pages
 from pdfminer.layout import LTTextContainer
+nltk.data.path.append("/var/task/nltk_data")
 
 
 class Media:
-    def __init__(self, media, perc_reduction, format=None):
+    def __init__(self, media, perc_reduction, source, format=None):
         print(media)
+        self.request_source = source
         self.request_ID = None
         self.raw_media = media
         self.raw_text = None
@@ -181,6 +184,7 @@ class Media:
             'action': 'SummaryRequestLog',
             'data': {
                 'hash_ID': self.request_ID,
+                'request_source': self.request_source,
                 'format': self.media_format,
                 'percent_reduce': self.reduction_perc,
                 'model': self.model_to_use,

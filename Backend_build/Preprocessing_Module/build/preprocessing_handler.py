@@ -50,6 +50,14 @@ def lambda_handler(event, context):
     incoming_request_TS = datetime.datetime.now()
     print(event)
     message = json.loads(event['body'])
+    origin = json.loads(event['origin'])
+
+    if "summarooapp.com" in origin:
+        source = "live-webapp"
+    elif "localhost" in origin:
+        source = "webapp-testing"
+    else:
+        source = "api-request"
 
     try:
         content_format = message['format']
@@ -62,7 +70,7 @@ def lambda_handler(event, context):
 
     percent_reduce = message['perc_length']
 
-    WorkingContent = Media(media=content_to_summarise, perc_reduction=percent_reduce, format=content_format)
+    WorkingContent = Media(media=content_to_summarise, perc_reduction=percent_reduce, source=source, format=content_format)
     WorkingContent.convert_and_clean_media()
 
     decision_reason, model_recommendation, model_endpoint = recommend_model(media_content=WorkingContent,
