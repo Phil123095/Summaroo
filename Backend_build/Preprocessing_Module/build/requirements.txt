@@ -2,3 +2,4 @@ youtube_transcript_api
 urllib3
 pdfminer.six
 requests
+nltk==3.7

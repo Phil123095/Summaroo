@@ -1,5 +1,6 @@
-import time
 from youtube_transcript_api import YouTubeTranscriptApi
+from nltk import sent_tokenize
+import hashlib
 from urllib.parse import urlparse
 from urllib.parse import parse_qs
 import urllib.request as urlq
@@ -10,11 +11,11 @@ from pdfminer.layout import LTTextContainer
 
 class Media:
     def __init__(self, media, perc_reduction, format=None):
-        self.request_time = time.time()
         print(media)
+        self.request_ID = None
         self.raw_media = media
         self.raw_text = None
-        self.reduction_perc = perc_reduction
+        self.reduction_perc = float(perc_reduction)/100
 
         if format:
             self.media_format = format
@@ -22,6 +23,8 @@ class Media:
             self.media_format = self.__determine_format()
 
         # Clean text in separate function call
+        self.final_text_sentence_count = None
+        self.final_sentence_count_out = None
         self.final_clean_text = None
 
         # Assigned by model router module (i.e. based on media attributes, will determine best summarization model).
@@ -35,8 +38,13 @@ class Media:
         self.model_params = None
 
         # General reporting info, assigned at end of processing.
+        self.incoming_request_time = None
+        self.summary_request_time = None
+        self.summary_response_time = None
+        self.final_response_time = None
         self.time_to_preprocess = None
         self.time_to_summarise = None
+        self.total_time_to_process = None
 
     def __determine_format(self):
 
@@ -58,6 +66,8 @@ class Media:
             self.__extract_YT_transcript()
         elif self.media_format == "pdf":
             self.__extract_PDF_text()
+
+        self.__clean_text()
         return
 
     def __basic_text_handle(self):
@@ -105,7 +115,6 @@ class Media:
         # prints the result
 
     def __extract_PDF_text(self):
-        print(self.raw_media)
         final_string = ''
         url_to_use = self.raw_media
         for page_layout in extract_pages(self.pdf_getter(url=url_to_use), caching=True):
@@ -119,22 +128,80 @@ class Media:
         '''
         retrives pdf from url as bytes object
         '''
-        print(url)
-        print(self.raw_media)
         open = urlq.urlopen(url).read()
         return io.BytesIO(open)
 
+    def __sentence_cleaner(self, sentence):
+        sentence = sentence.replace("\n", "")
+        sentence2 = " ".join(sentence.split())
+        sentence3 = sentence2.replace("-", "")
+        return sentence3
 
-    def clean_text(self):
+    def __clean_text(self):
         """
         Once media is transformed to text, this should be run to clean & prep the text for final summarization.
+        :param full_text: Full text to clean
         :return:
         """
-        pass
+        clean_text = sent_tokenize(self.raw_text)
+        fully_cleaned_text = [self.__sentence_cleaner(sentence) for sentence in clean_text]
+        self.final_text_sentence_count = len(fully_cleaned_text)
+        self.final_sentence_count_out = self.final_text_sentence_count * self.reduction_perc
+        self.final_clean_text = ' '.join(clean_text)
+
+        return
+
+    def record_times(self, start, summary_request, summary_response, final_response):
+
+        self.incoming_request_time = start
+        self.summary_request_time = summary_request
+        self.summary_response_time = summary_response
+        self.final_response_time = final_response
+
+        self.time_to_preprocess = summary_request - start
+        self.time_to_summarise = summary_response - summary_request
+        self.total_time_to_process = final_response - start
+        return
+
+    def create_unique_ID(self):
+        combined_str = str(self.media_format) + str(self.reduction_perc) + str(self.incoming_request_time) + str(
+            self.summary_response_time)
+
+        self.request_ID = hashlib.sha1(combined_str.encode('utf-8')).hexdigest()
+        return self.request_ID
+
 
     def info_to_DB(self):
         """
         Once all steps are done, write the metadata for the media object to the database for performance & tracking.
         :return:
         """
+
+        DB_request_data = {
+            'action': 'SummaryRequestLog',
+            'data': {
+                'hash_ID': self.request_ID,
+                'format': self.media_format,
+                'percent_reduce': self.reduction_perc,
+                'model': self.model_to_use,
+                'full_text_length_sentences': self.final_text_sentence_count,
+                # 'full_text_length_words': None,
+                # 'full_text_length_characters': None,
+                'full_text_raw': self.raw_text,
+                'full_text_processed': self.final_clean_text,
+                'final_summary': self.final_summary,
+                'final_summary_length': self.final_sentence_count_out,
+                'incoming_request_TS': self.incoming_request_time,
+                'summary_request_TS': self.summary_request_time,
+                'summary_module_response_TS': self.summary_response_time,
+                'final_response_TS': self.final_response_time,
+                'total_time_elapsed': self.total_time_to_process,
+                'time_to_preprocess': self.time_to_preprocess,
+                'time_to_summarize': self.time_to_summarise,
+                'user_rating': None
+            }
+        }
+        pass
+
+
 
