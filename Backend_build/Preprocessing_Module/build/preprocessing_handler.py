@@ -50,7 +50,7 @@ def lambda_handler(event, context):
     incoming_request_TS = datetime.datetime.now()
     print(event)
     message = json.loads(event['body'])
-    origin = json.loads(event['origin'])
+    origin = json.loads(event['headers']['origin'])
 
     if "summarooapp.com" in origin:
         source = "live-webapp"
