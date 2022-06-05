@@ -1,19 +1,57 @@
-
-/*let loadingGif = require("../../assets/LOADING.gif")*/
-
-/*let punchingGif = require("../../assets/PUNCHGIF.gif")
-let failgif = require("../../assets/FAILGIF.gif")
-let majesticgif = require("../../assets/MAJESTIC GIF.gif")
-
-let array = [loadingGif, punchingGif, failgif, majesticgif]*/
 import { useState } from 'react'
 import { Rating } from 'react-simple-star-rating'
+var AWS = require('aws-sdk');
+// Set the region 
+AWS.config.update({
+    region: 'eu-central-1',
+    accessKeyId: process.env.REACT_APP_AWS_SQS_KEY,
+    secretAccessKey: process.env.REACT_APP_AWS_SQS_SECRET
+})
+
+// Create an SQS service object
+var sqs = new AWS.SQS({apiVersion: 'latest'});
+
+
+
+
 export default function OutputSummary(props) {
     const [rating, setRating] = useState(0)
     const handleRating = (rate) => {
+        console.log(rate, props.summaryRequestID)
         setRating(rate)
+        sendRating(rate, props.summaryRequestID)
         // other logic
-      }
+    }
+
+    const sendRating = (rating, summaryID) => {
+
+        var params = {
+            // Remove DelaySeconds parameter and value for FIFO queues
+           DelaySeconds: 0,
+           MessageBody: JSON.stringify({
+            action : 'SummaryRatingLog',
+            data: {summaryID: summaryID, rating: rating}
+            }),
+            MessageGroupId: 'trial',
+           // MessageDeduplicationId: "TheWhistler",  // Required for FIFO queues
+           // MessageGroupId: "Group1",  // Required for FIFO queues
+           QueueUrl: process.env.REACT_APP_AWS_SQS_URL
+         };
+
+
+        console.log(rating, summaryID)
+
+        sqs.sendMessage(params, function(err, data) {
+            if (err) {
+                console.log("Error", err);
+            } else {
+                console.log("Success", data.MessageId);
+            }
+            });
+
+    }
+
+    
     /*const summary_out = props.summarised_text*/
 
     function NewlineText(props) {

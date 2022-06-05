@@ -35,6 +35,7 @@ export default function SummaryPage() {
     const [media_type, setMediaType] = useState('text');
     const [summaryLoaded, setSummaryLoaded] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
+    const [summaryID, setSummaryID] = useState(null);
     
     const triggerSumm = (e) => {
         e.preventDefault()
@@ -44,6 +45,7 @@ export default function SummaryPage() {
     const clearText = () => {
         console.log("clearing text")
         setSelectedFile(null)
+        setSummaryID(null)
         setText('');
         setSummOut('');
         setSummaryLoaded(false);
@@ -65,7 +67,7 @@ export default function SummaryPage() {
     
                 fetch('https://4bovfvjtrbw7n2szd6a4lzrtwi0gvzhs.lambda-url.eu-central-1.on.aws/', requestOptions)
                     .then(response => response.json())
-                    .then(response => setSummOut(response.final_summary))
+                    .then(response => {setSummOut(response.final_summary); setSummaryID(response.request_id) })
                     .then(setSummaryLoaded(true))
                     .then(response => resolve("done"))
                     .catch(err => reject(err));
@@ -136,7 +138,7 @@ export default function SummaryPage() {
             <SummaryInputChoices media_type={media_type} setMediaType={setMediaType} clearText={clearText} clearTextAllowed={(!isLoading && popConfetti) ? true : false}/>
             <div class="w-100 grid grid-cols-1 md:grid-cols-8 md:grid-rows-4 md:gap-4 md:mx-14">
                 <SummaryInputs media_type={media_type} setMediaType={setMediaType} setText={setText} clearTextAllowed={(!isLoading && popConfetti) ? true : false} clearText={clearText} text_to_summarize={text_to_summarize} setSelectedFile={setSelectedFile} setSummOut={setSummOut} setSummaryLoaded={setSummaryLoaded} summaryLoaded={summaryLoaded}/>
-                <OutputSummary summarised_text={summary_out} isLoading={isLoading} showRating={(!isLoading && popConfetti) ? true : false} summaryLoaded={summaryLoaded}/>
+                <OutputSummary summarised_text={summary_out} isLoading={isLoading} showRating={(!isLoading && popConfetti) ? true : false} summaryLoaded={summaryLoaded} summaryRequestID={summaryID}/>
                 <SummaryRequestOptions setSummPerc={setSummPerc} summaryTrigger={triggerSumm} isLoading={isLoading}/>
                 <Realistic indicator={(!isLoading && popConfetti) ? true : false}/>
             </div>

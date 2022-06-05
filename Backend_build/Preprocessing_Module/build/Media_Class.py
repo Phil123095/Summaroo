@@ -12,8 +12,33 @@ from pdfminer.high_level import extract_pages
 from pdfminer.layout import LTTextContainer
 import requests
 import os
+import boto3
+import json
 nltk.data.path.append("/var/task/nltk_data")
 
+
+def send_message(message, local):
+    if local:
+        dotenv.load_dotenv()
+
+    aws_sqs_key = os.environ['AWS_SQS_KEY']
+    aws_sqs_secret = os.environ['AWS_SQS_SECRET']
+    aws_sqs_url = os.environ['AWS_SQS_URL']
+
+    sqs_client = boto3.client("sqs", aws_access_key_id=aws_sqs_key,
+                              aws_secret_access_key=aws_sqs_secret,
+                              region_name="eu-central-1")
+    sqs_queue_url = aws_sqs_url
+    response = sqs_client.send_message(
+        QueueUrl=sqs_queue_url,
+        MessageBody=json.dumps(message),
+        MessageGroupId='trial'
+    )
+    if response:
+        print("Submitted to SQS")
+    else:
+        print("Error")
+    return
 
 class Media:
     def __init__(self, media, perc_reduction, source, media_format=None):
@@ -176,7 +201,6 @@ class Media:
         self.request_ID = hashlib.sha1(combined_str.encode('utf-8')).hexdigest()
         return self.request_ID
 
-
     def info_to_DB(self, local):
         """
         Once all steps are done, write the metadata for the media object to the database for performance & tracking.
@@ -215,9 +239,9 @@ class Media:
             }
         }
 
-        data_sink_url = os.environ['DATA_SINK_URL']
-        response = requests.post(data_sink_url, json=DB_request_data)
-        print(response)
+        #data_sink_url = os.environ['DATA_SINK_URL']
+        #response = requests.post(data_sink_url, json=DB_request_data)
+        send_message(message=DB_request_data, local=True)
 
         return
 

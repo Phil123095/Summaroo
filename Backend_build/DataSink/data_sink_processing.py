@@ -33,19 +33,20 @@ def lambda_handler(event, context):
     else:
         local = False
 
-    try:
-        message = json.loads(event['body'])
-    except KeyError:
-        message = event
+    for message_queue in event['Records']:
+        try:
+            message = json.loads(message_queue['body'])
+        except KeyError:
+            message = event
 
-    action = message['action']
-    data = message['data']
+        action = message['action']
+        data = message['data']
 
-    db_connection = get_db_connections(local=local)
+        db_connection = get_db_connections(local=local)
 
-    if action == 'SummaryRequestLog':
-        processSummaryLog(data_in=data, connection=db_connection)
-    elif action == 'SummaryRatingLog':
-        updateRatingLog(data_in=data, connection=db_connection)
+        if action == 'SummaryRequestLog':
+            processSummaryLog(data_in=data, connection=db_connection)
+        elif action == 'SummaryRatingLog':
+            updateRatingLog(data_in=data, connection=db_connection)
 
     return
