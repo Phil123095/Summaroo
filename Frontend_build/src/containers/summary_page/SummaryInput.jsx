@@ -23,7 +23,7 @@ export default function SummaryInputs(props) {
                     </div>
                     <div class="border border-slate-200 rounded-lg">
                         <TextField
-                            class="m-2 mb-4 pb-4 h-96"
+                            class="m-2 mb-4 pb-4 h-96 overflow-y-scroll"
                             id="multiline-static"
                             variant="standard"
                             fullWidth
