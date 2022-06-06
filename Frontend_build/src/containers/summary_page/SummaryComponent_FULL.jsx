@@ -26,7 +26,8 @@ const myBucket = new AWS.S3({
 window.Buffer = window.Buffer || require("buffer").Buffer;
 
 
-export default function SummaryPage() {
+export default function SummaryPage(props) {
+    const mobile_ind = props.mobile_ind;
     const { trackEvent } = useTracking();
     const cookies = new Cookies();
     const session_identifier = cookies.get('session_identifier');
@@ -108,6 +109,7 @@ export default function SummaryPage() {
             trackEvent({'persistent_user_id': persistent_user_identifier, 
                 'session_id': session_identifier,
                 'timestamp': Date.now(),
+                'device': mobile_ind,
                 'event_type': 'summary_request',
                 'page': 'summary_page'})
             console.log("Request is for:", cookies.get('session_identifier'), cookies.get('persistent_user_identifier'))

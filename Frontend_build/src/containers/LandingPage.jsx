@@ -6,7 +6,8 @@ let landingViz = require("../assets/SummarooPic.png")
 
 /*import {ReactComponent as ReactLogo} from "../assets/SummarooLogo.svg"*/
 
-function LandingPage() {
+function LandingPage(props) {
+    const mobile_ind = props.mobile_ind;
     const cookies = new Cookies();
     const session_identifier = cookies.get('session_identifier');
     const persistent_user_identifier = cookies.get('persistent_user_identifier');
@@ -18,10 +19,11 @@ function LandingPage() {
         trackEvent({'persistent_user_id': persistent_user_identifier, 
                 'session_id': session_identifier,
                 'timestamp': Date.now(),
+                'device': mobile_ind,
                 'event_type': 'page_view',
                 'page': 'landing_page'})
 
-    }, [persistent_user_identifier, session_identifier, trackEvent])
+    }, [persistent_user_identifier, session_identifier, trackEvent, mobile_ind])
 
     const onFormChange = (e) => {
         e.preventDefault()
@@ -32,6 +34,7 @@ function LandingPage() {
         trackEvent({'persistent_user_id': persistent_user_identifier, 
                 'session_id': session_identifier,
                 'timestamp': Date.now(),
+                'device': mobile_ind,
                 'event_type': 'email_submit',
                 'page': 'landing_page'})
 
@@ -75,6 +78,7 @@ function LandingPage() {
                             <a href="/summarize" onClick={() => trackEvent({'persistent_user_id': persistent_user_identifier, 
                                             'session_id': session_identifier,
                                             'timestamp': Date.now(),
+                                            'device': mobile_ind,
                                             'event_type': 'summary_redirect_click',
                                             'page': 'landing_page'})} 
                                 class="inline-block my-4 mx-2 align-center text-white text-xl rounded hover:no-underline">

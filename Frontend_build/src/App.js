@@ -2,8 +2,9 @@ import './App.css';
 /*import Router from "./Routes";*/
 import Cookies from 'universal-cookie';
 import { v4 as uuidv4 } from 'uuid';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import track from 'react-tracking';
+import { isMobile } from "react-device-detect";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import HeaderBar2 from "./containers/general/HeaderBar2";
 import NotFound from "./containers/general/NotFound";
@@ -13,7 +14,13 @@ import KangarooGenerator from "./containers/summary_page_lolz/Kangaroos";
 import LandingPage from "./containers/LandingPage";
 
 const App = () => {
+
+  const [mobile_ind, setMobile_ind] = useState('');
+
   useEffect(() => {
+    if(isMobile){setMobile_ind("mobile")} else {setMobile_ind("desktop")}
+
+
     const cookies = new Cookies();
 
     const setCookies = () => {
@@ -32,7 +39,7 @@ const App = () => {
       setCookies()
     }
     console.log(cookies.get('session_identifier'), cookies.get('persistent_user_identifier'))
-  }, [])
+  }, [mobile_ind])
 
 
   return (
@@ -41,8 +48,8 @@ const App = () => {
         <HeaderBar2/>
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<LandingPage/>} />
-                <Route path="/summarize" element={<SummaryPage/>}/>
+                <Route path="/" element={<LandingPage mobile_ind={mobile_ind}/>} />
+                <Route path="/summarize" element={<SummaryPage mobile_ind={mobile_ind}/>}/>
                 <Route path="/fun-version" element={<SummaryPagelolz/>}/>
                 <Route path="/kangaroos" element={<KangarooGenerator/>}/>
                 <Route path="*" element={<NotFound/>}/>
