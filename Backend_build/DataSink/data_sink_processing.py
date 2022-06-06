@@ -54,6 +54,19 @@ def addEmailBeta(data, connection):
     return
 
 
+def userTracking(data, connection):
+    time_format = pd.to_datetime(int(data['timestamp']), utc=True, unit='ms')
+
+    data['timestamp'] = datetime.datetime.strftime(time_format, "%Y-%m-%d %H:%M:%S.%f")
+
+    user_activity = pd.DataFrame([data])
+    user_activity.to_sql('summary_request_reporting', connection, if_exists='append', index=False)
+
+    print(f"Summary Logging for user_tracking done")
+
+    return
+
+
 def lambda_handler(event, context):
     if os.environ.get("AWS_EXECUTION_ENV") is None:
         local = True
@@ -77,5 +90,7 @@ def lambda_handler(event, context):
             updateRatingLog(data_in=data, connection=db_connection)
         elif action == 'EmailRegister':
             addEmailBeta(data=data, connection=db_connection)
+        elif action == 'UserTracking':
+            userTracking(data=data, connection=db_connection)
 
     return

@@ -8,7 +8,7 @@ function HeaderBar2() {
                 <div class="flex lg:w-fit flex-grow justify-center lg:justify-end">
                     <div class="flex w-full lg:w-fit text-sm justify-center space-x-2 lg:justify-end lg:mr-6 lg:px-2 hover:no-underline">
                         <button class="rounded-lg w-24 my-2 mx-2 bg-green-primary bg-opacity-90">
-                            <a href="/fun-version" class="inline-block text-center py-2 align-center text-white text-base rounded hover:no-underline">
+                            <a href="/summarize" class="inline-block text-center py-2 align-center text-white text-base rounded hover:no-underline">
                                 Sign Up
                             </a>
                         </button>

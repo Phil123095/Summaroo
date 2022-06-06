@@ -62,6 +62,18 @@ const TrackedApp = track(
     // custom dispatch to console.log in addition to pushing to dataLayer[]
     dispatch: data => {
       console.log(data);
+      const LogActivity = (data) => {
+        const params = {
+          method: 'POST',
+          body: JSON.stringify({
+          action : 'UserTracking',
+          data: data
+          })
+        }
+        fetch('https://hiz7c7c2uqwvzyz7ceuqklvmnu0nsxcx.lambda-url.eu-central-1.on.aws/', params)
+            .catch(err => console.log(err));
+      }
+      LogActivity(data);
       (window.dataLayer = window.dataLayer || []).push(data);
     }
   }
