@@ -8,7 +8,7 @@ let landingViz = require("../assets/SummarooPic.png")
 /*import {ReactComponent as ReactLogo} from "../assets/SummarooLogo.svg"*/
 
 function LandingPage(props) {
-    const cookies = Cookies();
+    const cookies = new Cookies();
     const session_identifier = cookies.get('session_identifier');
     const persistent_user_identifier = cookies.get('persistent_user_identifier');
     const [emailRegistered, setEmail] = useState(null);
