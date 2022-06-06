@@ -1,3 +1,7 @@
+import Cookies from 'universal-cookie';
+import { v4 as uuidv4 } from 'uuid';
+import { isMobile } from "react-device-detect";
+
 export const return_loader = () => {
     return (
         <svg role="status" class="inline mr-3 w-5 h-5 text-white animate-spin" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -7,3 +11,29 @@ export const return_loader = () => {
     )
     
   }
+
+export const actionCreator = (event_type, page) => {
+    var mobile_ind = ''
+    var host_type = ''
+    const cookies = new Cookies();
+
+    if(isMobile){mobile_ind = 'mobile'} else {mobile_ind = 'desktop'} 
+    
+    if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" || window.location.hostname === "") {
+        host_type = 'local'
+    } else {host_type = 'online'}
+
+    const log_payload = {
+        'persistent_user_id': cookies.get('persistent_user_identifier'),
+        'action_id': uuidv4(),
+        'session_id': cookies.get('session_identifier'),
+        'timestamp': Date.now(),
+        'device': mobile_ind,
+        'event_type': event_type,
+        'page': page,
+        'host_type': host_type
+    }
+    console.log("Payload created", log_payload)
+    return log_payload;
+
+}

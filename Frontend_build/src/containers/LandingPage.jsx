@@ -1,15 +1,14 @@
 import {  useEffect, useState } from "react";
 import Cookies from 'universal-cookie';
 import { useTracking } from "react-tracking";
-import { v4 as uuidv4 } from 'uuid';
+import { actionCreator } from '../utils/general_utils';
 let landingViz = require("../assets/SummarooPic.png")
 
 
 /*import {ReactComponent as ReactLogo} from "../assets/SummarooLogo.svg"*/
 
 function LandingPage(props) {
-    const mobile_ind = props.mobile_ind;
-    const cookies = new Cookies();
+    const cookies = Cookies();
     const session_identifier = cookies.get('session_identifier');
     const persistent_user_identifier = cookies.get('persistent_user_identifier');
     const [emailRegistered, setEmail] = useState(null);
@@ -17,15 +16,11 @@ function LandingPage(props) {
     const {trackEvent} = useTracking()
 
     useEffect(() => {
-        trackEvent({'persistent_user_id': persistent_user_identifier,
-                'action_id': uuidv4(),
-                'session_id': session_identifier,
-                'timestamp': Date.now(),
-                'device': mobile_ind,
-                'event_type': 'page_view',
-                'page': 'landing_page'})
 
-    }, [persistent_user_identifier, session_identifier, trackEvent, mobile_ind])
+        trackEvent(actionCreator('page_view', 'landing_page'));
+  
+
+    }, [persistent_user_identifier, session_identifier, trackEvent])
 
     const onFormChange = (e) => {
         e.preventDefault()
@@ -33,13 +28,7 @@ function LandingPage(props) {
     }
 
     const saveEmail = () => {
-        trackEvent({'persistent_user_id': persistent_user_identifier, 
-                'action_id': uuidv4(),
-                'session_id': session_identifier,
-                'timestamp': Date.now(),
-                'device': mobile_ind,
-                'event_type': 'email_submit',
-                'page': 'landing_page'})
+        trackEvent(actionCreator('email_submit', 'landing_page'));
 
         let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         
@@ -78,14 +67,8 @@ function LandingPage(props) {
                                 items-center bg-green-primary bg-opacity-90 
                                 border-green-primary border-opacity-80 hover:bg-green-primary 
                                 h-16 border rounded-lg animate-none text-lg shadow-xl">
-                            <a href="/summarize" onClick={() => trackEvent({'persistent_user_id': persistent_user_identifier,
-                                            'action_id': uuidv4(), 
-                                            'session_id': session_identifier,
-                                            'timestamp': Date.now(),
-                                            'device': mobile_ind,
-                                            'event_type': 'summary_redirect_click',
-                                            'page': 'landing_page'})} 
-                                class="inline-block my-4 mx-2 align-center text-white text-xl rounded hover:no-underline">
+                            <a href="/summarize" onClick={() => trackEvent(actionCreator('summary_redirect_click', 'landing_page'))} 
+                                class="w-full inline-block my-4 mx-2 align-center text-white text-xl rounded hover:no-underline">
                                 Start Summarizing 🦘
                             </a>
                         </button>

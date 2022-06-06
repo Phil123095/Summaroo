@@ -6,7 +6,7 @@ import SummaryInputs from "./SummaryInput";
 import SummaryInputChoices from "./SummaryTypeChoice";
 import SummaryRequestOptions from "./SummaryRequestOptions";
 import Realistic from "./ConfettiFun";
-import { v4 as uuidv4 } from 'uuid';
+import { actionCreator } from "../../utils/general_utils";
 
 var AWS = require('aws-sdk/dist/aws-sdk-react-native');
 
@@ -28,7 +28,6 @@ window.Buffer = window.Buffer || require("buffer").Buffer;
 
 
 export default function SummaryPage(props) {
-    const mobile_ind = props.mobile_ind;
     const { trackEvent } = useTracking();
     const cookies = new Cookies();
     const session_identifier = cookies.get('session_identifier');
@@ -107,13 +106,8 @@ export default function SummaryPage(props) {
         }
     
         function SummarizationManager() {
-            trackEvent({'persistent_user_id': persistent_user_identifier, 
-                'session_id': session_identifier,
-                'action_id': uuidv4(),
-                'timestamp': Date.now(),
-                'device': mobile_ind,
-                'event_type': 'summary_request',
-                'page': 'summary_page'})
+            trackEvent(actionCreator('summary_request', 'summary_page'));
+            
             console.log("Request is for:", cookies.get('session_identifier'), cookies.get('persistent_user_identifier'))
             return new Promise((resolve, reject) => {
                 console.log("1 - Start loading status", isLoading)

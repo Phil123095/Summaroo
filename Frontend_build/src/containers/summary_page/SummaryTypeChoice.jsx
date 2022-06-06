@@ -1,10 +1,13 @@
 import { useEffect } from "react";
+import { actionCreator } from '../../utils/general_utils';
+import { useTracking } from "react-tracking";
 
 export default function SummaryInputChoices(props) {
     const media_type = props.media_type
     const setMediaType = props.setMediaType
     const clearTextAllowed = props.clearTextAllowed
     const clearText = props.clearText
+    const { trackEvent } = useTracking();
 
     useEffect(() => {
         if (media_type === null){
@@ -13,6 +16,7 @@ export default function SummaryInputChoices(props) {
     }, [media_type, setMediaType])
 
     const handleChange = (selectedValue) => {
+        trackEvent(actionCreator(selectedValue + '_button_click', 'summary_page'))
         setMediaType(selectedValue)
 
         ((clearTextAllowed) ? clearText : null);

@@ -18,12 +18,38 @@ const App = () => {
   const [mobile_ind, setMobile_ind] = useState('');
 
   useEffect(() => {
+    window.addEventListener('unload', handleTabClosing)
+    return () => {
+        window.removeEventListener('unload', handleTabClosing)
+    }
+  })
+
+  const cookies = new Cookies();
+  const handleTabClosing = () => {
+      const params = {
+        method: 'POST',
+        body: JSON.stringify({
+        action : 'UserTracking',
+        data: {'persistent_user_id': cookies.get('session_identifier'), 
+        'session_id': cookies.get('persistent_user_identifier'),
+        'action_id': uuidv4(),
+        'timestamp': Date.now(),
+        'device': mobile_ind,
+        'event_type': 'exit_website', 'page': 'not_clear'}
+        })
+      }
+      fetch('https://hiz7c7c2uqwvzyz7ceuqklvmnu0nsxcx.lambda-url.eu-central-1.on.aws/', params)
+          .catch(err => console.log(err));
+  }
+
+
+  useEffect(() => {
     if(isMobile){setMobile_ind("mobile")} else {setMobile_ind("desktop")}
 
 
     const cookies = new Cookies();
 
-    const setCookies = () => {
+    const setFullCookies = () => {
       const current = new Date();
       const nextYear = new Date();
       nextYear.setFullYear(current.getFullYear() + 1);
@@ -35,9 +61,16 @@ const App = () => {
         maxAge: (360*24*60*60)
       });
     }
-    if (!cookies.get('session_identifier') && !cookies.get('persistent_user_identifier')) {
-      setCookies()
+
+    const setSessionCookies = () => {
+      cookies.set('session_identifier', uuidv4(), {
+        path: '/'
+      });
     }
+
+    if (!cookies.get('session_identifier') && !cookies.get('persistent_user_identifier')) {
+      setFullCookies()
+    } else if (cookies.get('persistent_user_identifier')) {setSessionCookies()}
     console.log(cookies.get('session_identifier'), cookies.get('persistent_user_identifier'))
   }, [mobile_ind])
 
