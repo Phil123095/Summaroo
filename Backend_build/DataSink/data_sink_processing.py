@@ -43,6 +43,7 @@ def updateRatingLog(data_in, connection):
 
     return
 
+
 def addEmailBeta(data, connection):
     print("Email Beta Register Started")
     now = datetime.datetime.now()
