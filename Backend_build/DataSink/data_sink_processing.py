@@ -68,6 +68,11 @@ def userTracking(data, connection):
     except KeyError:
         data['action_id'] = str(uuid.uuid4())
 
+    try:
+        host = data['host_type']
+    except KeyError:
+        data['host_type'] = None
+
     time_format = pd.to_datetime(int(data['timestamp']), utc=True, unit='ms')
 
     data['timestamp'] = datetime.datetime.strftime(time_format, "%Y-%m-%d %H:%M:%S.%f")
