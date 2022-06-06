@@ -55,6 +55,8 @@ def addEmailBeta(data, connection):
 
 
 def userTracking(data, connection):
+    print(data)
+    data.pop('app')
     time_format = pd.to_datetime(int(data['timestamp']), utc=True, unit='ms')
 
     data['timestamp'] = datetime.datetime.strftime(time_format, "%Y-%m-%d %H:%M:%S.%f")
