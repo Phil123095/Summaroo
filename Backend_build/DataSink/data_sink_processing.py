@@ -3,7 +3,7 @@ import json
 import os
 from DB_connector import get_db_connections
 import sqlalchemy as sa
-from sqlalchemy import text
+import time
 import datetime
 import uuid
 
@@ -23,6 +23,7 @@ def processSummaryLog(data_in, connection):
     return
 
 def updateRatingLog(data_in, connection):
+    time.sleep(3)
     """data_trial = {'hash_ID': data_in['summaryID'], 'user_rating': data_in['rating']}
     general_df = pd.DataFrame([data_trial])
 

@@ -8,11 +8,6 @@ def send_message(message, local):
     if local:
         dotenv.load_dotenv()
 
-    if message['action'] == 'SummaryRatingLog':
-        message_delay = 20
-    else:
-        message_delay = 0
-
     aws_sqs_key = os.environ['AWS_SQS_KEY']
     aws_sqs_secret = os.environ['AWS_SQS_SECRET']
     aws_sqs_url = os.environ['AWS_SQS_URL']
@@ -25,8 +20,7 @@ def send_message(message, local):
     response = sqs_client.send_message(
         QueueUrl=sqs_queue_url,
         MessageBody=json.dumps(message),
-        MessageGroupId='trial',
-        DelaySeconds=message_delay
+        MessageGroupId='trial'
     )
 
     if response:
