@@ -2,6 +2,7 @@ import pandas as pd
 import json
 import os
 from DB_connector import get_db_connections
+import sqlalchemy as sa
 from sqlalchemy import text
 import datetime
 import uuid
@@ -35,12 +36,18 @@ def updateRatingLog(data_in, connection):
     summary_ID = data_in['summaryID']
     rating = data_in['rating']
 
-    sql_update = f"UPDATE summary_request_reporting SET user_rating={rating} WHERE hash_ID='{summary_ID}'"
-
-    print(sql_update)
-    connection.execute(text(sql_update))
-
     print(f"Summary Rating for {data_in['summaryID']} done")
+
+    # We need to use string formatting to set the table; SQLAlchemy will automatically qualify it with the schema name.
+    stmt = f'UPDATE summary_request_reporting SET user_rating=:user_rating WHERE summary_request_reporting.hash_ID  = :summary_ID'
+
+    values = {
+        'user_rating': rating,
+        'summary_ID': summary_ID
+    }
+
+    with connection.begin() as conn:
+        conn.execute(sa.text(stmt), values)
 
     return
 
