@@ -43,13 +43,14 @@ def updateRatingLog(data_in, connection):
 
     return
 
-def addEmailBeta(email, connection):
+def addEmailBeta(data, connection):
     print("Email Beta Register Started")
     now = datetime.datetime.now()
-    data_to_add = {'registration_timestamp': datetime.datetime.strftime(now, "%Y-%m-%d %H:%M:%S.%f"), 'email': email}
+    data_to_add = {'registration_timestamp': datetime.datetime.strftime(now, "%Y-%m-%d %H:%M:%S.%f"),
+                   'persistent_user_id': data['persistent_user_id'], 'session_id': data['session_id'], 'email': data['email']}
     email_df = pd.DataFrame([data_to_add])
     email_df.to_sql('beta_registration', connection, if_exists='append', index=False)
-    print(f"Email Beta Register for {email} done.")
+    print(f"Email Beta Register for {data['email']} done.")
     return
 
 
@@ -75,6 +76,6 @@ def lambda_handler(event, context):
         elif action == 'SummaryRatingLog':
             updateRatingLog(data_in=data, connection=db_connection)
         elif action == 'EmailRegister':
-            addEmailBeta(email=data['email'], connection=db_connection)
+            addEmailBeta(data=data, connection=db_connection)
 
     return

@@ -1,5 +1,6 @@
 import {  useState, useEffect } from "react";
-
+import Cookies from 'universal-cookie';
+import { useTracking } from "react-tracking";
 import OutputSummary from "./SummaryOutput";
 import SummaryInputs from "./SummaryInput";
 import SummaryInputChoices from "./SummaryTypeChoice";
@@ -26,6 +27,10 @@ window.Buffer = window.Buffer || require("buffer").Buffer;
 
 
 export default function SummaryPage() {
+    const { trackEvent } = useTracking();
+    const cookies = new Cookies();
+    const session_identifier = cookies.get('session_identifier');
+    const persistent_user_identifier = cookies.get('persistent_user_identifier');
     const [isLoading, setIsLoading] = useState(false);
     const [popConfetti, setConfetti] = useState(false);
 
@@ -59,6 +64,7 @@ export default function SummaryPage() {
                 const requestOptions = {
                     method: 'POST',
                     body: JSON.stringify({
+                        user_data: {persistent_user_identifier: persistent_user_identifier, session_identifier: session_identifier},
                         format: media_type,
                         full_text: summarize_this_text,
                         perc_length: summary_perc
@@ -99,6 +105,12 @@ export default function SummaryPage() {
         }
     
         function SummarizationManager() {
+            trackEvent({'persistent_user_id': persistent_user_identifier, 
+                'session_id': session_identifier,
+                'timestamp': Date.now(),
+                'event_type': 'summary_request',
+                'page': 'summary_page'})
+            console.log("Request is for:", cookies.get('session_identifier'), cookies.get('persistent_user_identifier'))
             return new Promise((resolve, reject) => {
                 console.log("1 - Start loading status", isLoading)
                 console.log("1 - Summary Starting")

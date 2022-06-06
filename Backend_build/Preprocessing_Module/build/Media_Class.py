@@ -41,7 +41,9 @@ def send_message(message, local):
     return
 
 class Media:
-    def __init__(self, media, perc_reduction, source, media_format=None):
+    def __init__(self, media, perc_reduction, source, user_id, session_id, media_format=None):
+        self.persistent_user_id = user_id
+        self.session_id = session_id
         self.request_source = source
         self.request_ID = None
         self.raw_media = media
@@ -215,6 +217,8 @@ class Media:
             'data': {
                 'general_data': {
                     'hash_ID': self.request_ID,
+                    'persistent_user_id': self.persistent_user_id,
+                    'session_id': self.session_id,
                     'request_source': self.request_source,
                     'format': self.media_format,
                     'percent_reduce': self.reduction_perc,
@@ -228,7 +232,7 @@ class Media:
                     'total_time_elapsed': self.total_time_to_process,
                     'time_to_preprocess': self.time_to_preprocess,
                     'time_to_summarize': self.time_to_summarise,
-                    'user_rating': None
+                    'user_rating': None,
                 },
                 'text_information': {
                     'hash_ID': self.request_ID,

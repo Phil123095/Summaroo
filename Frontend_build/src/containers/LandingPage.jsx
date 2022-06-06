@@ -1,11 +1,27 @@
-import {  useState } from "react";
+import {  useEffect, useState } from "react";
+import Cookies from 'universal-cookie';
+import { useTracking } from "react-tracking";
 let landingViz = require("../assets/SummarooPic.png")
+
 
 /*import {ReactComponent as ReactLogo} from "../assets/SummarooLogo.svg"*/
 
 function LandingPage() {
+    const cookies = new Cookies();
+    const session_identifier = cookies.get('session_identifier');
+    const persistent_user_identifier = cookies.get('persistent_user_identifier');
     const [emailRegistered, setEmail] = useState(null);
     const [emailError, setEmailError] = useState(null);
+    const {trackEvent} = useTracking()
+
+    useEffect(() => {
+        trackEvent({'persistent_user_id': persistent_user_identifier, 
+                'session_id': session_identifier,
+                'timestamp': Date.now(),
+                'event_type': 'page_view',
+                'page': 'landing_page'})
+
+    }, [persistent_user_identifier, session_identifier, trackEvent])
 
     const onFormChange = (e) => {
         e.preventDefault()
@@ -13,16 +29,22 @@ function LandingPage() {
     }
 
     const saveEmail = () => {
+        trackEvent({'persistent_user_id': persistent_user_identifier, 
+                'session_id': session_identifier,
+                'timestamp': Date.now(),
+                'event_type': 'email_submit',
+                'page': 'landing_page'})
 
         let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         
         if ( re.test(emailRegistered) ) {
+            console.log("Email for cookie", cookies.get('session_identifier'), cookies.get('persistent_user_identifier'))
             setEmailError(null)
             const params = {
                 method: 'POST',
                 body: JSON.stringify({
                 action : 'EmailRegister',
-                data: {email: emailRegistered}
+                data: {email: emailRegistered, persistent_user_id: persistent_user_identifier, session_id: session_identifier}
                 })
             }
             fetch('https://hiz7c7c2uqwvzyz7ceuqklvmnu0nsxcx.lambda-url.eu-central-1.on.aws/', params)
@@ -50,7 +72,12 @@ function LandingPage() {
                                 items-center bg-green-primary bg-opacity-90 
                                 border-green-primary border-opacity-80 hover:bg-green-primary 
                                 h-16 border rounded-lg animate-none text-lg shadow-xl">
-                            <a href="/summarize" class="inline-block my-4 mx-2 align-center text-white text-xl rounded hover:no-underline">
+                            <a href="/summarize" onClick={() => trackEvent({'persistent_user_id': persistent_user_identifier, 
+                                            'session_id': session_identifier,
+                                            'timestamp': Date.now(),
+                                            'event_type': 'summary_redirect_click',
+                                            'page': 'landing_page'})} 
+                                class="inline-block my-4 mx-2 align-center text-white text-xl rounded hover:no-underline">
                                 Start Summarizing 🦘
                             </a>
                         </button>

@@ -11,6 +11,7 @@ export default function OutputSummary(props) {
     }
 
     const sendRating = (rating, summaryID) => {
+        console.log(rating, summaryID)
         const params = {
             method: 'POST',
             body: JSON.stringify({

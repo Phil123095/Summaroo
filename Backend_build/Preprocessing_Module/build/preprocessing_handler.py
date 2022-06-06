@@ -71,6 +71,13 @@ def lambda_handler(event, context):
     else:
         local = False
 
+    try:
+        user_data = message['user_data']
+        persistent_user_id = user_data['persistent_user_identifier']
+        session_id = user_data['session_identifier']
+    except KeyError:
+        persistent_user_id = None
+        session_id = None
 
     try:
         content_format = message['format']
@@ -87,7 +94,8 @@ def lambda_handler(event, context):
 
     percent_reduce = message['perc_length']
 
-    WorkingContent = Media(media=content_to_summarise, perc_reduction=percent_reduce, source=source, media_format=content_format)
+    WorkingContent = Media(media=content_to_summarise, perc_reduction=percent_reduce,
+                           source=source, user_id=persistent_user_id, session_id=session_id, media_format=content_format)
 
     WorkingContent.convert_and_clean_media()
 
