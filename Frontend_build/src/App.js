@@ -62,15 +62,10 @@ const App = () => {
       });
     }
 
-    const setSessionCookies = () => {
-      cookies.set('session_identifier', uuidv4(), {
-        path: '/'
-      });
-    }
 
     if (!cookies.get('session_identifier') && !cookies.get('persistent_user_identifier')) {
       setFullCookies()
-    } else if (cookies.get('persistent_user_identifier')) {setSessionCookies()}
+    } 
     console.log(cookies.get('session_identifier'), cookies.get('persistent_user_identifier'))
   }, [mobile_ind])
 
