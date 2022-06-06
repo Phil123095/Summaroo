@@ -77,7 +77,7 @@ function LandingPage(props) {
 
                                 <div class="w-full justify-center text-center flex flex-col md:flex-row space-x-1">
                                     <div class="flex w-full justify-center mb-1 lg:mb-0 lg:basis-1/4">
-                                        <h1 class="text-base text-grey-800 my-1">Register for the Beta Launch 🎉</h1>
+                                        <h1 class="text-base text-grey-800 my-1">Stay updated for product releases 🎉</h1>
                                     </div>
                                 
                                     <div class="flex w-full lg:basis-3/4 text-center">
