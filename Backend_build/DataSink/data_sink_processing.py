@@ -63,7 +63,7 @@ def userTracking(data, connection):
     try:
         action = data['action_id']
     except KeyError:
-        data['action_id'] = uuid.uuid4()
+        data['action_id'] = str(uuid.uuid4())
 
     time_format = pd.to_datetime(int(data['timestamp']), utc=True, unit='ms')
 
