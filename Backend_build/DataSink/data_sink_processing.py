@@ -58,7 +58,10 @@ def addEmailBeta(data, connection):
 
 def userTracking(data, connection):
     print(data)
-    data.pop('app')
+    try:
+        data.pop('app')
+    except KeyError:
+        pass
 
     try:
         action = data['action_id']
