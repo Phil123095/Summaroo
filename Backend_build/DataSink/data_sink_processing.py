@@ -4,6 +4,7 @@ import os
 from DB_connector import get_db_connections
 from sqlalchemy import text
 import datetime
+import uuid
 
 
 def processSummaryLog(data_in, connection):
@@ -58,6 +59,12 @@ def addEmailBeta(data, connection):
 def userTracking(data, connection):
     print(data)
     data.pop('app')
+
+    try:
+        action = data['action_id']
+    except KeyError:
+        data['action_id'] = uuid.uuid4()
+
     time_format = pd.to_datetime(int(data['timestamp']), utc=True, unit='ms')
 
     data['timestamp'] = datetime.datetime.strftime(time_format, "%Y-%m-%d %H:%M:%S.%f")
