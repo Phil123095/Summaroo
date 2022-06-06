@@ -70,7 +70,13 @@ def userTracking(data, connection):
     data['timestamp'] = datetime.datetime.strftime(time_format, "%Y-%m-%d %H:%M:%S.%f")
 
     user_activity = pd.DataFrame([data])
-    user_activity.to_sql('user_activity', connection, if_exists='append', index=False)
+    try:
+        user_activity.to_sql('user_activity_final', connection, if_exists='append', index=False)
+    except Exception as err:
+        if "mysql.connector.errors.IntegrityError" in str(err):
+            print("Duplicate Issue")
+            return
+
 
     print(f"Summary Logging for user_tracking done")
 
