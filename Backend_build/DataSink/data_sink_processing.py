@@ -62,7 +62,7 @@ def userTracking(data, connection):
     data['timestamp'] = datetime.datetime.strftime(time_format, "%Y-%m-%d %H:%M:%S.%f")
 
     user_activity = pd.DataFrame([data])
-    user_activity.to_sql('summary_request_reporting', connection, if_exists='append', index=False)
+    user_activity.to_sql('user_activity', connection, if_exists='append', index=False)
 
     print(f"Summary Logging for user_tracking done")
 
