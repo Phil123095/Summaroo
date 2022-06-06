@@ -6,6 +6,7 @@ import SummaryInputs from "./SummaryInput";
 import SummaryInputChoices from "./SummaryTypeChoice";
 import SummaryRequestOptions from "./SummaryRequestOptions";
 import Realistic from "./ConfettiFun";
+import { v4 as uuidv4 } from 'uuid';
 
 var AWS = require('aws-sdk/dist/aws-sdk-react-native');
 
@@ -108,6 +109,7 @@ export default function SummaryPage(props) {
         function SummarizationManager() {
             trackEvent({'persistent_user_id': persistent_user_identifier, 
                 'session_id': session_identifier,
+                'action_id': uuidv4(),
                 'timestamp': Date.now(),
                 'device': mobile_ind,
                 'event_type': 'summary_request',

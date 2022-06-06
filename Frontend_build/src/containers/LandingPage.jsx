@@ -1,6 +1,7 @@
 import {  useEffect, useState } from "react";
 import Cookies from 'universal-cookie';
 import { useTracking } from "react-tracking";
+import { v4 as uuidv4 } from 'uuid';
 let landingViz = require("../assets/SummarooPic.png")
 
 
@@ -16,7 +17,8 @@ function LandingPage(props) {
     const {trackEvent} = useTracking()
 
     useEffect(() => {
-        trackEvent({'persistent_user_id': persistent_user_identifier, 
+        trackEvent({'persistent_user_id': persistent_user_identifier,
+                'action_id': uuidv4(),
                 'session_id': session_identifier,
                 'timestamp': Date.now(),
                 'device': mobile_ind,
@@ -32,6 +34,7 @@ function LandingPage(props) {
 
     const saveEmail = () => {
         trackEvent({'persistent_user_id': persistent_user_identifier, 
+                'action_id': uuidv4(),
                 'session_id': session_identifier,
                 'timestamp': Date.now(),
                 'device': mobile_ind,
@@ -75,7 +78,8 @@ function LandingPage(props) {
                                 items-center bg-green-primary bg-opacity-90 
                                 border-green-primary border-opacity-80 hover:bg-green-primary 
                                 h-16 border rounded-lg animate-none text-lg shadow-xl">
-                            <a href="/summarize" onClick={() => trackEvent({'persistent_user_id': persistent_user_identifier, 
+                            <a href="/summarize" onClick={() => trackEvent({'persistent_user_id': persistent_user_identifier,
+                                            'action_id': uuidv4(), 
                                             'session_id': session_identifier,
                                             'timestamp': Date.now(),
                                             'device': mobile_ind,
