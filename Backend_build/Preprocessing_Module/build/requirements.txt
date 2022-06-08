@@ -15,4 +15,4 @@ scipy
 seqeval
 seqtag-keras
 threadpoolctl
-tensorflow
+tensorflow==2.2.0
