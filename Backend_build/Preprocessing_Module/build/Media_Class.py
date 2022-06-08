@@ -11,7 +11,6 @@ import dotenv
 from pdfminer.high_level import extract_pages
 from pdfminer.layout import LTTextContainer
 from deepsegment import DeepSegment
-import tensorflow as tf
 import os
 import boto3
 import json
@@ -40,11 +39,6 @@ def send_message(message, local):
     else:
         print("Error")
     return
-
-def deep_segment_trial(text_in):
-    segmenter = DeepSegment('en')
-    sentences = segmenter.segment_long(sent=text_in)
-    return sentences
 
 
 class Media:
