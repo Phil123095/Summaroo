@@ -101,7 +101,7 @@ def lambda_handler(event, context):
 
     if WorkingContent.media_format == 'youtube' and WorkingContent.final_text_sentence_count == 1:
         final_summary_out = {}
-        WorkingContent.final_summary = "Sorry, Youtube summarization only works on videos with punctuated captions."
+        WorkingContent.final_summary = "Sorry, Youtube summarization only works on videos with punctuated captions (yet... >:) )"
         final_summary_out['final_summary'] = WorkingContent.final_summary
         final_summary_out['request_id'] = WorkingContent.create_unique_ID()
         WorkingContent.info_to_DB(local=local)
