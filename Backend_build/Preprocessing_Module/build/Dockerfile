@@ -8,6 +8,8 @@ COPY Preprocessing_Module/build/preprocessing_handler.py .
 
 RUN pip install -r requirements.txt
 
+RUN pip install tensorflow==2.9.1 --ignore-installed
+
 RUN python -c "import nltk; nltk.download('punkt', download_dir='/var/task/nltk_data')"
 
 CMD ["preprocessing_handler.lambda_handler"]
