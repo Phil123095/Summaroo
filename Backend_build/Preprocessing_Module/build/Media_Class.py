@@ -166,9 +166,9 @@ class Media:
 
     def __sentence_cleaner(self, sentence):
         sentence = sentence.replace("\n", "")
-        sentence2 = " ".join(sentence.split())
-        sentence3 = sentence2.replace("-", "")
-        return sentence3
+        #sentence2 = " ".join(sentence.split())
+        #sentence3 = sentence2.replace("-", "")
+        return sentence
 
     def __clean_text(self):
         """
