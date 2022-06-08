@@ -180,6 +180,8 @@ class Media:
         fully_cleaned_text = [self.__sentence_cleaner(sentence) for sentence in clean_text]
         self.final_text_sentence_count = len(fully_cleaned_text)
         self.final_sentence_count_out = self.final_text_sentence_count * self.reduction_perc
+        if self.final_sentence_count_out < 1:
+            self.final_sentence_count_out = 1
         self.final_clean_text = ' '.join(clean_text)
 
         return
