@@ -10,7 +10,6 @@ import datetime
 import dotenv
 from pdfminer.high_level import extract_pages
 from pdfminer.layout import LTTextContainer
-from deepsegment import DeepSegment
 import os
 import boto3
 import json
