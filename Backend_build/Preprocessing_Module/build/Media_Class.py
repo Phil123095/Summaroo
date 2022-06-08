@@ -181,8 +181,6 @@ class Media:
         if self.media_format == 'youtube':
             print(fully_cleaned_text)
         self.final_text_sentence_count = len(fully_cleaned_text)
-        if len(fully_cleaned_text) == 1 and self.media_format == 'youtube':
-            fully_cleaned_text = deep_segment_trial(text_in=clean_text)
         self.final_sentence_count_out = self.final_text_sentence_count * self.reduction_perc
         if self.final_sentence_count_out < 1:
             self.final_sentence_count_out = 1
