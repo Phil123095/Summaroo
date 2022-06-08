@@ -10,6 +10,7 @@ import datetime
 import dotenv
 from pdfminer.high_level import extract_pages
 from pdfminer.layout import LTTextContainer
+from deepsegment import DeepSegment
 import requests
 import os
 import boto3
@@ -39,6 +40,12 @@ def send_message(message, local):
     else:
         print("Error")
     return
+
+def deep_segment_trial(text_in):
+    segmenter = DeepSegment('en')
+    sentences = segmenter.segment_long(sent=text_in)
+    return sentences
+
 
 class Media:
     def __init__(self, media, perc_reduction, source, user_id, session_id, media_format=None):
@@ -178,11 +185,15 @@ class Media:
         """
         clean_text = sent_tokenize(str(self.raw_text))
         fully_cleaned_text = [self.__sentence_cleaner(sentence) for sentence in clean_text]
+        if self.media_format == 'youtube':
+            print(fully_cleaned_text)
         self.final_text_sentence_count = len(fully_cleaned_text)
+        if len(fully_cleaned_text) == 1 and self.media_format == 'youtube':
+            fully_cleaned_text = deep_segment_trial(text_in=clean_text)
         self.final_sentence_count_out = self.final_text_sentence_count * self.reduction_perc
         if self.final_sentence_count_out < 1:
             self.final_sentence_count_out = 1
-        self.final_clean_text = ' '.join(clean_text)
+        self.final_clean_text = ' '.join(fully_cleaned_text)
 
         return
 
@@ -245,8 +256,6 @@ class Media:
             }
         }
 
-        #data_sink_url = os.environ['DATA_SINK_URL']
-        #response = requests.post(data_sink_url, json=DB_request_data)
         send_message(message=DB_request_data, local=True)
 
         return

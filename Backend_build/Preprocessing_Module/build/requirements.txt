@@ -4,3 +4,14 @@ pdfminer.six
 requests
 nltk==3.7
 python-dotenv
+deepsegment
+keras
+h5py
+keras-applications
+keras-preprocessing
+pyyaml
+scikit-learn
+scipy
+seqeval
+seqtag-keras
+threadpoolctl
