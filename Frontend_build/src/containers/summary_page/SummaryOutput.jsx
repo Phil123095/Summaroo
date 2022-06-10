@@ -25,10 +25,10 @@ export default function OutputSummary(props) {
     }
 
 
-    /*function NewlineText(props) {
+    function NewlineText(props) {
         const text = props.text
         return text.split('.').map(str => <p class="text-base font-light text-gray-700">{str += "."}</p>);
-    }*/
+    }
 
     const StringToArray = (text) => {
         return text.split('.');
