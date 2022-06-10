@@ -72,7 +72,7 @@ function LandingPage(props) {
                                     '  digital content',
                                     '  youtube videos',
                                     '  pdf documents']}
-                                typeSpeed={100}
+                                typeSpeed={80}
                                 backSpeed={60}
                                 shuffle={true}
                                 backDelay={1000}
