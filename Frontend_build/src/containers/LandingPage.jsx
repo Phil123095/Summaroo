@@ -2,7 +2,11 @@ import {  useEffect, useState } from "react";
 import Cookies from 'universal-cookie';
 import { useTracking } from "react-tracking";
 import { actionCreator } from '../utils/general_utils';
+import Typed from "react-typed"
+
 let landingViz = require("../assets/SummarooPic.png")
+
+
 
 
 /*import {ReactComponent as ReactLogo} from "../assets/SummarooLogo.svg"*/
@@ -11,6 +15,7 @@ function LandingPage(props) {
     const cookies = new Cookies();
     const session_identifier = cookies.get('session_identifier');
     const persistent_user_identifier = cookies.get('persistent_user_identifier');
+    const [register_message, SetRegister] = useState('Register')
     const [emailRegistered, setEmail] = useState(null);
     const [emailError, setEmailError] = useState(null);
     const {trackEvent} = useTracking()
@@ -44,6 +49,7 @@ function LandingPage(props) {
             }
             fetch('https://hiz7c7c2uqwvzyz7ceuqklvmnu0nsxcx.lambda-url.eu-central-1.on.aws/', params)
                 .catch(err => console.log(err));
+            SetRegister("Registered!")
         } else {
             console.log("failed")
             setEmail(null);
@@ -58,12 +64,25 @@ function LandingPage(props) {
             <div class="lg:ml-14 flex lg:basis-3/6 flex-col justify-center items-center">
                 <div class="flex flex-col content-center space-y-2 lg:space-y-14">
                     <div class="pr-4 pl-4 lg:pr-4 lg:pl-0">
-                        <div class="text-center lg:text-left text-5xl lg:text-6xl font-bold leading-relaxed whitespace-pre-line">
-                            Your digital content in a nutshell.
+                        <div class="text-center lg:text-left text-5xl lg:text-6xl font-bold leading-relaxed whitespace-pre-line space-y-4">
+                            <p>Your   
+                            
+                            <Typed
+                                strings={[
+                                    '  digital content',
+                                    '  youtube videos',
+                                    '  pdf documents']}
+                                typeSpeed={100}
+                                backSpeed={60}
+                                shuffle={true}
+                                backDelay={1000}
+                                loop={true}
+                                /></p> 
+                            <p>summarized in a nutshell.</p>
                         </div>
                     </div>
                     <div class="flex flex-col items-center space-y-6 items-bottom">
-                        <button class="w-full mt-6 h-30 inline-flex justify-center 
+                        <button class="w-full mt-3 h-30 inline-flex justify-center 
                                 items-center bg-green-primary bg-opacity-90 
                                 border-green-primary border-opacity-80 hover:bg-green-primary 
                                 h-16 border rounded-lg animate-none text-lg shadow-xl">
@@ -89,7 +108,7 @@ function LandingPage(props) {
                                                 class="basis-4/12 ml-1 bg-green-primary bg-opacity-90 
                                                 border-green-primary border-opacity-80 hover:bg-green-primary  
                                                 text-white text-center text-base font-semibold rounded-md shadow-md p-3">
-                                                    Register
+                                                    {register_message}
                                             </button>
                                         </div>
                                     </div>

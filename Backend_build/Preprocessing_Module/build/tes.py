@@ -41,19 +41,13 @@ Decision 6: Delegate or own the digital agenda? Regardless of the organizational
 
 event = {
     'body': {
-        'format': 'text',
-        'full_text': full_text,
+        'format': 'youtube',
+        'full_text': 'https://www.youtube.com/watch?v=2cNLh1gfQIk&t=1798s',
         'perc_length': 10
     },
     'headers': {'origin': "localhost"}
 }
 
-#lambda_handler(event=event, context=None)
+summary = lambda_handler(event=event, context=None)
+print(summary)
 
-
-db_request = 'https://hiz7c7c2uqwvzyz7ceuqklvmnu0nsxcx.lambda-url.eu-central-1.on.aws/'
-response = requests.post(db_request, json={
-                'action': 'SummaryRatingLog',
-                'data': {'summaryID': '001f91d4e1639c2a87cb14fa68fd8b', 'rating': 5}
-                })
-print(response)

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Rating } from 'react-simple-star-rating'
+import Typed from "react-typed"
 
 export default function OutputSummary(props) {
     const [rating, setRating] = useState(0)
@@ -24,9 +25,13 @@ export default function OutputSummary(props) {
     }
 
 
-    function NewlineText(props) {
+    /*function NewlineText(props) {
         const text = props.text
         return text.split('.').map(str => <p class="text-base font-light text-gray-700">{str += "."}</p>);
+    }*/
+
+    const StringToArray = (text) => {
+        return text.split('.');
     }
 
     console.log(props.showRating)
@@ -39,6 +44,7 @@ export default function OutputSummary(props) {
             <div class="border rounded-lg border-slate-200 h-96 w-full overflow-y-scroll">
                 <div class="px-2 pt-1">
                     {props.summarised_text === '' ? null : <NewlineText text={props.summarised_text}/>}
+       
                 </div>
             </div>
             {props.showRating === true ? 
