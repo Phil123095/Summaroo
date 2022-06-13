@@ -57,6 +57,12 @@ export default function SummaryPage(props) {
         setSummaryLoaded(false);
         setConfetti(false);
     }
+
+    useEffect(() => {
+
+        trackEvent(actionCreator('page_view', 'summary_page'));
+
+    }, [persistent_user_identifier, session_identifier, trackEvent])
     
     useEffect(() => {
         function requestSummary(summarize_this_text){
