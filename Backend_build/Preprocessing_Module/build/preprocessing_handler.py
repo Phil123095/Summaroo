@@ -70,7 +70,7 @@ def lambda_handler(event, context):
 
     try:
         local_ind = message['local_testing']
-    except TypeError:
+    except KeyError:
         local_ind = False
 
     try:
