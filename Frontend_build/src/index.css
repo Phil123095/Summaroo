@@ -3,7 +3,7 @@
 @tailwind utilities;
 @font-face {
     font-family: 'Bahnschrift';
-    src: local('Bahnschrift'), url(./fonts/Bahnschrift/BAHNSCHRIFT.TTF) format('truetype');
+    src: local('Bahnschrift'), url(./fonts/Bahnschrift/BAHNSCHRIFT.TTF);
     /* other formats include: 'woff2', 'truetype, 'opentype',
                               'embedded-opentype', and 'svg' */
   }

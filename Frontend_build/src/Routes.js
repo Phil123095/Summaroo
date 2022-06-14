@@ -7,7 +7,7 @@ import NotFound from "./containers/general/NotFound";
 import SummaryPage from "./containers/summary_page/SummaryComponent_FULL";
 import SummaryPagelolz from "./containers/summary_page_lolz/SummaryComponent_FULL_FUN";
 import KangarooGenerator from "./containers/summary_page_lolz/Kangaroos";
-import LandingPage from "./containers/LandingPage";
+import LandingPage from "./containers/landing_page/LandingPage";
 
 function Router() {
 

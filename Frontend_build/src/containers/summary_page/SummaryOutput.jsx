@@ -27,7 +27,7 @@ export default function OutputSummary(props) {
 
     function NewlineText(props) {
         const text = props.text
-        return text.split('.').map(str => <p class="text-base font-light text-gray-700">{str += "."}</p>);
+        return text.split('.').map(str => <p class="text-base font-medium text-gray-700">{str += "."}</p>);
     }
 
     const StringToArray = (text) => {
@@ -42,7 +42,7 @@ export default function OutputSummary(props) {
                 ... and the magic happens here.
             </div>
             <div class="border rounded-lg border-slate-200 h-96 w-full overflow-y-scroll">
-                <div class="px-2 pt-1">
+                <div class="px-2 pt-2">
                     {props.summarised_text === '' ? null : <NewlineText text={props.summarised_text}/>}
        
                 </div>

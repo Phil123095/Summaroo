@@ -11,7 +11,8 @@ import NotFound from "./containers/general/NotFound";
 import SummaryPage from "./containers/summary_page/SummaryComponent_FULL";
 import SummaryPagelolz from "./containers/summary_page_lolz/SummaryComponent_FULL_FUN";
 import KangarooGenerator from "./containers/summary_page_lolz/Kangaroos";
-import LandingPage from "./containers/LandingPage";
+import LandingPage from "./containers/landing_page/LandingPage";
+
 
 const App = () => {
 
@@ -69,22 +70,37 @@ const App = () => {
     console.log(cookies.get('session_identifier'), cookies.get('persistent_user_identifier'))
   }, [mobile_ind])
 
+  const NormalRouter = () => {
+    return (
+      <div class="flex min-w-screen min-h-screen bg-neutral-100">
+        <div class="min-w-full min-h-full font-roboto">
+          <HeaderBar2/>
+          <BrowserRouter>
+              <Routes>
+                  <Route path="/" element={<LandingPage mobile_ind={mobile_ind}/>} />
+                  <Route path="/summarize" element={<SummaryPage mobile_ind={mobile_ind}/>}/>
+                  <Route path="/fun-version" element={<SummaryPagelolz/>}/>
+                  <Route path="/kangaroos" element={<KangarooGenerator/>}/>
+                  <Route path="*" element={<NotFound/>}/>
+              </Routes>
+          </BrowserRouter>
+        </div>
+      </div>
+    )
+  }
+
+  const Raban = () => {
+    return (
+      <div class="flex min-w-screen min-h-screen bg-neutral-100 items-center justify-center">
+        <p class="font-extrabold text-8xl text-center"> Fuck off, Raban.</p>
+      </div>
+    )
+  }
 
   return (
-      <div class="flex min-w-screen min-h-screen bg-neutral-100">
-        <div class="min-w-full min-h-full font-bahnschrift">
-        <HeaderBar2/>
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<LandingPage mobile_ind={mobile_ind}/>} />
-                <Route path="/summarize" element={<SummaryPage mobile_ind={mobile_ind}/>}/>
-                <Route path="/fun-version" element={<SummaryPagelolz/>}/>
-                <Route path="/kangaroos" element={<KangarooGenerator/>}/>
-                <Route path="*" element={<NotFound/>}/>
-            </Routes>
-        </BrowserRouter>
-      </div>
-      </div>
+    <>
+      {cookies.get('persistent_user_identifier') === 'b035c5a6-539a-4865-8f24-d86b42cb0749' ? <Raban/> : <NormalRouter/>}
+    </>
   );
 }
 

@@ -5,7 +5,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        bahnschrift: ["Bahnschrift", "sans-serif"]
+        bahnschrift: ["Bahnschrift", "sans-serif"],
+        roboto: ["Roboto", "sans-serif"],
       },
       colors: {'green-primary': '#00B050'},
       keyframes: {

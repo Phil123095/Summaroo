@@ -30,7 +30,7 @@ export default function SummaryInputs(props) {
     
                         value={props.text_to_summarize}
                         onChange={handleTextFieldChange}
-                        placeholder="Add something!"
+                        placeholder={props.input_placeholder}
                         InputProps={{ disableUnderline: true }}
                     />
                 </div>

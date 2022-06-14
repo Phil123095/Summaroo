@@ -42,7 +42,7 @@ export default function SummaryInputChoices(props) {
                     </button>
                     <button 
                         type="button" 
-                        class="shadow-lg border rounded inline-block mr-1 px-1 py:1.5 lg:px-2 lg:py-2.5 h-10 w-32 lg:w-36
+                        class="shadow-lg border rounded inline-block mr-1 px-0.5 py:1.5 lg:px-1 lg:py-2.5 h-10 w-32 lg:w-36
                         text-white font-medium text-sm leading-tight uppercase 
                         bg-green-primary bg-opacity-90
                         border-green-primary border-opacity-90
