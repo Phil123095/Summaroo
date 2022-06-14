@@ -1,5 +1,8 @@
 import json
-from Media_Class import Media
+try:
+    from Media_Class import Media
+except ModuleNotFoundError:
+    from Backend_build.Preprocessing_Module.build.Media_Class import Media
 import requests
 import datetime
 import os
@@ -36,13 +39,23 @@ def recommend_model(media_content, force_model=None):
         return decision_factor, model_to_use, model_api_url
 
 
-def request_summarization(media_content, url_to_request):
-    response = requests.post(url_to_request, json={
-                                                "full_text_clean": media_content.final_clean_text,
-                                                "final_sentences_out": media_content.final_sentence_count_out
-                                            })
+def request_summarization(media_content, url_to_request, local=False):
+    if not local:
+        print("REQUEST")
+        response = requests.post(url_to_request, json={
+                                                    "full_text_clean": media_content.final_clean_text,
+                                                    "final_sentences_out": media_content.final_sentence_count_out
+                                                })
 
-    content = json.loads(response.content.decode('utf-8'))
+        content = json.loads(response.content.decode('utf-8'))
+
+    else:
+        from Backend_build.Summarization_Models.LexRank_v_1.summarizer import lambda_handler
+        local_response = lambda_handler(event={'body':{"full_text_clean": media_content.final_clean_text,
+                                                "final_sentences_out": media_content.final_sentence_count_out}},
+                                        context=None)
+
+        content = local_response
 
     return content
 
@@ -56,11 +69,18 @@ def lambda_handler(event, context):
         message = event['body']
 
     try:
+        local_ind = message['local_testing']
+    except TypeError:
+        local_ind = False
+
+    try:
         origin = event['headers']['origin']
         if "summarooapp.com" in origin:
             source = "live-webapp"
         elif "localhost" in origin:
             source = "webapp-testing"
+        elif local_ind:
+            source = "local-dev-testing"
         else:
             source = "direct-api-request"
     except KeyError:
@@ -110,6 +130,7 @@ def lambda_handler(event, context):
 
     if force_model is not None:
         decision_reason, model_recommendation, model_endpoint = recommend_model(media_content=WorkingContent, force_model=force_model)
+
     else:
         decision_reason, model_recommendation, model_endpoint = recommend_model(media_content=WorkingContent)
 
@@ -118,7 +139,7 @@ def lambda_handler(event, context):
 
     summarization_request_TS = datetime.datetime.now()
 
-    final_summary_out = request_summarization(media_content=WorkingContent, url_to_request=model_endpoint)
+    final_summary_out = request_summarization(media_content=WorkingContent, url_to_request=model_endpoint, local=local_ind)
     summarization_response_TS = datetime.datetime.now()
 
     WorkingContent.final_summary = final_summary_out['final_summary']

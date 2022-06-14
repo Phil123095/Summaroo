@@ -20,10 +20,14 @@ def summarization(full_text_clean, final_sentence_count):
 
 def lambda_handler(event, context):
     try:
-        message = json.loads(event['body'])
-    except json.decoder.JSONDecodeError:
-        message = json.loads(event['body'].decode('utf-8'))
+        try:
+            message = json.loads(event['body'])
+        except json.decoder.JSONDecodeError:
+            message = json.loads(event['body'].decode('utf-8'))
+    except TypeError:
+        message = event['body']
 
+    print(message)
     text_to_summarise = message['full_text_clean']
     final_sentence_count = message['final_sentences_out']
 
