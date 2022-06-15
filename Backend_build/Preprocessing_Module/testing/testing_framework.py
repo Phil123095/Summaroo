@@ -81,3 +81,45 @@ If you want to run the summarization process only, run the function below.
 """
 #summary_summ_only = summarization_lambda_local(event=event_direct_summary, context=None)
 #print(summary_summ_only)
+
+
+def testing_helper(format, media_input, local_testing_preprocessing, summary_test_only=False, percent_length=None, sentence_count_out=None):
+    """
+    :param format: str --> either 'text', 'youtube', 'pdf'
+    :param media_input: --> either raw text, or youtube link. MUST BE RAW TEXT FOR DIRECT SUMMARIZATION
+    :param summary_test_only: --> Boolean. Default FALSE. if FALSE, then will the input through the preprocessor first.
+    :param local_testing_preprocessing: Boolean. If True, summarization will be run locally. If false, summarization will be requested to MS.
+    :param percent_length: Integer. Default is NONE. Used when working with preprocessing module
+    :param sentence_count_out: Default is NONE. Used when working with the summarization module directly.
+    :return: sumarized text
+    """
+
+    if summary_test_only:
+        event = {
+            'body': {
+                'format': format,
+                'full_text': media_input,
+                'perc_length': percent_length,
+                'local_testing': local_testing_preprocessing
+            },
+            'headers': {'origin': "localhost"}
+        }
+        summary_full_process = preprocessing_lambda_local(event=event, context=None)
+        return summary_full_process
+
+    elif not summary_test_only:
+        if not isinstance(media_input, str):
+            raise "Direct summarization testing only works with raw text. Please change the media_input to raw text."
+
+
+        event_direct_summary = {
+            'body': {
+                'full_text_clean': media_input,
+                'final_sentences_out': sentence_count_out
+            },
+            'headers': {'origin': "localhost"}
+        }
+
+        summary_summ_only = summarization_lambda_local(event=event_direct_summary, context=None)
+
+        return summary_summ_only

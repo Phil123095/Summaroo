@@ -36,8 +36,8 @@ def send_message(message, local):
             MessageGroupId='trial'
         )
     except ClientError:
-        message['text_information']['full_text_raw'] = "Text is too big"
-        message['text_information']['full_text_processed'] = "Text is too big"
+        message['data']['text_information']['full_text_raw'] = "Text is too big"
+        message['data']['text_information']['full_text_processed'] = "Text is too big"
         response = sqs_client.send_message(
             QueueUrl=sqs_queue_url,
             MessageBody=json.dumps(message),
