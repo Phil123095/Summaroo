@@ -1,3 +1,4 @@
+from botocore.exceptions import ClientError
 from youtube_transcript_api import YouTubeTranscriptApi
 import nltk
 from nltk import sent_tokenize
@@ -28,11 +29,21 @@ def send_message(message, local):
                               aws_secret_access_key=aws_sqs_secret,
                               region_name="eu-central-1")
     sqs_queue_url = aws_sqs_url
-    response = sqs_client.send_message(
-        QueueUrl=sqs_queue_url,
-        MessageBody=json.dumps(message),
-        MessageGroupId='trial'
-    )
+    try:
+        response = sqs_client.send_message(
+            QueueUrl=sqs_queue_url,
+            MessageBody=json.dumps(message),
+            MessageGroupId='trial'
+        )
+    except ClientError:
+        message['text_information']['full_text_raw'] = "Text is too big"
+        message['text_information']['full_text_processed'] = "Text is too big"
+        response = sqs_client.send_message(
+            QueueUrl=sqs_queue_url,
+            MessageBody=json.dumps(message),
+            MessageGroupId='trial'
+        )
+
     if response:
         print("Submitted to SQS")
     else:

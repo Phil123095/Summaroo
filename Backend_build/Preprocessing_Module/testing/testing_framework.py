@@ -47,9 +47,9 @@ If local_testing == TRUE, then the preprocessing handler will run summarization 
 """
 event = {
     'body': {
-        'format': 'youtube',
-        'full_text': 'https://www.youtube.com/watch?v=2cNLh1gfQIk&t=1798s',
-        'perc_length': 10,
+        'format': 'pdf',
+        'full_text': 'https://iberiapp-files.s3.eu-central-1.amazonaws.com/the-outsourcing-handbook-a-guide-to-outsourcing1.pdf',
+        'perc_length': 1,
         'local_testing': True
     },
     'headers': {'origin': "localhost"}
@@ -79,5 +79,5 @@ event_direct_summary = {
 """
 If you want to run the summarization process only, run the function below.
 """
-summary_summ_only = summarization_lambda_local(event=event_direct_summary, context=None)
-print(summary_summ_only)
+#summary_summ_only = summarization_lambda_local(event=event_direct_summary, context=None)
+#print(summary_summ_only)
