@@ -52,10 +52,11 @@ def send_message(message, local):
 
 
 class Media:
-    def __init__(self, media, perc_reduction, source, user_id, session_id, media_format=None):
+    def __init__(self, media, perc_reduction, source, user_id, session_id, media_format=None, local=False):
         self.persistent_user_id = user_id
         self.session_id = session_id
         self.request_source = source
+        self.local = local
         self.request_ID = None
         self.raw_media = media
         self.raw_text = None
@@ -140,14 +141,10 @@ class Media:
         # of dictonaries obtained by the get_transcript() function
         video_ID = self.__get_vid_id()
 
-        try:
-            srt = YouTubeTranscriptApi.get_transcript(video_ID)
-        except Exception:
-            try:
-                srt = YouTubeTranscriptApi.get_transcript(video_ID, languages=['en-GB'])
-            except Exception:
-                srt = YouTubeTranscriptApi.get_transcript(video_ID, languages=['en'])
+        transcript_list = YouTubeTranscriptApi.list_transcripts(video_ID)
+        transcript_EN = transcript_list.find_manually_created_transcript(language_codes=['en', 'en-GB', 'en-US'])
 
+        srt = transcript_EN.fetch()
         full_text = ''
         for text_item in srt:
             text = text_item['text']
@@ -156,15 +153,21 @@ class Media:
 
         self.raw_text = full_text
 
-        # prints the result
 
     def __extract_PDF_text(self):
         final_string = ''
-        url_to_use = self.raw_media
-        for page_layout in extract_pages(self.pdf_getter(url=url_to_use), caching=True):
-            for element in page_layout:
-                if isinstance(element, LTTextContainer):
-                    final_string += element.get_text()
+
+        if self.local:
+            for page_layout in extract_pages(self.raw_media):
+                for element in page_layout:
+                    if isinstance(element, LTTextContainer):
+                        final_string += element.get_text()
+        else:
+            url_to_use = self.raw_media
+            for page_layout in extract_pages(self.pdf_getter(url=url_to_use), caching=True):
+                for element in page_layout:
+                    if isinstance(element, LTTextContainer):
+                        final_string += element.get_text()
 
         self.raw_text = final_string
 
@@ -189,8 +192,6 @@ class Media:
         """
         clean_text = sent_tokenize(str(self.raw_text))
         fully_cleaned_text = [self.__sentence_cleaner(sentence) for sentence in clean_text]
-        if self.media_format == 'youtube':
-            print(fully_cleaned_text)
         self.final_text_sentence_count = len(fully_cleaned_text)
         self.final_sentence_count_out = self.final_text_sentence_count * self.reduction_perc
         if self.final_sentence_count_out < 1:

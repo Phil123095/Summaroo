@@ -115,13 +115,13 @@ def lambda_handler(event, context):
     percent_reduce = message['perc_length']
 
     WorkingContent = Media(media=content_to_summarise, perc_reduction=percent_reduce,
-                           source=source, user_id=persistent_user_id, session_id=session_id, media_format=content_format)
+                           source=source, user_id=persistent_user_id, session_id=session_id, media_format=content_format, local=local)
 
     WorkingContent.convert_and_clean_media()
 
     if WorkingContent.media_format == 'youtube' and WorkingContent.final_text_sentence_count == 1:
         final_summary_out = {}
-        WorkingContent.final_summary = "Sorry, Youtube summarization only works on videos with punctuated captions (yet... >:) )"
+        WorkingContent.final_summary = "Sorry, Youtube summarization only works on videos with punctuated captions."
         final_summary_out['final_summary'] = WorkingContent.final_summary
         final_summary_out['request_id'] = WorkingContent.create_unique_ID()
         WorkingContent.info_to_DB(local=local)

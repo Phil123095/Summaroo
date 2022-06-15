@@ -5,7 +5,7 @@ from Backend_build.Summarization_Models.LexRank_v_1.summarizer import lambda_han
 def testing_helper(format, media_input, local_testing_preprocessing, summary_test_only=False, percent_length=None, sentence_count_out=None):
     """
     :param format: str --> either 'text', 'youtube', 'pdf'
-    :param media_input: --> either raw text, or youtube link. MUST BE RAW TEXT FOR DIRECT SUMMARIZATION
+    :param media_input: --> either raw text, youtube link, or pdf. MUST BE RAW TEXT FOR DIRECT SUMMARIZATION
     :param summary_test_only: --> Boolean. Default FALSE. if FALSE, then will the input through the preprocessor first.
     :param local_testing_preprocessing: Boolean. If True, summarization will be run locally. If false, summarization will be requested to MS.
     :param percent_length: Integer. Default is NONE. Used when working with preprocessing module
@@ -13,7 +13,7 @@ def testing_helper(format, media_input, local_testing_preprocessing, summary_tes
     :return: sumarized text
     """
 
-    if summary_test_only:
+    if not summary_test_only:
         """
         Event format to pass to the preprocessing lambda function (preprocessing_handler file). 
         You need to pass the format, full text, percentage length (integer) and local testing flag. 
@@ -31,7 +31,7 @@ def testing_helper(format, media_input, local_testing_preprocessing, summary_tes
         summary_full_process = preprocessing_lambda_local(event=event, context=None)
         return summary_full_process
 
-    elif not summary_test_only:
+    elif summary_test_only:
         if not isinstance(media_input, str):
             raise "Direct summarization testing only works with raw text. Please change the media_input to raw text."
 
@@ -91,8 +91,8 @@ if __name__ == '__main__':
     Decision 3: Cooperate or compete with new attackers? Decision 4: Diversify or double down on digital initiatives? Integrating digital operations directly into physical businesses can create additional value—for example, by providing multichannel capabilities for customers or by helping companies share infrastructure, such as supplychain networks.
 
     Decision 6: Delegate or own the digital agenda? Regardless of the organizational or leadership model a CEO and board choose, it’s important to keep in mind that digitization is a moving target."""
-    test_summary_out = testing_helper(format='text',
-                                      media_input=full_text,
+    test_summary_out = testing_helper(format='youtube',
+                                      media_input='https://www.youtube.com/watch?v=dSu5sXmsur4',
                                       local_testing_preprocessing=True,
                                       summary_test_only=False,
                                       percent_length=1,
