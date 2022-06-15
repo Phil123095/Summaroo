@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Rating } from 'react-simple-star-rating'
-import Typed from "react-typed"
 
 export default function OutputSummary(props) {
     const [rating, setRating] = useState(0)
@@ -27,19 +26,37 @@ export default function OutputSummary(props) {
 
     function NewlineText(props) {
         const text = props.text
-        return text.split('.').map(str => <p class="text-base font-medium text-gray-700">{str += "."}</p>);
+        return text.split('.').map(str => <p class="text-base font-medium text-gray-700">{str += ". "}</p>);
     }
 
     const StringToArray = (text) => {
         return text.split('.');
     }
 
+    const handleCopy = (e) => {
+        e.preventDefault()
+        navigator.clipboard.writeText("✨ Summary magic brought to you by www.summarooapp.com ✨\n\n" + props.summarised_text)
+      } 
+
+    const Clipboard = () => {
+        return(
+            <button class="hover:scale-110" onClick={(e) => handleCopy(e)}>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                </svg>
+            </button>
+        )
+    }
+
     console.log(props.showRating)
 
     return(
         <div class="h-fit m-2 pb-1 p-2 col-span-1 md:col-span-4 bg-white justify-center items-center rounded-lg">
-            <div class="pt-1 ml-1 h-10 border-b-1 border-color border-blue-900 text-base text-gray-700 items-center font-light">
-                ... and the magic happens here.
+            <div class="flex space-between">
+                <div class="pt-1 ml-1 h-10 border-b-1 border-color border-blue-900 text-base text-gray-700 items-center font-light">
+                    ... and the magic happens here.
+                </div>
+
             </div>
             <div class="border rounded-lg border-slate-200 h-96 w-full overflow-y-scroll">
                 <div class="px-2 pt-2">
@@ -48,14 +65,20 @@ export default function OutputSummary(props) {
                 </div>
             </div>
             {props.showRating === true ? 
-                <div class="flex w-full mt-1 justify-end">
-                    <p class="text-sm font-extralight mr-4 mt-0.5 text-gray-500">Help us help you - rate the summary!</p>
-                    <Rating onClick={handleRating} ratingValue={rating} size={20} className="trial" /* Available Props */ />
+                <div class="flex w-full items-center">
+                    <div class="flex w-1/4 justify-start items-start">
+                        {props.showRating === true ? <Clipboard /> : null}
+                    </div>
+                    <div class="flex w-3/4 mt-1 justify-end items-center">
+                        <p class="text-sm font-light mr-2 text-gray-800">Help us help you - rate the summary!</p>
+                        <div class="pt-1 -pb-1">
+                            <Rating onClick={handleRating} ratingValue={rating} size={20} className="trial" /* Available Props */ />
+                        </div>
+                    </div>
                 </div>
             :<div class="h-8"/>}
 
         </div>
-
     )
 
 }

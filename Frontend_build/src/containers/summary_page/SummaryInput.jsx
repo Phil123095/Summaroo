@@ -30,7 +30,7 @@ export default function SummaryInputs(props) {
     
                         value={props.text_to_summarize}
                         onChange={handleTextFieldChange}
-                        placeholder={props.input_placeholder}
+                        placeholder={props.text_input_placeholder}
                         InputProps={{ disableUnderline: true }}
                     />
                 </div>
@@ -55,7 +55,7 @@ export default function SummaryInputs(props) {
                         fullWidth
                         rows={16}
                         onChange={handleTextFieldChange}
-                        placeholder="Add something!"
+                        placeholder={props.video_input_placeholder}
                         InputProps={{ disableUnderline: true }}
                     />
                 </div>
@@ -71,7 +71,9 @@ export default function SummaryInputs(props) {
                     <div class="pt-1 ml-1 h-10 border-b-1 border-color border-blue-900 text-base text-gray-700 items-center font-light">
                         Upload your PDF here...
                     </div>
-                    <input type="file" class="form-control my-1 h-8 w-full justify-center align-center rounded-lg border border-solid border-slate-200" onChange={handleFileInput}/>
+                    <input type="file" class="form-control my-1 h-8 w-full justify-center align-center rounded-lg border border-solid border-slate-200" 
+                    onChange={handleFileInput}/>
+                    <p class="font-light text-sm italic" >{props.pdf_input_placeholder}</p>
                 </div>
             </>
 
@@ -92,7 +94,7 @@ export default function SummaryInputs(props) {
                                     class="h-10 w-34
                                     border-green-primary border border-opacity-80  
                                     font-semibold rounded-md p-3 flex items-center">
-                                        <p class="text-base text-center text-green-primary">Clear Text</p>
+                                        <p class="text-base font-light text-center text-green-primary">Clear Text</p>
                                 </button>
                             </div>
                         </div>

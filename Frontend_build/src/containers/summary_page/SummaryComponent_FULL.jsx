@@ -34,7 +34,9 @@ export default function SummaryPage(props) {
     const persistent_user_identifier = cookies.get('persistent_user_identifier');
     const [isLoading, setIsLoading] = useState(false);
     const [popConfetti, setConfetti] = useState(false);
-    const [inputPlaceholder, setPlaceholder] = useState("Add something!")
+    const [inputTextPlaceholder, setTextPlaceholder] = useState("Add something!")
+    const [inputVideoPlaceholder, setVideoPlaceholder] = useState("Add something!")
+    const [inputPdfPlaceholder, setPdfPlaceholder] = useState("")
 
     const [text_to_summarize, setText] = useState('');
     const [summary_perc, setSummPerc] = useState(10);
@@ -51,14 +53,30 @@ export default function SummaryPage(props) {
         if (is_correct){
             setIsLoading(true);
         } else {
-            setPlaceholder("Please provide a text to summarize.");
+            if (media_type === 'text'){
+                setTextPlaceholder("Please provide a text to summarize.")
+            } else if (media_type === 'youtube'){
+                setVideoPlaceholder("Please provide a link.")
+            } else if (media_type === 'pdf') {
+                setPdfPlaceholder("Please upload a file.")
+            }
         }
     }
 
     const verifyInput = () => {
-        if (text_to_summarize.length === 0) {
-            return false;
-        } else {return true;}
+        if (media_type === 'text'){
+            if (text_to_summarize.length === 0) {
+                return false;
+            } else {return true;}
+        } else if (media_type === 'youtube'){
+            if (text_to_summarize.length === 0) {
+                return false;
+            } else {return true;}
+        } else if (media_type === 'pdf') {
+            if (selectedFile === null) {
+                return false;
+            } else {return true;}
+        }
     }
 
     const clearText = () => {
@@ -166,7 +184,11 @@ export default function SummaryPage(props) {
         <div class="h-fit mt-4 lg:mt-2 bg-neutral-100">
             <SummaryInputChoices media_type={media_type} setMediaType={setMediaType} clearText={clearText} clearTextAllowed={(!isLoading && popConfetti) ? true : false}/>
             <div class="w-100 grid grid-cols-1 md:grid-cols-8 md:gap-4 md:mx-14">
-                <SummaryInputs media_type={media_type} setMediaType={setMediaType} setText={setText} clearTextAllowed={(!isLoading && popConfetti) ? true : false} clearText={clearText} text_to_summarize={text_to_summarize} setSelectedFile={setSelectedFile} setSummOut={setSummOut} setSummaryLoaded={setSummaryLoaded} summaryLoaded={summaryLoaded} input_placeholder={inputPlaceholder} />
+                <SummaryInputs media_type={media_type} setMediaType={setMediaType} setText={setText} 
+                    clearTextAllowed={(!isLoading && popConfetti) ? true : false} clearText={clearText} 
+                    text_to_summarize={text_to_summarize} setSelectedFile={setSelectedFile} setSummOut={setSummOut} 
+                    setSummaryLoaded={setSummaryLoaded} summaryLoaded={summaryLoaded} text_input_placeholder={inputTextPlaceholder}
+                    video_input_placeholder={inputVideoPlaceholder} pdf_input_placeholder={inputPdfPlaceholder} />
                 <OutputSummary summarised_text={summary_out} isLoading={isLoading} showRating={(!isLoading && popConfetti) ? true : false} summaryLoaded={summaryLoaded} summaryRequestID={summaryID}/>
                 
                 {((media_type === "pdf" || media_type === "youtube") && (!isLoading && popConfetti)) ? <div class="flex col-span-8 h-10"/> : null}
