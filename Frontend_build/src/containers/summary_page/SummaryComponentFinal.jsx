@@ -186,8 +186,8 @@ export default function SummaryPageFinal(props) {
         <div className="flex flex-col min-h-screen overflow-hidden bg-radial-at-tl from-blue-50 via-indigo-50 to-blue-100">
             <Header/>
             <main className="flex-grow">
-                <div class="h-fit pt-24 pb-12 md:pt-24 md:pb-10 lg:mt-2" data-aos="zoom-y-out" data-aos-delay="200">
-                    <div class="w-100 grid grid-cols-1 md:grid-cols-8 md:gap-4 md:mx-14">
+                <div class="h-fit pt-36 pb-12 md:pt-24 md:pb-10 lg:mt-2" data-aos="zoom-y-out" data-aos-delay="200">
+                    <div class="w-100 flex flex-col md:grid md:grid-cols-8 md:gap-4 md:mx-14">
                         <SummaryInputChoices media_type={media_type} setMediaType={setMediaType} clearText={clearText} clearTextAllowed={(!isLoading && popConfetti) ? true : false}/>
                         <SummaryInputs media_type={media_type} setMediaType={setMediaType} setText={setText} 
                             clearTextAllowed={(!isLoading && popConfetti) ? true : false} clearText={clearText} 

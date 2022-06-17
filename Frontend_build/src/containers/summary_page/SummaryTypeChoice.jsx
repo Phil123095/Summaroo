@@ -24,7 +24,7 @@ export default function SummaryInputChoices(props) {
 
 
     return (
-        <div class="col-span-1 ml-2 md:col-span-4 mx-1 mb-2 h-10 lg:h-10 items-center">
+        <div class="col-span-1 ml-2 md:col-span-4 mx-1 mb-4 md:mb-2 h-10 lg:h-10 items-center">
             <div class="mt-4">
                 <div class="inline-flex justify-center lg:justify-start w-full" role="group">
                     <button 

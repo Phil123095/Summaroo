@@ -24,8 +24,8 @@ function HeroHomeTrial() {
                                                     'digital content',
                                                     'youtube videos',
                                                     'pdf documents']}
-                                                typeSpeed={80}
-                                                backSpeed={60}
+                                                typeSpeed={90}
+                                                backSpeed={50}
 
                                                 backDelay={1000}
                                                 loop={true}

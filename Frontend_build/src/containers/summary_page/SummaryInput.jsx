@@ -47,7 +47,7 @@ export default function SummaryInputs(props) {
                 <div class="pt-1 ml-1 h-10 border-b-1 border-color border-blue-900 text-base text-gray-700 items-center font-light">
                     Drop in the url of the Youtube video you want to summarize here...
                 </div>
-                <div class=" border border-slate-200 rounded-lg">
+                <div class="mt-4 md:mt-0 border border-slate-200 rounded-lg">
                     <TextField
                         class="m-2"
                         id="outlined-basic"
@@ -96,7 +96,7 @@ export default function SummaryInputs(props) {
                 </>
                 <>
                     {props.clearTextAllowed === true ? 
-                        <div class="w-full my-2 items-right">
+                        <div class="flex w-full my-2 justify-center md:justify-left">
                             <div>
                                 <button onClick={props.clearText}
                                     class="h-10 w-34
