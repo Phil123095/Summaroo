@@ -1,4 +1,4 @@
-import './App.css';
+import './styles/style.scss'
 /*import Router from "./Routes";*/
 import Cookies from 'universal-cookie';
 import { v4 as uuidv4 } from 'uuid';
@@ -6,15 +6,24 @@ import { useEffect, useState } from 'react';
 import track from 'react-tracking';
 import { isMobile } from "react-device-detect";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import HeaderBar2 from "./containers/general/HeaderBar2";
 import NotFound from "./containers/general/NotFound";
-import SummaryPage from "./containers/summary_page/SummaryComponent_FULL";
-import SummaryPagelolz from "./containers/summary_page_lolz/SummaryComponent_FULL_FUN";
 import KangarooGenerator from "./containers/summary_page_lolz/Kangaroos";
-import LandingPage from "./containers/landing_page/LandingPage";
+import Home from "./containers/Home/Home";
+import ContactForm from './containers/general/ContactPage';
+import AOS from 'aos';
+import SummaryPageFinal from './containers/summary_page/SummaryComponentFinal';
 
 
 const App = () => {
+  useEffect(() => {
+    AOS.init({
+      once: false,
+      disable: 'phone',
+      duration: 700,
+      easing: 'ease-out-cubic',
+    });
+  });
+
 
   const [mobile_ind, setMobile_ind] = useState('');
 
@@ -72,15 +81,15 @@ const App = () => {
 
   const NormalRouter = () => {
     return (
-      <div class="flex min-w-screen min-h-screen bg-neutral-100">
-        <div class="min-w-full min-h-full font-roboto">
-          <HeaderBar2/>
+      <div class="flex flex-row min-w-screen min-h-screen">
+        <div class="min-w-full min-h-full font-inter">
           <BrowserRouter>
               <Routes>
-                  <Route path="/" element={<LandingPage mobile_ind={mobile_ind}/>} />
-                  <Route path="/summarize" element={<SummaryPage mobile_ind={mobile_ind}/>}/>
-                  <Route path="/fun-version" element={<SummaryPagelolz/>}/>
+                  {/*<Route path="/" element={<LandingPage mobile_ind={mobile_ind}/>} />*/}
+                  <Route path="/" element={<Home />}/>
+                  <Route path="/summarize" element={<SummaryPageFinal/>}/>
                   <Route path="/kangaroos" element={<KangarooGenerator/>}/>
+                  <Route path="/contact-us" element={<ContactForm/>}/>
                   <Route path="*" element={<NotFound/>}/>
               </Routes>
           </BrowserRouter>

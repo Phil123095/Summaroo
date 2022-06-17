@@ -37,3 +37,4 @@ export const actionCreator = (event_type, page) => {
     return log_payload;
 
 }
+

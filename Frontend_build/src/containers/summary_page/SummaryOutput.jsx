@@ -29,10 +29,6 @@ export default function OutputSummary(props) {
         return text.split('.').map(str => <p class="text-base font-medium text-gray-700">{str += ". "}</p>);
     }
 
-    const StringToArray = (text) => {
-        return text.split('.');
-    }
-
     const handleCopy = (e) => {
         e.preventDefault()
         navigator.clipboard.writeText("✨ Summary magic brought to you by www.summarooapp.com ✨\n\n" + props.summarised_text)

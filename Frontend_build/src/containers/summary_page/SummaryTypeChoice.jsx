@@ -24,17 +24,17 @@ export default function SummaryInputChoices(props) {
 
 
     return (
-        <div class="w-full lg:w-fit mx-2 mb-2 lg:ml-16 h-10 lg:h-10 border-slate-100 rounded-lg bg-neutral-100 items-center">
+        <div class="col-span-1 ml-2 md:col-span-4 mx-1 mb-2 h-10 lg:h-10 items-center">
             <div class="mt-4">
                 <div class="inline-flex justify-center lg:justify-start w-full" role="group">
                     <button 
                         type="button" 
-                        class="shadow-lg inline-block border rounded px-1 py:1.5 lg:px-2 lg:py-2.5 mr-1 h-10 w-32 lg:w-36
+                        class="shadow-lg inline-block basis-1/3 border rounded px-1 py:1.5 lg:px-2 lg:py-2.5 mr-1 h-10 w-32 lg:w-36
                             text-white font-medium text-sm leading-tight uppercase 
-                            bg-green-primary bg-opacity-90
-                            border-green-primary border-opacity-90
-                            hover:bg-green-primary  focus:bg-green-primary focus:outline-none focus:ring-0 
-                            active:bg-green-primary active:border-green-primary transition duration-150 ease-in-out"
+                            bg-blue-base bg-opacity-90
+                            border-blue-base border-opacity-90
+                            hover:bg-blue-base focus:bg-blue-base focus:outline-none focus:ring-0 
+                            active:bg-blue-base active:border-blue-base transition duration-150 ease-in-out"
                         value="text"
                         onClick={e => handleChange(e.target.value)}
                     >
@@ -42,12 +42,12 @@ export default function SummaryInputChoices(props) {
                     </button>
                     <button 
                         type="button" 
-                        class="shadow-lg border rounded inline-block mr-1 px-0.5 py:1.5 lg:px-1 lg:py-2.5 h-10 w-32 lg:w-36
+                        class="shadow-lg border rounded basis-1/3 inline-block mr-1 px-0.5 py:1.5 lg:px-1 lg:py-2.5 h-10 w-32 lg:w-36
                         text-white font-medium text-sm leading-tight uppercase 
-                        bg-green-primary bg-opacity-90
-                        border-green-primary border-opacity-90
-                        hover:bg-green-primary  focus:bg-green-primary focus:outline-none focus:ring-0 
-                        active:bg-green-primary transition duration-150 ease-in-out"
+                        bg-blue-base bg-opacity-90
+                        border-blue-base border-opacity-90
+                        hover:bg-blue-base focus:bg-blue-base focus:outline-none focus:ring-0 
+                        active:bg-blue-base active:border-blue-base transition duration-150 ease-in-out"
                         value="youtube"
                         onClick={e => handleChange(e.target.value)}
                     >
@@ -55,12 +55,12 @@ export default function SummaryInputChoices(props) {
                     </button>
                     <button 
                         type="button" 
-                        class="shadow-lg border rounded inline-block px-1 py:1.5 lg:px-2 lg:py-2.5 mr-1 h-10 w-32 lg:w-36
+                        class="shadow-lg border rounded basis-1/3 inline-block px-1 py:1.5 lg:px-2 lg:py-2.5 mr-1 h-10 w-32 lg:w-36
                         text-white font-medium text-sm leading-tight uppercase 
-                        bg-green-primary bg-opacity-90
-                        border-green-primary border-opacity-90
-                        hover:bg-green-primary  focus:bg-green-primary focus:outline-none focus:ring-0 
-                        active:bg-green-primary transition duration-150 ease-in-out"
+                        bg-blue-base bg-opacity-90
+                        border-blue-base border-opacity-90
+                        hover:bg-blue-base focus:bg-blue-base focus:outline-none focus:ring-0 
+                        active:bg-blue-base active:border-blue-base transition duration-150 ease-in-out"
                         value="pdf"
                         onClick={e => handleChange(e.target.value)}
                     >

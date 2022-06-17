@@ -1,5 +1,6 @@
 import { GiphyFetch } from "@giphy/js-fetch-api";
 import {  useEffect, useState } from "react";
+import Header from "../general/Header";
 
 export default function KangarooGenerator() {
     const giphyFetch = new GiphyFetch("I416egPdf0z8yknVgQJ5uahNr0WBa8YG");
@@ -25,19 +26,21 @@ export default function KangarooGenerator() {
     
 
     return(
-        <div class="mt-4 md:mt-2 bg-neutral-100 px-2 pt-1 w-full flex flex-col justify-center items-center">
-            <div class="flex flex-col justify-center items-center">
-                <img class="w-8/10 h-8/10" src={gifLink} alt="gif" />
-                <button onClick={random} class="w-full mt-6 h-30 inline-flex justify-center items-center bg-green-primary bg-opacity-90 border-green-primary border-opacity-80 hover:bg-green-primary h-16 border rounded-lg animate-none text-lg">Generate Kangaroo Happiness</button>
-                <button onClick={random} class="w-full h-8 mt-2 inline-flex justify-center items-center bg-neutral-400 bg-opacity-90 hover:bg-neutral-600 border rounded-lg animate-none">
-                    <a href="/" class="inline-block my-4 mx-2 align-center text-black text-lg rounded hover:no-underline">
-                        Back to work... 😔
-                    </a>
-                </button>
+        <div className="flex flex-col max-h-screen min-w-screen overflow-hidden">
+            <Header/>
+            <main className="mt-32 md:mt-2 bg-white px-2 pt-1 h-full w-full flex flex-col justify-center items-center">
+                <div class="mt-20 flex flex-col justify-center items-center">
+                    <p class="mx-auto text-center text-xl md:text-xl font-light mb-2">As of now, we're still in MVP mode. But much, much more is yet to come. In the meantime, please enjoy our finest selection of Kangaroo GIFs.</p>
+                    <img class="w-8/10 h-8/10" src={gifLink} alt="gif" />
+                    <button onClick={random} class="w-full mt-6 h-30 inline-flex justify-center items-center bg-blue-base bg-opacity-90 border-blue-base border-opacity-80 hover:bg-blue-base h-16 border rounded-lg animate-none text-lg text-white font-bold">Generate Kangaroo Happiness</button>
+                    <button onClick={random} class="w-full h-8 mt-2 inline-flex justify-center items-center bg-neutral-400 bg-opacity-90 hover:bg-neutral-600 border rounded-lg animate-none">
+                        <a href="/" class="inline-block my-4 mx-2 align-center text-black text-lg rounded hover:no-underline">
+                            Back to work... 😔
+                        </a>
+                    </button>
 
-            </div>
-        
+                </div>
+            </main>
         </div>
-
     )
 }

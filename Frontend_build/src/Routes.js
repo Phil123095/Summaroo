@@ -12,7 +12,7 @@ import LandingPage from "./containers/landing_page/LandingPage";
 function Router() {
 
     return (
-      <div class="min-w-full min-h-full font-bahnschrift">
+      <div class="min-w-full min-h-full font-inter">
         <HeaderBar2/>
         <BrowserRouter>
             <Routes>

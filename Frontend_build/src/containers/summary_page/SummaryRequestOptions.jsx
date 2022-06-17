@@ -17,12 +17,12 @@ export default function SummaryRequestOptions(props) {
 
     return(
         <>
-            <div class="h-20 col-span-1 md:col-span-4 border-slate-200 rounded-lg bg-slate-100 px-2 mb-2">
+            <div class=" h-16 md:h-20 col-span-1 md:col-span-4 rounded-lg px-2 mb-2">
                 <p class="pt-1 px-2 text-sm md:text-base font-light text-gray-700">Select the summary size</p>
-                <div class="py-1 px-2 mb-3 h-2">
+                <div class="py-1 px-2 md:mb-3 h-2">
                     <Slider
                         aria-label="Perc Of Text"
-                        sx={{color:"#00B050"}}
+                        sx={{color:"#3b5ae3"}}
                         defaultValue={5}
                         valueLabelFormat={valuetext}
                         valueLabelDisplay="auto"
@@ -32,8 +32,8 @@ export default function SummaryRequestOptions(props) {
                     />
                 </div>
             </div>
-            <div class="m-2 mb-3 h-10 md:h-20 col-span-1 md:col-span-4 border-slate-100 rounded-lg bg-slate-100 items-center">
-                <button disabled={props.isLoading} class="w-full h-30 inline-flex shadow-md justify-center items-center bg-green-primary bg-opacity-90 border-green-primary border-opacity-90 hover:bg-green-primary h-16 border rounded-lg animate-none" onClick={props.summaryTrigger}>
+            <div class="m-2 mb-3 h-10 md:h-20 col-span-1 md:col-span-4 rounded-lg items-center">
+                <button disabled={props.isLoading} class="w-full h-30 inline-flex shadow-md justify-center items-center bg-blue-base bg-opacity-90 border-blue-base border-opacity-90 hover:bg-blue-base h-16 border rounded-lg animate-none" onClick={props.summaryTrigger}>
                     {props.isLoading === true ? 
                         <img class="animate-in slide-in-from-left animate-out slide-out-to-right-95 w-12 h-12 mr-1 pb-2" src={loadingGif /*array[Math.floor((Math.random()*array.length))]*/} alt="wait until the page loads" />
                         /*<svg role="status" class="inline mr-3 w-5 h-5 text-white animate-spin" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -7,6 +7,8 @@ import SummaryInputChoices from "./SummaryTypeChoice";
 import SummaryRequestOptions from "./SummaryRequestOptions";
 /*import Realistic from "./ConfettiFun";*/
 import { actionCreator } from "../../utils/general_utils";
+import Header from "../general/Header";
+import Footer from "../general/Footer";
 
 var AWS = require('aws-sdk/dist/aws-sdk-react-native');
 
@@ -27,7 +29,7 @@ const myBucket = new AWS.S3({
 window.Buffer = window.Buffer || require("buffer").Buffer;
 
 
-export default function SummaryPage(props) {
+export default function SummaryPageFinal(props) {
     const { trackEvent } = useTracking();
     const cookies = new Cookies();
     const session_identifier = cookies.get('session_identifier');
@@ -181,20 +183,28 @@ export default function SummaryPage(props) {
       }, [isLoading]);
 
     return (
-        <div class="h-fit mt-4 lg:mt-2 bg-neutral-100">
-            <SummaryInputChoices media_type={media_type} setMediaType={setMediaType} clearText={clearText} clearTextAllowed={(!isLoading && popConfetti) ? true : false}/>
-            <div class="w-100 grid grid-cols-1 md:grid-cols-8 md:gap-4 md:mx-14">
-                <SummaryInputs media_type={media_type} setMediaType={setMediaType} setText={setText} 
-                    clearTextAllowed={(!isLoading && popConfetti) ? true : false} clearText={clearText} 
-                    text_to_summarize={text_to_summarize} setSelectedFile={setSelectedFile} setSummOut={setSummOut} 
-                    setSummaryLoaded={setSummaryLoaded} summaryLoaded={summaryLoaded} text_input_placeholder={inputTextPlaceholder}
-                    video_input_placeholder={inputVideoPlaceholder} pdf_input_placeholder={inputPdfPlaceholder} />
-                <OutputSummary summarised_text={summary_out} isLoading={isLoading} showRating={(!isLoading && popConfetti) ? true : false} summaryLoaded={summaryLoaded} summaryRequestID={summaryID}/>
-                
-                {((media_type === "pdf" || media_type === "youtube") && (!isLoading && popConfetti)) ? <div class="flex col-span-8 h-10"/> : null}
-                <SummaryRequestOptions setSummPerc={setSummPerc} summaryTrigger={triggerSumm} isLoading={isLoading}/>
-                {/*<Realistic indicator={(!isLoading && popConfetti) ? true : false}/>*/}
-            </div>
+        <div className="flex flex-col min-h-screen overflow-hidden bg-radial-at-tl from-blue-50 via-indigo-50 to-blue-100">
+            <Header/>
+            <main className="flex-grow">
+                <div class="h-fit pt-24 pb-12 md:pt-24 md:pb-10 lg:mt-2" data-aos="zoom-y-out" data-aos-delay="200">
+                    <div class="w-100 grid grid-cols-1 md:grid-cols-8 md:gap-4 md:mx-14">
+                        <SummaryInputChoices media_type={media_type} setMediaType={setMediaType} clearText={clearText} clearTextAllowed={(!isLoading && popConfetti) ? true : false}/>
+                        <SummaryInputs media_type={media_type} setMediaType={setMediaType} setText={setText} 
+                            clearTextAllowed={(!isLoading && popConfetti) ? true : false} clearText={clearText} 
+                            text_to_summarize={text_to_summarize} setSelectedFile={setSelectedFile} setSummOut={setSummOut} 
+                            setSummaryLoaded={setSummaryLoaded} summaryLoaded={summaryLoaded} text_input_placeholder={inputTextPlaceholder}
+                            video_input_placeholder={inputVideoPlaceholder} pdf_input_placeholder={inputPdfPlaceholder} />
+                        <OutputSummary summarised_text={summary_out} isLoading={isLoading} showRating={(!isLoading && popConfetti) ? true : false} summaryLoaded={summaryLoaded} summaryRequestID={summaryID}/>
+                        
+                        {((media_type === "pdf" || media_type === "youtube") && (!isLoading && popConfetti)) ? <div class="flex col-span-8 h-10"/> : null}
+                        <SummaryRequestOptions setSummPerc={setSummPerc} summaryTrigger={triggerSumm} isLoading={isLoading}/>
+                        {/*<Realistic indicator={(!isLoading && popConfetti) ? true : false}/>*/}
+                    </div>
+                </div>
+
+            </main>
+            <Footer/>
+
         </div>
     )
   
