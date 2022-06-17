@@ -162,6 +162,7 @@ class Media:
                 for element in page_layout:
                     if isinstance(element, LTTextContainer):
                         final_string += element.get_text()
+
         else:
             url_to_use = self.raw_media
             for page_layout in extract_pages(self.pdf_getter(url=url_to_use), caching=True):

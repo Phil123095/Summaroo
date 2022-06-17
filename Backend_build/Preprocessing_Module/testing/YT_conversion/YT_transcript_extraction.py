@@ -30,10 +30,14 @@ def video_to_transcript(video_url):
     # assigning srt variable with the list
     # of dictonaries obtained by the get_transcript() function
     video_id = get_vid_id(video_url)
-    try:
-        srt = YouTubeTranscriptApi.get_transcript(video_id)
-    except Exception:
-        srt = YouTubeTranscriptApi.get_transcript(video_id, languages=['en-GB'])
+
+    transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
+
+    transcript_manual = transcript_list.find_generated_transcript(['en'])
+
+    srt = transcript_manual.fetch()
+    print(srt)
+
 
     full_text = ''
     for text_item in srt:
@@ -43,3 +47,6 @@ def video_to_transcript(video_url):
 
     # prints the result
     return full_text
+
+full_text = video_to_transcript(video_url="https://www.youtube.com/watch?v=RLykC1VN7NY")
+print(full_text)
