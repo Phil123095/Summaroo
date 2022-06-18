@@ -1,5 +1,6 @@
 import { GiphyFetch } from "@giphy/js-fetch-api";
 import {  useEffect, useState } from "react";
+import Footer from "../general/Footer";
 import Header from "../general/Header";
 
 export default function KangarooGenerator() {
@@ -26,7 +27,7 @@ export default function KangarooGenerator() {
     
 
     return(
-        <div className="flex flex-col max-h-screen min-w-screen overflow-hidden">
+        <div className="flex flex-col max-h-screen min-w-screen">
             <Header/>
             <main className="mt-32 md:mt-2 bg-white px-2 pt-1 h-full w-full flex flex-col justify-center items-center">
                 <div class="mt-20 flex flex-col md:w-2/4 justify-center items-center">
@@ -41,6 +42,7 @@ export default function KangarooGenerator() {
 
                 </div>
             </main>
+            <Footer/>
         </div>
     )
 }
