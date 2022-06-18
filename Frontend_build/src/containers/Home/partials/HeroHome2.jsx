@@ -14,7 +14,7 @@ function HeroHomeTrial() {
                         <div class="w-full flex-shrink-0">  
                             <div class="w-full flex justify-center mx-auto">
                                 <div class="inline-block justify-center text-center whitespace-pre-line space-y-5">
-                                    <div class="space-y-4 md:space-y-0 w-full flex flex-col md:flex-row h-20 md:ml-14">
+                                    <div class="space-y-2 md:space-y-0 w-full flex flex-col md:flex-row h-20 md:ml-14">
                                         <p class="text-4xl md:text-7xl text-white uppercase font-extrabold" data-aos="zoom-y-out" data-aos-delay="300">
                                             Your&nbsp;
                                         </p> 
