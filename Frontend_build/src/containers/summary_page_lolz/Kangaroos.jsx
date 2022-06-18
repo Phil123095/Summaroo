@@ -29,7 +29,7 @@ export default function KangarooGenerator() {
         <div className="flex flex-col max-h-screen min-w-screen overflow-hidden">
             <Header/>
             <main className="mt-32 md:mt-2 bg-white px-2 pt-1 h-full w-full flex flex-col justify-center items-center">
-                <div class="mt-20 flex flex-col w-2/4 justify-center items-center">
+                <div class="mt-20 flex flex-col md:w-2/4 justify-center items-center">
                     <p class="mx-auto text-center text-xl md:text-xl font-light mb-2">As of now, we're still in MVP mode. <br/> But much, much more is yet to come.<br/> In the meantime, please enjoy our finest selection of Kangaroo GIFs.<br/>- Summaroo Team ❤️</p>
                     <img class="w-8/10 h-8/10" src={gifLink} alt="gif" />
                     <button onClick={random} class="w-full mt-6 h-30 inline-flex justify-center items-center bg-blue-base bg-opacity-90 border-blue-base border-opacity-80 hover:bg-blue-base h-16 border rounded-lg animate-none text-lg text-white font-bold">Generate Kangaroo Happiness</button>
