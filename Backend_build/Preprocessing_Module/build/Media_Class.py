@@ -109,6 +109,11 @@ class Media:
             self.__basic_text_handle()
         elif self.media_format == "youtube":
             self.__extract_YT_transcript()
+
+            if self.raw_text == "No Transcript Available.":
+                self.final_text_sentence_count = 1
+                return
+
         elif self.media_format == "pdf":
             self.__extract_PDF_text()
 
@@ -138,20 +143,23 @@ class Media:
 
     def __extract_YT_transcript(self):
         # assigning srt variable with the list
-        # of dictonaries obtained by the get_transcript() function
+        # of dictionaries obtained by the get_transcript() function
         video_ID = self.__get_vid_id()
 
         transcript_list = YouTubeTranscriptApi.list_transcripts(video_ID)
-        transcript_EN = transcript_list.find_manually_created_transcript(language_codes=['en', 'en-GB', 'en-US'])
+        try:
+            transcript_EN = transcript_list.find_manually_created_transcript(language_codes=['en', 'en-GB', 'en-US'])
+            srt = transcript_EN.fetch()
+            full_text = ''
+            for text_item in srt:
+                text = text_item['text']
+                text_final = text + ' '
+                full_text = full_text + text_final
 
-        srt = transcript_EN.fetch()
-        full_text = ''
-        for text_item in srt:
-            text = text_item['text']
-            text_final = text + ' '
-            full_text = full_text + text_final
+            self.raw_text = full_text
 
-        self.raw_text = full_text
+        except Exception:
+            self.raw_text = "No Transcript Available."
 
 
     def __extract_PDF_text(self):
