@@ -55,9 +55,7 @@ function Features() {
               <div className="mb-8 md:mb-0">
                 <a
                   className={`flex w-full items-center text-lg p-5 rounded border transition duration-300 ease-in-out mb-3 ${tab !== 1 ? 'bg-white shadow-md border-blue-100 hover:shadow-lg' : 'bg-blue-100 border-transparent shadow-md'}`}
-                  href="#0"
-                  onClick={(e) => { clickTracking(1, 'feature_1') }}
-                >
+                  onClick={(e) => { clickTracking(e, 1, 'feature_1') }}>
                   <div>
                     <div className="font-bold leading-snug tracking-tight mb-1">Select the Format.</div>
                     <div className="text-gray-600">Text, Youtube, PDFs - we can handle them all.</div>
@@ -65,8 +63,7 @@ function Features() {
                 </a>
                 <a
                   className={`flex items-center text-lg p-5 rounded border transition duration-300 ease-in-out mb-3 ${tab !== 2 ? 'bg-white shadow-md border-blue-100 hover:shadow-lg' : 'bg-blue-100 border-transparent shadow-md'}`}
-                  href="#0"
-                  onClick={(e) => { clickTracking(1, 'feature_1') }}
+                  onClick={(e) => { clickTracking(e, 2, 'feature_2') }}
                 >
                   <div>
                     <div className="font-bold leading-snug tracking-tight mb-1">Add your Content</div>
@@ -76,8 +73,7 @@ function Features() {
                 </a>
                 <a
                   className={`flex items-center text-lg p-5 rounded border transition duration-300 ease-in-out mb-3 ${tab !== 3 ? 'bg-white shadow-md border-blue-100 hover:shadow-lg' : 'bg-blue-100 border-transparent shadow-md'}`}
-                  href="#0"
-                  onClick={(e) => { clickTracking(1, 'feature_1') }}
+                  onClick={(e) => { clickTracking(e, 3, 'feature_3') }}
                 >
                   <div>
                     <div className="font-bold leading-snug tracking-tight mb-1">Hit Summarize!</div>
