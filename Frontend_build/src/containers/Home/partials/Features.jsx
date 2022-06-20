@@ -1,16 +1,25 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useTracking } from 'react-tracking';
+import { actionCreator } from '../../../utils/general_utils';
 import Transition from '../../../utils/Transition';
 import FeatureIllustration1 from '../../../assets/illu1.png'
 import FeatureIllustration2 from '../../../assets/illu2.png'
 import FeatureIllustration3 from '../../../assets/illu3.png'
 
-import FeaturesBg from '../../../assets/SummarooPic.png';
 
 function Features() {
 
   const [tab, setTab] = useState(1);
+  const {trackEvent} = useTracking()
 
   const tabs = useRef(null);
+
+  const clickTracking = (e, tab_number, tab_name) => {
+    e.preventDefault(); 
+    setTab(tab_number);
+    const action_name = tab_name + "_button_click"
+    trackEvent(actionCreator(action_name, 'features_landing'));
+  }
 
   const heightFix = () => {
     if (tabs.current.children[tab]) {
@@ -47,7 +56,7 @@ function Features() {
                 <a
                   className={`flex w-full items-center text-lg p-5 rounded border transition duration-300 ease-in-out mb-3 ${tab !== 1 ? 'bg-white shadow-md border-blue-100 hover:shadow-lg' : 'bg-blue-100 border-transparent shadow-md'}`}
                   href="#0"
-                  onClick={(e) => { e.preventDefault(); setTab(1); }}
+                  onClick={(e) => { clickTracking(1, 'feature_1') }}
                 >
                   <div>
                     <div className="font-bold leading-snug tracking-tight mb-1">Select the Format.</div>
@@ -57,7 +66,7 @@ function Features() {
                 <a
                   className={`flex items-center text-lg p-5 rounded border transition duration-300 ease-in-out mb-3 ${tab !== 2 ? 'bg-white shadow-md border-blue-100 hover:shadow-lg' : 'bg-blue-100 border-transparent shadow-md'}`}
                   href="#0"
-                  onClick={(e) => { e.preventDefault(); setTab(2); }}
+                  onClick={(e) => { clickTracking(1, 'feature_1') }}
                 >
                   <div>
                     <div className="font-bold leading-snug tracking-tight mb-1">Add your Content</div>
@@ -68,7 +77,7 @@ function Features() {
                 <a
                   className={`flex items-center text-lg p-5 rounded border transition duration-300 ease-in-out mb-3 ${tab !== 3 ? 'bg-white shadow-md border-blue-100 hover:shadow-lg' : 'bg-blue-100 border-transparent shadow-md'}`}
                   href="#0"
-                  onClick={(e) => { e.preventDefault(); setTab(3); }}
+                  onClick={(e) => { clickTracking(1, 'feature_1') }}
                 >
                   <div>
                     <div className="font-bold leading-snug tracking-tight mb-1">Hit Summarize!</div>

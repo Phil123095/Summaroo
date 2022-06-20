@@ -2,11 +2,14 @@ import { GiphyFetch } from "@giphy/js-fetch-api";
 import {  useEffect, useState } from "react";
 import Footer from "../general/Footer";
 import Header from "../general/Header";
+import { useTracking } from 'react-tracking';
+import { actionCreator } from '../../utils/general_utils';
 
 export default function KangarooGenerator() {
     const giphyFetch = new GiphyFetch("I416egPdf0z8yknVgQJ5uahNr0WBa8YG");
     const [gifLink, setGifLink] = useState(null);
     const random = async () => {
+        trackEvent(actionCreator('kangaroo_button_click', 'kangaroo_page'));
         try {
           const result = await giphyFetch.random({tag: 'kangaroo'})
           const url = result.data.images.original.url
@@ -14,9 +17,16 @@ export default function KangarooGenerator() {
         } catch (error) {
           console.error(`random`, error);
         }
-        
 
     };
+
+    const {trackEvent} = useTracking()
+
+    useEffect(() => {
+  
+        trackEvent(actionCreator('page_view', 'kangaroo_page'));
+  
+    }, [trackEvent])
     
     useEffect(() => {
         if (!gifLink) {

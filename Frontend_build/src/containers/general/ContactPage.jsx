@@ -1,7 +1,17 @@
+import {  useEffect } from "react";
 import Header from "../general/Header";
 import Footer from "./Footer";
+import { actionCreator } from '../../utils/general_utils';
+import { useTracking } from 'react-tracking';
 
 export default function ContactForm() {
+    const {trackEvent} = useTracking()
+    
+    useEffect(() => {
+
+        trackEvent(actionCreator('page_view', 'contact_form'));
+  
+    }, [trackEvent])
 
     return(
         //tailwindcss contact form

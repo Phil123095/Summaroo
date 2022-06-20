@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../../assets/Logo-Summarroo-Black.png'
+import { actionCreator } from '../../utils/general_utils';
+import { useTracking } from 'react-tracking';
 
 
 function Header() {
+  const {trackEvent} = useTracking()
 
   const [top, setTop] = useState(true);
 
@@ -24,7 +27,7 @@ function Header() {
           {/* Site branding */}
           <div className="flex-shrink-0 mx-auto md:mr-4 mb-1 md:mb-0">
             {/* Logo */}
-            <Link to="/" className="flex" aria-label="Summaroo">
+            <Link to="/" className="flex" aria-label="Summaroo" onClick={() => trackEvent(actionCreator('header_redirect_home', 'header'))}>
               <span class="font-bold text-4xl tracking-tight hover:font-bold text-gray-900">Summaroo </span>
               <div class="ml-2 w-8 h-8">
                 <img src={Logo} alt="Summaroo" />
@@ -36,10 +39,10 @@ function Header() {
           <nav className="flex flex-grow">
             <ul className="flex flex-grow justify-center md:justify-end flex-wrap items-center">
               <li>
-                <Link to="/kangaroos" className="btn-sm w-28 font-medium text-gray-900 border border-gray-900 hover:text-gray-900 flex items-center transition duration-150 ease-in-out">Sign in</Link>
+                <Link to="/kangaroos" className="btn-sm w-28 font-medium text-gray-900 border border-gray-900 hover:text-gray-900 flex items-center transition duration-150 ease-in-out" onClick={() => trackEvent(actionCreator('header_redirect_sign_in', 'header'))}>Sign in</Link>
               </li>
               <li>
-                <Link to="/kangaroos" className="btn-sm text-white bg-gray-900 hover:bg-gray-800 ml-3 w-28">
+                <Link to="/kangaroos" className="btn-sm text-white bg-gray-900 hover:bg-gray-800 ml-3 w-28" onClick={() => trackEvent(actionCreator('header_redirect_login', 'header'))}>
                   <span>Sign up</span>
                   <svg className="w-3 h-3 fill-current text-white flex-shrink-0 ml-2 -mr-1" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11.707 5.293L7 .586 5.586 2l3 3H0v2h8.586l-3 3L7 11.414l4.707-4.707a1 1 0 000-1.414z" fillRule="nonzero" />

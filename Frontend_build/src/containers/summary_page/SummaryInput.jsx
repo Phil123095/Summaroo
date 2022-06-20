@@ -25,6 +25,7 @@ export default function SummaryInputs(props) {
                         class="m-2 mb-4 pb-4 h-96 overflow-y-scroll"
                         id="multiline-static"
                         variant="standard"
+                        autoFocus={true}
                         fullWidth
                         multiline
     
@@ -52,6 +53,7 @@ export default function SummaryInputs(props) {
                         class="m-2"
                         id="outlined-basic"
                         variant="standard"
+                        autoFocus={true}
                         fullWidth
                         rows={16}
                         onChange={handleTextFieldChange}

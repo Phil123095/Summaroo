@@ -10,6 +10,7 @@ import NotFound from "./containers/general/NotFound";
 import KangarooGenerator from "./containers/summary_page_lolz/Kangaroos";
 import Home from "./containers/Home/Home";
 import ContactForm from './containers/general/ContactPage';
+import Gradient from './containers/general/Gradient';
 import AOS from 'aos';
 import SummaryPageFinal from './containers/summary_page/SummaryComponentFinal';
 
@@ -90,6 +91,7 @@ const App = () => {
                   <Route path="/summarize" element={<SummaryPageFinal/>}/>
                   <Route path="/kangaroos" element={<KangarooGenerator/>}/>
                   <Route path="/contact-us" element={<ContactForm/>}/>
+                  <Route path="/gradient" element={<Gradient/>}/>
                   <Route path="*" element={<NotFound/>}/>
               </Routes>
           </BrowserRouter>
