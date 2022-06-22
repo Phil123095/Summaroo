@@ -6,6 +6,7 @@ import sqlalchemy as sa
 import time
 import datetime
 import uuid
+from email_processor import Mail
 
 
 def processSummaryLog(data_in, connection):
@@ -55,6 +56,11 @@ def updateRatingLog(data_in, connection):
 
 def addEmailBeta(data, connection):
     print("Email Beta Register Started")
+
+    mail = Mail()
+    mail.send([data['email']])
+
+
     now = datetime.datetime.now()
     data_to_add = {'registration_timestamp': datetime.datetime.strftime(now, "%Y-%m-%d %H:%M:%S.%f"),
                    'persistent_user_id': data['persistent_user_id'], 'session_id': data['session_id'], 'email': data['email']}

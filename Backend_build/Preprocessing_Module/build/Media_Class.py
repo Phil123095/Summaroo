@@ -70,6 +70,8 @@ class Media:
         # Clean text in separate function call
         self.final_text_sentence_count = None
         self.final_sentence_count_out = None
+        self.final_word_count = None
+        self.final_word_count_out = None
         self.final_clean_text = None
 
         # Assigned by model router module (i.e. based on media attributes, will determine best summarization model).
@@ -206,6 +208,8 @@ class Media:
         if self.final_sentence_count_out < 1:
             self.final_sentence_count_out = 1
         self.final_clean_text = ' '.join(fully_cleaned_text)
+        self.final_word_count = len(self.final_clean_text.split())
+        self.final_word_count_out = self.final_word_count * self.reduction_perc
 
         return
 
