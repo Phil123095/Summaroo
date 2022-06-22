@@ -63,11 +63,17 @@ def updateRatingLog(data_in, connection):
 
 def addEmailBeta(data, connection):
     print("Email Beta Register Started")
+
+    try:
+        session_id = data['session_id']
+    except KeyError:
+        session_id = None
+
     print(data)
 
     now = datetime.datetime.now()
     data_to_add = {'registration_timestamp': datetime.datetime.strftime(now, "%Y-%m-%d %H:%M:%S.%f"),
-                   'persistent_user_id': data['persistent_user_id'], 'session_id': data['session_id'], 'email': data['email']}
+                   'persistent_user_id': data['persistent_user_id'], 'session_id': session_id, 'email': data['email']}
     email_df = pd.DataFrame([data_to_add])
 
     try:
