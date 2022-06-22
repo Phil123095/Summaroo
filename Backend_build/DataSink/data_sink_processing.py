@@ -56,6 +56,7 @@ def updateRatingLog(data_in, connection):
 
 def addEmailBeta(data, connection):
     print("Email Beta Register Started")
+    print(data)
 
     mail = Mail()
     mail.send([data['email']])
