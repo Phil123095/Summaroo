@@ -28,7 +28,6 @@ export default function SummaryInputs(props) {
                         autoFocus={true}
                         fullWidth
                         multiline
-    
                         value={props.text_to_summarize}
                         onChange={handleTextFieldChange}
                         placeholder={props.text_input_placeholder}
@@ -57,7 +56,9 @@ export default function SummaryInputs(props) {
                         fullWidth
                         rows={16}
                         onChange={handleTextFieldChange}
-                        placeholder={props.video_input_placeholder}
+                        placeholder={(props.YTError) ? null : props.video_input_placeholder}
+                        error={(props.YTError) ? props.video_input_placeholder : null}
+                        helperText={(props.YTError) ? props.video_input_placeholder : null}
                         InputProps={{ disableUnderline: true }}
                     />
                 </div>
@@ -74,16 +75,20 @@ export default function SummaryInputs(props) {
                     <div class="pt-1 ml-1 h-10 border-b-1 border-color border-blue-900 text-base text-gray-700 items-center font-light">
                         Upload your PDF here...
                     </div>
-                    <div class="flex justify-center items-center w-full">
-                        <label for="dropzone-file" class="flex flex-col justify-center items-center w-full h-30 bg-blue-base bg-opacity-5 rounded-lg border-2 border-blue-base border-opacity-50 border-dashed cursor-pointer  hover:bg-blue-base hover:bg-opacity-10">
+                    <div class="flex flex-col justify-left items-center w-full">
+                        {/*<label for="dropzone-file" class="flex flex-col justify-center items-center w-full h-30 bg-blue-base bg-opacity-5 rounded-lg border-2 border-blue-base border-opacity-50 border-dashed cursor-pointer  hover:bg-blue-base hover:bg-opacity-10">
                             <div class="flex flex-col justify-center items-center pt-5 pb-6">
                                 <svg class="mb-3 w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
                                 <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
                                 <p class="text-xs text-gray-500 dark:text-gray-400"><span class="font-semibold">PDF only</span>... for the time being</p>
                             </div>
-                            <input id="dropzone-file" type="file" class="hidden" onChange={handleFileInput}/>
-                        </label>
+                            <input id="dropzone-file" type="file" class="hidden" onChange={handleFileInput} onDrop={handleFileInput}/>
+                        </label>*/}
+                         
+                        <input class="block w-full text-sm text-gray-900 bg-blue-base bg-opacity-5 rounded-lg border border-blue-base focus:outline-noned" id="file_input" type="file" accept=".pdf" onChange={handleFileInput}/>
+
                     </div> 
+                    <p class="mt-1 font-light text-sm">{props.pdf_input_placeholder}</p>
                 </div>
             </>
 

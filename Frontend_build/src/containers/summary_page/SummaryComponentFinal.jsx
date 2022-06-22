@@ -39,6 +39,8 @@ export default function SummaryPageFinal(props) {
     const [inputTextPlaceholder, setTextPlaceholder] = useState("Add something!")
     const [inputVideoPlaceholder, setVideoPlaceholder] = useState("Add something!")
     const [inputPdfPlaceholder, setPdfPlaceholder] = useState("")
+    const [isCopied, setCopy] = useState(false)
+    const [YTError, setYTError] = useState(false)
 
     const [text_to_summarize, setText] = useState('');
     const [summary_perc, setSummPerc] = useState(10);
@@ -47,13 +49,31 @@ export default function SummaryPageFinal(props) {
     const [summaryLoaded, setSummaryLoaded] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
     const [summaryID, setSummaryID] = useState(null);
+
+    function matchYoutubeUrl(url) {
+        var p = /^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+        if(url.match(p)){
+            return true;
+        }
+        return false;
+    }
     
     const triggerSumm = (e) => {
         e.preventDefault()
         const is_correct = verifyInput()
 
         if (is_correct){
-            setIsLoading(true);
+            if (media_type === 'youtube'){
+                const youtube_check = matchYoutubeUrl(text_to_summarize);
+                if (youtube_check) {
+                    setYTError(false)
+                    setIsLoading(true);
+                } else {
+                    setYTError(true)
+                    setText('');
+                    setVideoPlaceholder("Please provide a valid Youtube link.")
+                }
+            } else {setIsLoading(true); setPdfPlaceholder("")}
         } else {
             if (media_type === 'text'){
                 setTextPlaceholder("Please provide a text to summarize.")
@@ -83,6 +103,7 @@ export default function SummaryPageFinal(props) {
 
     const clearText = () => {
         console.log("clearing text")
+        setCopy(false)
         setSelectedFile(null)
         setSummaryID(null)
         setText('');
@@ -149,21 +170,16 @@ export default function SummaryPageFinal(props) {
             
             console.log("Request is for:", cookies.get('session_identifier'), cookies.get('persistent_user_identifier'))
             return new Promise((resolve, reject) => {
-                console.log("1 - Start loading status", isLoading)
-                console.log("1 - Summary Starting")
                 console.log(media_type)
                 setSummOut('');
     
                 if (media_type === 'pdf') {
-                    /*setIsLoading(true);*/
-                    console.log("2 - IN PDF")
                     const uploadPromise = UploadDocument(selectedFile);
                     uploadPromise.then(res => resolve(false))    
                         .catch(err => reject(err));
                      
                 } else {
                     const summaryRequestPromise = requestSummary(text_to_summarize);
-                    console.log("2 - NOT PDF")
                     summaryRequestPromise.then(result => resolve(false))
                 }
     
@@ -172,11 +188,10 @@ export default function SummaryPageFinal(props) {
         };
 
         if (isLoading) {
-            if (media_type === 'text') {setIsLoading(false); setConfetti(true);}
+            if (media_type === 'text') { setConfetti(true);}
             SummarizationManager().then(res => {
                 setIsLoading(res)
                 if (media_type !== "text") {setConfetti(true);}
-                console.log("6 - Apparently Resolved")
             });
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -193,12 +208,11 @@ export default function SummaryPageFinal(props) {
                             clearTextAllowed={(!isLoading && popConfetti) ? true : false} clearText={clearText} 
                             text_to_summarize={text_to_summarize} setSelectedFile={setSelectedFile} setSummOut={setSummOut} 
                             setSummaryLoaded={setSummaryLoaded} summaryLoaded={summaryLoaded} text_input_placeholder={inputTextPlaceholder}
-                            video_input_placeholder={inputVideoPlaceholder} pdf_input_placeholder={inputPdfPlaceholder} />
-                        <OutputSummary summarised_text={summary_out} isLoading={isLoading} showRating={(!isLoading && popConfetti) ? true : false} summaryLoaded={summaryLoaded} summaryRequestID={summaryID}/>
+                            video_input_placeholder={inputVideoPlaceholder} pdf_input_placeholder={inputPdfPlaceholder} YTError={YTError} />
+                        <OutputSummary summarised_text={summary_out} isLoading={isLoading} showRating={(!isLoading && popConfetti) ? true : false} isCopied={isCopied} setCopy={setCopy} summaryLoaded={summaryLoaded} summaryRequestID={summaryID}/>
                         
                         {((media_type === "pdf" || media_type === "youtube") && (!isLoading && popConfetti)) ? <div class="flex col-span-8 h-10"/> : null}
                         <SummaryRequestOptions setSummPerc={setSummPerc} summaryTrigger={triggerSumm} isLoading={isLoading}/>
-                        {/*<Realistic indicator={(!isLoading && popConfetti) ? true : false}/>*/}
                     </div>
                 </div>
 
