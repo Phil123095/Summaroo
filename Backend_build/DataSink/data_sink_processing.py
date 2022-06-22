@@ -92,6 +92,15 @@ def addEmailBeta(data, connection):
     return
 
 
+def sendContactEmail(data):
+    mail = Mail()
+    try:
+        mail.send_contact_form(first_name=data['first_name'], last_name=data['last_name'],
+                                contact_email=data['email'], full_message=data['message'])
+    except Exception:
+        return
+
+
 def userTracking(data, connection):
     print(data)
     try:
@@ -152,5 +161,7 @@ def lambda_handler(event, context):
             addEmailBeta(data=data, connection=db_connection)
         elif action == 'UserTracking':
             userTracking(data=data, connection=db_connection)
+        elif action == 'EmailContactForm':
+            sendContactEmail(data=data)
 
     return

@@ -14,7 +14,8 @@ module.exports = {
         'electric-blue': '#84CEEB',
         'light-blue': '#5AB9EA',
         'light-indigo': '#C1C8E4',
-        'violet-base': '#8860D0'
+        'violet-base': '#8860D0',
+        'smoke-light': 'rgba(0, 0, 0, 0.4)'
       },
       keyframes: {
         movingacross: {

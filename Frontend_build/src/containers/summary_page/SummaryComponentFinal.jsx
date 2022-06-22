@@ -10,6 +10,7 @@ import { actionCreator } from "../../utils/general_utils";
 import Header from "../general/Header";
 import Footer from "../general/Footer";
 
+
 var AWS = require('aws-sdk/dist/aws-sdk-react-native');
 
 const BucketName = process.env.REACT_APP_BUCKET_NAME;
@@ -41,6 +42,7 @@ export default function SummaryPageFinal(props) {
     const [inputPdfPlaceholder, setPdfPlaceholder] = useState("")
     const [isCopied, setCopy] = useState(false)
     const [YTError, setYTError] = useState(false)
+    const [reviewed, setReviewed] = useState(false)
 
     const [text_to_summarize, setText] = useState('');
     const [summary_perc, setSummPerc] = useState(10);
@@ -197,6 +199,7 @@ export default function SummaryPageFinal(props) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [isLoading]);
 
+
     return (
         <div className="flex flex-col min-h-screen overflow-hidden bg-radial-at-tl from-blue-50 via-indigo-50 to-blue-100">
             <Header/>
@@ -209,7 +212,7 @@ export default function SummaryPageFinal(props) {
                             text_to_summarize={text_to_summarize} setSelectedFile={setSelectedFile} setSummOut={setSummOut} 
                             setSummaryLoaded={setSummaryLoaded} summaryLoaded={summaryLoaded} text_input_placeholder={inputTextPlaceholder}
                             video_input_placeholder={inputVideoPlaceholder} pdf_input_placeholder={inputPdfPlaceholder} YTError={YTError} />
-                        <OutputSummary summarised_text={summary_out} isLoading={isLoading} showRating={(!isLoading && popConfetti) ? true : false} isCopied={isCopied} setCopy={setCopy} summaryLoaded={summaryLoaded} summaryRequestID={summaryID}/>
+                        <OutputSummary setReviewed={setReviewed} summarised_text={summary_out} isLoading={isLoading} showRating={(!isLoading && popConfetti) ? true : false} isCopied={isCopied} setCopy={setCopy} summaryLoaded={summaryLoaded} summaryRequestID={summaryID}/>
                         
                         {((media_type === "pdf" || media_type === "youtube") && (!isLoading && popConfetti)) ? <div class="flex col-span-8 h-10"/> : null}
                         <SummaryRequestOptions setSummPerc={setSummPerc} summaryTrigger={triggerSumm} isLoading={isLoading}/>

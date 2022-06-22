@@ -1,12 +1,15 @@
 import { useState } from 'react'
 import { Rating } from 'react-simple-star-rating'
+import { Link } from 'react-router-dom';
 
 export default function OutputSummary(props) {
+    const [reviewed, setReviewed] = useState(false)
     const [rating, setRating] = useState(0)
 
     const handleRating = (rate) => {
         console.log(rate, props.summaryRequestID)
         setRating(rate)
+        setReviewed(true)
         sendRating(rate, props.summaryRequestID)
         // other logic
     }
@@ -52,7 +55,9 @@ export default function OutputSummary(props) {
 
     console.log(props.showRating)
 
+
     return(
+
         <div class="h-fit m-2 pb-1 p-2 col-span-1 md:col-span-4 bg-white justify-center items-center rounded-lg">
             <div class="flex space-between">
                 <div class="pt-1 ml-1 h-10 border-b-1 border-color border-blue-900 text-base text-gray-700 items-center font-light">
@@ -79,8 +84,15 @@ export default function OutputSummary(props) {
                     </div>
                 </div>
             :<div class="h-8"/>}
-
+            {reviewed ? 
+                <div class="w-full flex justify-end">
+                    <span className="input-group-btn text-right text-sm font-light underline text-blue-base">
+                        <Link to="/contact-us">Have any more feedback? We'd love to hear it.</Link>
+                    </span>
+                </div> : null
+            }
         </div>
+
     )
 
 }
