@@ -17,9 +17,16 @@ def processSummaryLog(data_in, connection):
     general_df = pd.DataFrame([general_data])
     text_df = pd.DataFrame([text_data])
 
-    general_df.to_sql('summary_request_reporting', connection, if_exists='append', index=False)
-    text_df.to_sql('text_content', connection, if_exists='append', index=False)
-    print(f"Summary Logging for {general_data['hash_ID']} done")
+    try:
+        general_df.to_sql('summary_request_reporting', connection, if_exists='append', index=False)
+        text_df.to_sql('text_content', connection, if_exists='append', index=False)
+        print(f"Summary Logging for {general_data['hash_ID']} done")
+    except Exception as err:
+        if "mysql.connector.errors.IntegrityError" in str(err):
+            print("Duplicate Issue")
+            return
+        else:
+            return
 
     return
 
@@ -58,16 +65,24 @@ def addEmailBeta(data, connection):
     print("Email Beta Register Started")
     print(data)
 
-    mail = Mail()
-    mail.send([data['email']])
-
-
     now = datetime.datetime.now()
     data_to_add = {'registration_timestamp': datetime.datetime.strftime(now, "%Y-%m-%d %H:%M:%S.%f"),
                    'persistent_user_id': data['persistent_user_id'], 'session_id': data['session_id'], 'email': data['email']}
     email_df = pd.DataFrame([data_to_add])
-    email_df.to_sql('beta_registration', connection, if_exists='append', index=False)
-    print(f"Email Beta Register for {data['email']} done.")
+
+    try:
+        email_df.to_sql('beta_registration', connection, if_exists='append', index=False)
+        mail = Mail()
+        mail.send([data['email']])
+        print(f"Email Beta Register for {data['email']} done.")
+
+    except Exception as err:
+        if "mysql.connector.errors.IntegrityError" in str(err):
+            print("User already exists in DB")
+            return
+        else:
+            return
+
     return
 
 
