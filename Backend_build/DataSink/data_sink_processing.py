@@ -79,7 +79,7 @@ def addEmailBeta(data, connection):
     try:
         email_df.to_sql('beta_registration', connection, if_exists='append', index=False)
         mail = Mail()
-        mail.send([data['email']])
+        mail.send_signup(data['email'])
         print(f"Email Beta Register for {data['email']} done.")
 
     except Exception as err:
