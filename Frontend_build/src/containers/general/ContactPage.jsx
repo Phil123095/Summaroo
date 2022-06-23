@@ -11,7 +11,7 @@ export default function ContactForm() {
     const [lastName, setLastName] = useState('')
     const [contactEmail, setEmail] = useState('')
     const [messageBody, setMessage] = useState('')
-    const [buttonMessage, setButtonMessage] = useState('Send')
+    const [submitted, setSubmitted] = useState(false)
     const [incompleteIndicator, setIncomplete] = useState(false)
 
     
@@ -36,6 +36,7 @@ export default function ContactForm() {
             setIncomplete(false)
             const cookies = new Cookies();
             trackEvent(actionCreator('form_submit', 'contact_form'));
+            console.log(firstName, lastName, messageBody)
 
             const params = {
                 method: 'POST',
@@ -52,7 +53,7 @@ export default function ContactForm() {
             }
             fetch('https://hiz7c7c2uqwvzyz7ceuqklvmnu0nsxcx.lambda-url.eu-central-1.on.aws/', params)
                 .catch(err => console.log(err));
-            setButtonMessage("Sent!")
+            setSubmitted(true)
         } else {
             setIncomplete(true)
 
@@ -65,10 +66,10 @@ export default function ContactForm() {
         <div className="flex flex-col max-h-screen min-w-screen">
             <Header/>
             <main className="mt-32 md:mt-2 bg-white px-2 pt-1 h-full w-full flex flex-col justify-center items-center">
-                <form class="mt-32 mb-16 w-full max-w-lg">
+                <form class="mt-32 mb-4 w-full max-w-lg" onsubmit="return false">
                     <div class="w-full mb-6">
-                        <p class="text-2xl font-bold text-center">We'd love to hear your thoughts!</p>
-                        <p class="text-gray-600 text-sm italic text-center mt-4">We'd be very grateful if you can provide any feedback on functionality, bugs, and so on for the site. But to be clear, we also accept fan mail.</p>
+                        {submitted ? <p class="text-2xl font-bold text-center">Thanks for submitting!</p> : <p class="text-2xl font-bold text-center">We'd love to hear your thoughts!</p>}
+                        <p class="text-gray-600 text-sm italic text-center mt-4">We'd be very grateful if you can provide any feedback on functionality, bugs, and so on for the site. <span class="text-blue-base"> But to be clear, we also accept fan mail.</span></p>
                         {incompleteIndicator ? <p class="text-red-400 font-bold text-base text-center mt-4">Please fill in all the fields.</p> : null}
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
@@ -110,16 +111,17 @@ export default function ContactForm() {
                                 focus:border-gray-500 h-48 resize-none" id="message" onChange={(e) => setMessage(e.target.value)} required></textarea>
                         </div>
                     </div>
-                    <div class="md:flex md:items-center">
-                        <div class="md:w-1/3">
+                   
+                </form>
+                <div class="md:flex md:items-center mb-10">
+                        <div class="md:w-2/3">
                             <button class="shadow bg-blue-base hover:bg-blue-base focus:shadow-outline 
-                                focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit" onClick={handleFormSubmit}>
-                                {buttonMessage}
+                                focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit" onclick="return false" onClick={handleFormSubmit}>
+                                {submitted ? "Sent!" : "Send"}
                             </button>
                         </div>
                         <div class="md:w-2/3"></div>
                     </div>
-                </form>
             </main>
             <Footer/>
         </div>

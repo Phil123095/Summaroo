@@ -93,11 +93,14 @@ def addEmailBeta(data, connection):
 
 
 def sendContactEmail(data):
+    print("Sending Contact Form Email")
     mail = Mail()
     try:
         mail.send_contact_form(first_name=data['first_name'], last_name=data['last_name'],
                                 contact_email=data['email'], full_message=data['message'])
-    except Exception:
+    except Exception as e:
+        print("CONTACT EMAIL FAILED")
+        print(e)
         return
 
 
