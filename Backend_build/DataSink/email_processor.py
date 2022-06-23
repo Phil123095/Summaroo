@@ -109,9 +109,8 @@ class Mail:
         service = discovery.build('gmail', 'v1', http=http)
 
         msg = MIMEMultipart('alternative')
-        html = open(email_template)
 
-        part2 = MIMEText(html.read(), 'html')
+        part2 = MIMEText(email_template, 'html')
 
         msg['Subject'] = "New Contact Form Submission"
         msg['From'] = "Summaroo Support <self.sender_mail>"  # Your from name and email address
