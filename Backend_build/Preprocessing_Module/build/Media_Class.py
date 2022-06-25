@@ -1,5 +1,5 @@
 from botocore.exceptions import ClientError
-from youtube_transcript_api import YouTubeTranscriptApi
+from youtube_transcript_api import YouTubeTranscriptApi, _errors
 import nltk
 from nltk import sent_tokenize
 import hashlib
@@ -112,7 +112,7 @@ class Media:
         elif self.media_format == "youtube":
             self.__extract_YT_transcript()
 
-            if self.raw_text == "No Transcript Available.":
+            if self.raw_text == "No transcript available" or self.raw_text == "No punctuated transcript available":
                 self.final_text_sentence_count = 1
                 return
 
@@ -148,7 +148,13 @@ class Media:
         # of dictionaries obtained by the get_transcript() function
         video_ID = self.__get_vid_id()
 
-        transcript_list = YouTubeTranscriptApi.list_transcripts(video_ID)
+        try:
+            transcript_list = YouTubeTranscriptApi.list_transcripts(video_ID)
+        except Exception as err:
+            self.raw_text = "No transcript available"
+            print(err)
+            return
+
         try:
             transcript_EN = transcript_list.find_manually_created_transcript(language_codes=['en', 'en-GB', 'en-US'])
             srt = transcript_EN.fetch()
@@ -160,8 +166,9 @@ class Media:
 
             self.raw_text = full_text
 
-        except Exception:
-            self.raw_text = "No Transcript Available."
+        except Exception as err:
+            print(err)
+            self.raw_text = "No punctuated transcript available"
 
 
     def __extract_PDF_text(self):

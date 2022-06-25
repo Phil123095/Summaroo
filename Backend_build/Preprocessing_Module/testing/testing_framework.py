@@ -91,9 +91,11 @@ if __name__ == '__main__':
     Decision 3: Cooperate or compete with new attackers? Decision 4: Diversify or double down on digital initiatives? Integrating digital operations directly into physical businesses can create additional value—for example, by providing multichannel capabilities for customers or by helping companies share infrastructure, such as supplychain networks.
 
     Decision 6: Delegate or own the digital agenda? Regardless of the organizational or leadership model a CEO and board choose, it’s important to keep in mind that digitization is a moving target."""
-    test_summary_out = testing_helper(format='pdf',
-                                      media_input='R1407H-PDF-ENG.pdf',
+    test_summary_out = testing_helper(format='youtube',
+                                      media_input='https://www.youtube.com/watch?v=IhmO9_3DlSA!',
                                       local_testing_preprocessing=True,
                                       summary_test_only=False,
                                       percent_length=0.1,
                                       sentence_count_out=None)
+
+    print(test_summary_out)
