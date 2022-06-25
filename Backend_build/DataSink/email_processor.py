@@ -94,7 +94,7 @@ class Mail:
                         <p>Full Message: {full_message}</p>
                         <p>Please have a look, and maybe follow up.</p>
                         <p>Best,</p>
-                        <p>Auto Phil</p>
+                        <p>- Auto Phil</p>
                       </body>
                     </html>
                     """
