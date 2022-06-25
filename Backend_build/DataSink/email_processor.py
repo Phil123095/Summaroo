@@ -12,11 +12,6 @@ from oauth2client import client, tools, file
 # import email modules
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-import mimetypes
-from email.mime.image import MIMEImage
-from email.mime.audio import MIMEAudio
-from email.mime.base import MIMEBase
-# store the below in the working directory
 
 '''
 FUNCTIONS FOR CREATING AND SEND EMAIL MESSAGE
@@ -114,7 +109,10 @@ class Mail:
 
         msg['Subject'] = "New Contact Form Submission"
         msg['From'] = "Summaroo Support <self.sender_mail>"  # Your from name and email address
-        msg['To'] = 'philippehenderson95@gmail.com'
+        msg['To'] = """philippe.henderson@student.ie.edu, williams.br@student.ie.edu, 
+                    alexander.schwab@student.ie.edu, nora.tombers@student.ie.edu,
+                    rainer.schaeffter@student.ie.edu, nicolo.prini@student.ie.edu
+                    """
 
         msg.attach(part2)
 
