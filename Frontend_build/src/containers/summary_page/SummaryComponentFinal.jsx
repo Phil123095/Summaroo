@@ -15,6 +15,7 @@ var AWS = require('aws-sdk/dist/aws-sdk-react-native');
 
 const BucketName = process.env.REACT_APP_BUCKET_NAME;
 const Region = process.env.REACT_APP_REGION;
+const SummaryEndpoint = process.env.REACT_APP_SUMMARY_ENDPOINT;
 
 AWS.config.update({
     accessKeyId: process.env.REACT_APP_ACCESS_ID,
@@ -123,7 +124,6 @@ export default function SummaryPageFinal(props) {
     useEffect(() => {
         function requestSummary(summarize_this_text){
             return new Promise((resolve, reject) => {
-                console.log("Requesting Summary")
                 const requestOptions = {
                     method: 'POST',
                     body: JSON.stringify({
@@ -134,7 +134,7 @@ export default function SummaryPageFinal(props) {
                         })
                     };
     
-                fetch('https://4bovfvjtrbw7n2szd6a4lzrtwi0gvzhs.lambda-url.eu-central-1.on.aws/', requestOptions)
+                fetch(SummaryEndpoint, requestOptions)
                     .then(response => response.json())
                     .then(response => {setSummOut(response.final_summary); setSummaryID(response.request_id) })
                     .then(setSummaryLoaded(true))
@@ -150,16 +150,11 @@ export default function SummaryPageFinal(props) {
                     Bucket: BucketName,
                     Key: file.name.replace(/\s+/g, '')
                 };
-
-                console.log("3 - About to upload document")
                 myBucket.upload(params, function(err, data) {
                     if (err) {
                         reject(err);
                     } else {
-                        console.log(data)
-                        console.log("4 - Requesting Summary in Upload")
                         requestSummary(data.Location).then(result => resolve(false))
-                        console.log("5 - Summary Request Done")
                     }
                 })
     
@@ -170,7 +165,6 @@ export default function SummaryPageFinal(props) {
         function SummarizationManager() {
             trackEvent(actionCreator('summary_request', 'summary_page'));
             
-            console.log("Request is for:", cookies.get('session_identifier'), cookies.get('persistent_user_identifier'))
             return new Promise((resolve, reject) => {
                 console.log(media_type)
                 setSummOut('');

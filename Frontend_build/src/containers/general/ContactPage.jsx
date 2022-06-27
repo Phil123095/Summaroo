@@ -6,6 +6,7 @@ import { actionCreator } from '../../utils/general_utils';
 import { useTracking } from 'react-tracking';
 
 export default function ContactForm() {
+    const DataEndpoint = process.env.REACT_APP_AWS_LAZYDATASINK_URL;
     const {trackEvent} = useTracking()
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
@@ -51,7 +52,7 @@ export default function ContactForm() {
                     session_id: cookies.get('session_identifier')}
                 })
             }
-            fetch('https://hiz7c7c2uqwvzyz7ceuqklvmnu0nsxcx.lambda-url.eu-central-1.on.aws/', params)
+            fetch(DataEndpoint, params)
                 .catch(err => console.log(err));
             setSubmitted(true)
         } else {

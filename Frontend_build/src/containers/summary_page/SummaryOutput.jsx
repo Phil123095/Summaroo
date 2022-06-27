@@ -3,6 +3,7 @@ import { Rating } from 'react-simple-star-rating'
 import { Link } from 'react-router-dom';
 
 export default function OutputSummary(props) {
+    const DataEndpoint = process.env.REACT_APP_AWS_LAZYDATASINK_URL;
     const [reviewed, setReviewed] = useState(false)
     const [rating, setRating] = useState(0)
 
@@ -23,7 +24,7 @@ export default function OutputSummary(props) {
             data: {summaryID: summaryID, rating: rating}
             })
         }
-        fetch('https://hiz7c7c2uqwvzyz7ceuqklvmnu0nsxcx.lambda-url.eu-central-1.on.aws/', params)
+        fetch(DataEndpoint, params)
             .catch(err => console.log(err));
     }
 

@@ -15,6 +15,8 @@ import AOS from 'aos';
 import SummaryPageFinal from './containers/summary_page/SummaryComponentFinal';
 
 
+const DataEndpoint = process.env.REACT_APP_AWS_LAZYDATASINK_URL;
+
 const App = () => {
   useEffect(() => {
     AOS.init({
@@ -49,7 +51,7 @@ const App = () => {
         'event_type': 'exit_website', 'page': 'not_clear'}
         })
       }
-      fetch('https://hiz7c7c2uqwvzyz7ceuqklvmnu0nsxcx.lambda-url.eu-central-1.on.aws/', params)
+      fetch(DataEndpoint, params)
           .catch(err => console.log(err));
   }
 
@@ -132,7 +134,7 @@ const TrackedApp = track(
           data: data
           })
         }
-        fetch('https://hiz7c7c2uqwvzyz7ceuqklvmnu0nsxcx.lambda-url.eu-central-1.on.aws/', params)
+        fetch(DataEndpoint, params)
             .catch(err => console.log(err));
       }
       LogActivity(data);

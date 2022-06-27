@@ -6,6 +6,7 @@ import { actionCreator } from '../../utils/general_utils';
 import Cookies from 'universal-cookie';
 
 function Footer() {
+  const DataEndpoint = process.env.REACT_APP_AWS_LAZYDATASINK_URL;
   const {trackEvent} = useTracking()
   const [register_message, setRegister] = useState('Subscribe')
   const [emailError, setEmailError] = useState('Your email...');
@@ -32,7 +33,7 @@ function Footer() {
             data: {email: email, persistent_user_id: cookies.get('persistent_user_identifier'), session_id: cookies.get('session_identifier')}
             })
         }
-        fetch('https://hiz7c7c2uqwvzyz7ceuqklvmnu0nsxcx.lambda-url.eu-central-1.on.aws/', params)
+        fetch(DataEndpoint, params)
             .catch(err => console.log(err));
         setRegister("Subscribed!")
     } else {
