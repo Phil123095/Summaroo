@@ -52,7 +52,7 @@ export default function ContactForm() {
                     session_id: cookies.get('session_identifier')}
                 })
             }
-            fetch(DataEndpoint, params)
+            fetch('https://hiz7c7c2uqwvzyz7ceuqklvmnu0nsxcx.lambda-url.eu-central-1.on.aws/', params)
                 .catch(err => console.log(err));
             setSubmitted(true)
         } else {

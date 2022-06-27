@@ -134,7 +134,7 @@ export default function SummaryPageFinal(props) {
                         })
                     };
     
-                fetch(SummaryEndpoint, requestOptions)
+                fetch('https://4bovfvjtrbw7n2szd6a4lzrtwi0gvzhs.lambda-url.eu-central-1.on.aws/', requestOptions)
                     .then(response => response.json())
                     .then(response => {setSummOut(response.final_summary); setSummaryID(response.request_id) })
                     .then(setSummaryLoaded(true))
