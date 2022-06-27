@@ -30,6 +30,21 @@ def send_message(message, local):
     return
 
 
+def check_inputs(message):
+    try:
+        test1, test2, test3 = message['session_id'], message['action_id'], message['persistent_user_id']
+        return True
+    except KeyError:
+        try:
+            action = message['action']
+            if action in ['SummaryRatingLog', 'UserTracking', 'EmailRegister']:
+                return True
+            else:
+                return False
+        except KeyError:
+            return False
+
+
 def lambda_handler(event, context):
     if os.environ.get("AWS_EXECUTION_ENV") is None:
         local = True
@@ -41,5 +56,9 @@ def lambda_handler(event, context):
     except TypeError:
         message = event['body']
 
-    send_message(message=message, local=local)
-    return
+    if check_inputs(message=message):
+        send_message(message=message, local=local)
+        return
+    else:
+        return {"response": "Please stop tampering with our solution. Be nice. Nice people are cool."}
+

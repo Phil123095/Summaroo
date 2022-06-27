@@ -121,7 +121,11 @@ def userTracking(data, connection):
     except KeyError:
         data['host_type'] = None
 
-    time_format = pd.to_datetime(int(data['timestamp']), utc=True, unit='ms')
+    try:
+        time_format = pd.to_datetime(int(data['timestamp']), utc=True, unit='ms')
+    except KeyError:
+        print("Missing Timestamp")
+        return
 
     data['timestamp'] = datetime.datetime.strftime(time_format, "%Y-%m-%d %H:%M:%S.%f")
 
@@ -150,6 +154,8 @@ def lambda_handler(event, context):
             message = json.loads(message_queue['body'])
         except KeyError:
             message = event
+
+        print(f"Initial Print: {message}")
 
         action = message['action']
         data = message['data']

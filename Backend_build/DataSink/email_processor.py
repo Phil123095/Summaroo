@@ -26,8 +26,7 @@ class Mail:
         self.CLIENT_SECRET_FILE = 'client_secret.json'
         self.port = 465
         self.smtp_server_domain_name = "smtp.gmail.com"
-        self.sender_mail = "hello.summaroo@gmail.com"
-        self.password = "vbarhfutcrmnkcsn"
+        self.sender_mail = os.environ['sender_email']
 
     def get_credentials_lambda(self):
         client_id = os.environ['GMAIL_CLIENT_ID']
@@ -109,12 +108,10 @@ class Mail:
 
         msg['Subject'] = "New Contact Form Submission"
         msg['From'] = "Summaroo Support <self.sender_mail>"  # Your from name and email address
-        msg['To'] = """philippe.henderson@student.ie.edu, williams.br@student.ie.edu, 
-                    alexander.schwab@student.ie.edu, nora.tombers@student.ie.edu,
-                    rainer.schaeffter@student.ie.edu, nicolo.prini@student.ie.edu
-                    """
+        msg['To'] = str(os.environ['forward_email'])
 
         msg.attach(part2)
+        print(part2)
 
         message = {'raw': base64.urlsafe_b64encode(msg.as_string().encode('UTF-8')).decode('ascii')}
 
